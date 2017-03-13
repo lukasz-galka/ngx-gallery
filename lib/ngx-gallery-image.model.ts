@@ -1,13 +1,13 @@
 export interface INgxGalleryImage {
-    small: string;
-    medium: string;
-    big: string;
+    small?: string;
+    medium?: string;
+    big?: string;
 }
 
 export class NgxGalleryImage implements INgxGalleryImage {
-    small: string;
-    medium: string;
-    big: string;
+    small?: string;
+    medium?: string;
+    big?: string;
 
     constructor(obj: INgxGalleryImage) {
         this.small = obj.small;
