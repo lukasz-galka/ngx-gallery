@@ -74,10 +74,14 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
             * this.margin) / this.columns)) * index) + 'px)');
     }
 
-    getThumbnailWidth(): string {
-        return 'calc(' + (100 / this.columns) + '% - '
-            + (((this.columns - 1) * this.margin)
-            / this.columns) + 'px)';
+    getThumbnailWidth(): SafeStyle {
+        if (this.margin != 0) {
+            return this.sanitization.bypassSecurityTrustStyle('calc(' + (100 / this.columns) + '% - '
+                + (((this.columns - 1) * this.margin)
+                / this.columns) + 'px)');
+        } else {
+            return this.sanitization.bypassSecurityTrustStyle('calc(' + (100 / this.columns) + '% + 1px)');
+        }
     }
 
     setThumbnailsPosition(): void {
