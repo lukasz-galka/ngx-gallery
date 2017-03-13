@@ -84,19 +84,19 @@ export class AppComponent {
 
         this.galleryImages = [
             {
-                small: '/assets/1-small.jpg',
-                medium: '/assets/1-medium.jpg',
-                big: '/assets/1-big.jpg'
+                small: 'assets/1-small.jpg',
+                medium: 'assets/1-medium.jpg',
+                big: 'assets/1-big.jpg'
             },
             {
-                small: '/assets/2-small.jpg',
-                medium: '/assets/2-medium.jpg',
-                big: '/assets/2-big.jpg'
+                small: 'assets/2-small.jpg',
+                medium: 'assets/2-medium.jpg',
+                big: 'assets/2-big.jpg'
             },
             {
-                small: '/assets/3-small.jpg',
-                medium: '/assets/3-medium.jpg',
-                big: '/assets/3-big.jpg'
+                small: 'assets/3-small.jpg',
+                medium: 'assets/3-medium.jpg',
+                big: 'assets/3-big.jpg'
             }
         ];
     }
