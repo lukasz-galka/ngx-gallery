@@ -15,15 +15,15 @@ Angular2 gallery plugin
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
 - `imagePercent` | Type: `number` | Default value: `70` - percentage height
-- `imageArrows` | Type: `boolean` | Default value: `true` - enable or disable arrows
-- `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enable or disable arrows auto hide
+- `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
+- `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
 - `thumbnailsPercent` | Type: `number` | Default value: `30` - percentage height
 - `thumbnailsMargin` | Type: `number` | Default value: `10` - margin between thumbnails and image
-- `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enable or disable arrows
-- `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enable or disable arrows auto hide
+- `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enablse or disables arrows
+- `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
-- `preview` | Type: `boolean` | Default value: `true` - enable or disable preview
+- `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 
 # NgxGalleryImage
 - `small` | Type: `string` - used in thumbnails
