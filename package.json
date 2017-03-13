@@ -11,6 +11,10 @@
     "build": "./node_modules/.bin/ngc",
     "lint": "tslint \"lib/*.ts\""
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukasz-galka/ngx-gallery.git"
+  },
   "keywords": [
     "ngx",
     "angular2",
