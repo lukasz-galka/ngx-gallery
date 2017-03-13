@@ -1,6 +1,8 @@
 node_modules/
 aot/
 .editorconfig
+.gitignore
+.npmignore
 clean.sh
 tsconfig.json
 tslint.json

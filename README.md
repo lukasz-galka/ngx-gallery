@@ -14,11 +14,11 @@ Angular2 gallery plugin
 - `width` | Type: `string` | Default value: `'500px'` - gallery width
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
-- `imagePercent` | Type: `number` | Default value: `70` - percentage height
+- `imagePercent` | Type: `number` | Default value: `75` - percentage height
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
-- `thumbnailsPercent` | Type: `number` | Default value: `30` - percentage height
+- `thumbnailsPercent` | Type: `number` | Default value: `25` - percentage height
 - `thumbnailsMargin` | Type: `number` | Default value: `10` - margin between thumbnails and image
 - `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enablse or disables arrows
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide

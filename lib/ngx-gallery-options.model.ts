@@ -41,12 +41,12 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.width = use(obj.width, '500px');
         this.height = use(obj.height, '400px');
 
-        this.imagePercent = use(obj.imagePercent, 70);
+        this.imagePercent = use(obj.imagePercent, 75);
         this.imageArrows = use(obj.imageArrows, true);
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
 
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
-        this.thumbnailsPercent = use(obj.thumbnailsPercent, 30);
+        this.thumbnailsPercent = use(obj.thumbnailsPercent, 25);
         this.thumbnailsMargin = use(obj.thumbnailsMargin, 10);
         this.thumbnailsArrows = use(obj.thumbnailsArrows, true);
         this.thumbnailsArrowsAutoHide = use(obj.thumbnailsArrowsAutoHide, false);
