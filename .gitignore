@@ -39,3 +39,10 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+# lib
+/aot
+/lib/*.map
+/lib/*.js
+/lib/*.json
+/lib/*.d.ts

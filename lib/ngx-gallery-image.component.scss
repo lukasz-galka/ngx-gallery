@@ -1,0 +1,28 @@
+:host {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.ngx-gallery-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.ngx-gallery-active {
+        opacity: 1;
+        z-index: 1000;
+    }
+
+    &.ngx-gallery-clickable {
+        cursor: pointer;
+    }
+}
+
+

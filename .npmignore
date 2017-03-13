@@ -1,0 +1,6 @@
+node_modules/
+aot/
+.editorconfig
+clean.sh
+tsconfig.json
+tslint.json

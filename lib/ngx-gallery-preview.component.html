@@ -1,0 +1,6 @@
+<ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" ></ngx-gallery-arrows>
+<i class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+<div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+</div>
+<img class="ngx-gallery-preview-img ngx-gallery-center" *ngIf="src" [src]="src" (load)="loaded()" [class.ngx-gallery-active]="!showSpinner"/>

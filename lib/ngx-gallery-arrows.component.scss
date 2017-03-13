@@ -1,0 +1,37 @@
+.ngx-gallery-arrow-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    display: table;
+    z-index: 2000;
+    table-layout: fixed;
+}
+
+.ngx-gallery-arrow-wrapper.ngx-gallery-arrow-left {
+    left: 0px;
+}
+
+.ngx-gallery-arrow-wrapper.ngx-gallery-arrow-right {
+    right: 0px;
+}
+
+.fa {
+    &.fa-arrow-circle-left, &.fa-arrow-circle-right {
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        &.ngx-gallery-disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+    }
+
+    &.fa-arrow-circle-left {
+        left: 10px;
+    }
+
+    &.fa-arrow-circle-right {
+        right: 10px;
+    }
+}

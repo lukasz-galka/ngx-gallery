@@ -1,0 +1,18 @@
+:host {
+    display: inline-block;
+
+    & > * {
+        float: left;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+/deep/ .fa {
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    z-index: 2000;
+}
