@@ -2,7 +2,7 @@
 Angular2 gallery plugin
 
 # Demo
-[Link](http://fontawesome.io/)
+[Link](https://lukasz-galka.github.io/ngx-gallery-demo/)
 
 # Prerequisites
 [Font Awesome](http://fontawesome.io/)
