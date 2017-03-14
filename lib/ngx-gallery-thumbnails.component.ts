@@ -13,6 +13,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     @Input() images: string[];
     @Input() columns: number;
+    @Input() rows: number;
     @Input() arrows: boolean;
     @Input() arrowsAutoHide: boolean;
     @Input() margin: number;
@@ -25,7 +26,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     constructor(private sanitization: DomSanitizer) {}
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes['selectedIndex']) {
+        if (changes['selectedIndex']) {
             this.validateIndex();
         }
     }
@@ -61,27 +62,29 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     canMoveRight(): boolean {
-        return this.index + this.columns < this.images.length ? true : false;
+        return this.index + this.columns < this.getMaxIndex() ? true : false;
     }
 
     canMoveLeft(): boolean {
         return this.index !== 0 ? true : false;
     }
 
-    getThumbnailPos(index: number): SafeStyle {
-        return this.sanitization.bypassSecurityTrustStyle('calc(' + ((100 / this.columns) * index)
-            + '% + ' + ((this.margin - (((this.columns - 1)
-            * this.margin) / this.columns)) * index) + 'px)');
+    getThumbnailLeft(index: number): SafeStyle {
+        const calculatedIndex = Math.floor(index / this.rows);
+        return this.getThumbnailPosition(calculatedIndex, this.columns);
+    }
+
+    getThumbnailTop(index: number): SafeStyle {
+        const calculatedIndex = index % this.rows;
+        return this.getThumbnailPosition(calculatedIndex, this.rows);
     }
 
     getThumbnailWidth(): SafeStyle {
-        if (this.margin != 0) {
-            return this.sanitization.bypassSecurityTrustStyle('calc(' + (100 / this.columns) + '% - '
-                + (((this.columns - 1) * this.margin)
-                / this.columns) + 'px)');
-        } else {
-            return this.sanitization.bypassSecurityTrustStyle('calc(' + (100 / this.columns) + '% + 1px)');
-        }
+        return this.getThumbnailDimension(this.columns);
+    }
+
+    getThumbnailHeight(): SafeStyle {
+        return this.getThumbnailDimension(this.rows);
     }
 
     setThumbnailsPosition(): void {
@@ -95,7 +98,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     canShowArrows(): boolean {
-        if(this.arrows && this.images && this.images.length > this.columns
+        if (this.arrows && this.images && this.images.length > this.getVisibleCount()
             && (!this.arrowsAutoHide || this.mouseenter)) {
             return true;
         } else {
@@ -104,18 +107,41 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     validateIndex(): void {
-        if(this.selectedIndex < this.index
-            || this.selectedIndex >= this.index + this.columns) {
 
-            let index = this.selectedIndex;
+        const newIndex = Math.floor(this.selectedIndex / this.rows);
 
-            if(index > this.images.length - this.columns) {
-                this.index = this.images.length - this.columns;
-            } else {
-                this.index = index;
-            }
+        if (newIndex < this.index || newIndex >= this.index + this.columns) {
 
+            const maxIndex = this.getMaxIndex() - this.columns;
+
+            this.index = newIndex > maxIndex ? maxIndex : newIndex;
             this.setThumbnailsPosition();
         }
+    }
+
+    private getThumbnailPosition(index: number, count: number): SafeStyle {
+        return this.getSafeStyle('calc(' + ((100 / count) * index) + '% + '
+            + ((this.margin - (((count - 1) * this.margin) / count)) * index) + 'px)');
+    }
+
+    private getThumbnailDimension(count: number): SafeStyle {
+        if (this.margin !== 0) {
+            return this.getSafeStyle('calc(' + (100 / count) + '% - '
+                + (((count - 1) * this.margin) / count) + 'px)');
+        } else {
+            return this.getSafeStyle('calc(' + (100 / count) + '% + 1px)');
+        }
+    }
+
+    private getMaxIndex(): number {
+        return Math.ceil(this.images.length / this.rows);
+    }
+
+    private getVisibleCount(): number {
+        return this.columns * this.rows;
+    }
+
+    private getSafeStyle(value: string): SafeStyle {
+        return this.sanitization.bypassSecurityTrustStyle(value);
     }
 }

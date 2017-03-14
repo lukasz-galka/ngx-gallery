@@ -16,19 +16,19 @@ export class NgxGalleryImageComponent implements OnInit {
     @Output() onActiveChange = new EventEmitter();
 
     ngOnInit(): void {
-        if(this.arrows && this.arrowsAutoHide) {
+        if (this.arrows && this.arrowsAutoHide) {
             this.arrows = false;
         }
     }
 
     @HostListener('mouseenter') onMouseEnter() {
-        if(this.arrowsAutoHide && !this.arrows) {
+        if (this.arrowsAutoHide && !this.arrows) {
             this.arrows = true;
         }
     }
 
     @HostListener('mouseleave') onMouseLeave() {
-        if(this.arrowsAutoHide && this.arrows) {
+        if (this.arrowsAutoHide && this.arrows) {
             this.arrows = false;
         }
     }

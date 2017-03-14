@@ -1,6 +1,6 @@
 <div class="ngx-gallery-thumbnails-wrapper">
     <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft">
-        <div class="ngx-gallery-thumbnail" *ngFor="let image of images; let i = index;" [style.background-image]="'url(' + image + ')'" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.left]="getThumbnailPos(i)" [class.ngx-gallery-active]="i == selectedIndex"></div>
+        <div class="ngx-gallery-thumbnail" *ngFor="let image of images; let i = index;" [style.background-image]="'url(' + image + ')'" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [class.ngx-gallery-active]="i == selectedIndex"></div>
     </div>
 </div>
 <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()"></ngx-gallery-arrows>

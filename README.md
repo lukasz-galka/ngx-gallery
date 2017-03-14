@@ -7,10 +7,22 @@ Angular2 gallery plugin
 # Prerequisites
 [Font Awesome](http://fontawesome.io/)
 
+```npm install font-awesome --save```
+
+For angular-cli based projects insert styles into .angular-cli.json
+
+````
+"styles": [
+    ...
+    "../node_modules/font-awesome/css/font-awesome.css"
+]
+````
+
 # Installation
 ```npm install ngx-gallery --save```
 
 # NgxGalleryOptions
+
 - `width` | Type: `string` | Default value: `'500px'` - gallery width
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
@@ -18,6 +30,7 @@ Angular2 gallery plugin
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
+- `thumbnailsRows` | Type: `number` | Default value: `1` - rows count
 - `thumbnailsPercent` | Type: `number` | Default value: `25` - percentage height
 - `thumbnailsMargin` | Type: `number` | Default value: `10` - margin between thumbnails and image
 - `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enablse or disables arrows

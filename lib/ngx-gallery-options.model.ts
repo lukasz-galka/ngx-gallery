@@ -6,6 +6,7 @@ export interface INgxGalleryOptions {
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
     thumbnailsColumns?: number;
+    thumbnailsRows?: number;
     thumbnailsPercent?: number;
     thumbnailsMargin?: number;
     thumbnailsArrows?: boolean;
@@ -22,6 +23,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
     thumbnailsColumns?: number;
+    thumbnailsRows?: number;
     thumbnailsPercent?: number;
     thumbnailsMargin?: number;
     thumbnailsArrows?: boolean;
@@ -46,6 +48,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
 
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
+        this.thumbnailsRows = use(obj.thumbnailsRows, 1);
         this.thumbnailsPercent = use(obj.thumbnailsPercent, 25);
         this.thumbnailsMargin = use(obj.thumbnailsMargin, 10);
         this.thumbnailsArrows = use(obj.thumbnailsArrows, true);
