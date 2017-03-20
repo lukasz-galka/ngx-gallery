@@ -13,6 +13,7 @@ export interface INgxGalleryOptions {
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailMargin?: number;
     preview?: boolean;
+    previewDescription?: boolean;
 }
 
 export class NgxGalleryOptions implements INgxGalleryOptions {
@@ -30,6 +31,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailMargin?: number;
     preview?: boolean;
+    previewDescription?: boolean;
 
     constructor(obj: INgxGalleryOptions) {
 
@@ -56,5 +58,6 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
 
         this.preview = use(obj.preview, true);
+        this.previewDescription = use(obj.previewDescription, true);
     }
 }

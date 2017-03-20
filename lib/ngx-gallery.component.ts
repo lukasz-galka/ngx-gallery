@@ -18,6 +18,7 @@ export class NgxGalleryComponent implements OnInit {
     smallImages: string[];
     mediumImages: string[];
     bigImages: string[];
+    descriptions: string[];
 
     selectedIndex: number = 0;
     previewEnabled: boolean;
@@ -38,6 +39,7 @@ export class NgxGalleryComponent implements OnInit {
         this.smallImages = this.images.map(img => img.small);
         this.mediumImages = this.images.map(img => img.medium);
         this.bigImages = this.images.map(img => img.big);
+        this.descriptions = this.images.map(img => img.description);
 
         this.options = this.options.map(opt => new NgxGalleryOptions(opt));
         this.sortOptions();

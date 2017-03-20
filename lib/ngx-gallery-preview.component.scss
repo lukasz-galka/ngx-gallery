@@ -4,7 +4,7 @@
     position: fixed;
     left: 0px;
     top: 0px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 10000;
     display: inline-block;
 
@@ -21,8 +21,8 @@
 
 .ngx-gallery-preview-img {
     opacity: 0;
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
     transition: opacity 0.5s ease-in-out;
 
     &.ngx-gallery-active {
@@ -58,4 +58,26 @@
     bottom: 0;
     margin: auto;
     top: 0;
+}
+
+.ngx-gallery-preview-text {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    flex: 0 1 auto;
+}
+
+.ngx-gallery-preview-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.ngx-gallery-preview-img-wrapper {
+    flex: 1 1 auto;
+    position: relative;
 }

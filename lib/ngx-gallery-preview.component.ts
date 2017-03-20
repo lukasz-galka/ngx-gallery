@@ -8,9 +8,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class NgxGalleryPreviewComponent {
 
     src: string;
+    description: string;
+
     showSpinner: boolean = false;
 
     @Input() images: string[];
+    @Input() descriptions: string[];
+    @Input() showDescription: boolean;
 
     @Output() onClose = new EventEmitter();
 
@@ -54,5 +58,6 @@ export class NgxGalleryPreviewComponent {
     private show() {
         this.showSpinner = true;
         this.src = this.images[this.index];
+        this.description = this.descriptions[this.index];
     }
 }

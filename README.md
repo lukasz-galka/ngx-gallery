@@ -37,11 +37,13 @@ For angular-cli based projects insert styles into .angular-cli.json
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
+- `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
 
 # NgxGalleryImage
-- `small` | Type: `string` - used in thumbnails
-- `medium` | Type: `string` - used in image
-- `big` | Type: `string` - used in preview
+- `small` | Type: `string` - url used in thumbnails
+- `medium` | Type: `string` - url used in image
+- `big` | Type: `string` - url used in preview
+- `description` | Type: `string` - description used in preview
 
 # Usage
 ````ts
