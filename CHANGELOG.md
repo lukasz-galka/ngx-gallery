@@ -1,3 +1,8 @@
+<a name="0.3.0"></a>
+# 0.3.0 (2017-03-20)
+
+* Add image description ([d1c5ba2](https://github.com/lukasz-galka/ngx-gallery/commit/d1c5ba2))
+
 <a name="0.2.0"></a>
 # 0.2.0 (2017-03-14)
 
