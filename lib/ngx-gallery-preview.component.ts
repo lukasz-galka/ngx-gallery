@@ -19,6 +19,7 @@ export class NgxGalleryPreviewComponent {
     @Output() onClose = new EventEmitter();
 
     private index: number = 0;
+    private loadedList: string[] = [];
 
     open(index: number): void {
         this.index = index;
@@ -31,6 +32,7 @@ export class NgxGalleryPreviewComponent {
 
     loaded(): void {
         this.showSpinner = false;
+        this.loadedList.push(this.src);
     }
 
     showNext(): void {
@@ -56,8 +58,11 @@ export class NgxGalleryPreviewComponent {
     }
 
     private show() {
-        this.showSpinner = true;
         this.src = this.images[this.index];
         this.description = this.descriptions[this.index];
+
+        if (this.loadedList.indexOf(this.src) === -1) {
+            this.showSpinner = true;
+        }
     }
 }

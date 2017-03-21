@@ -1,2 +1,2 @@
-<div class="ngx-gallery-image" *ngFor="let image of images; let i = index" [ngClass]="{'ngx-gallery-active': selectedIndex == i, 'ngx-gallery-clickable': clickable}" [style.background-image]="'url(' + image + ')'" (click)="handleClick($event, i)"></div>
+<div class="ngx-gallery-image" *ngFor="let image of images; let i = index" [ngClass]="{ 'ngx-gallery-active': selectedIndex == i, 'ngx-gallery-clickable': clickable }" [style.background-image]="'url(' + image + ')'" (click)="handleClick($event, i)"></div>
 <ngx-gallery-arrows *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" ></ngx-gallery-arrows>

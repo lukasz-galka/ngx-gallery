@@ -26,9 +26,11 @@ For angular-cli based projects insert styles into .angular-cli.json
 - `width` | Type: `string` | Default value: `'500px'` - gallery width
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
+- `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
+- `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
 - `thumbnailsRows` | Type: `number` | Default value: `1` - rows count
 - `thumbnailsPercent` | Type: `number` | Default value: `25` - percentage height

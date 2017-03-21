@@ -16,3 +16,7 @@
     position: absolute;
     z-index: 2000;
 }
+
+/deep/ .ngx-gallery-clickable {
+    cursor: pointer;
+}

@@ -28,7 +28,6 @@ export class NgxGalleryComponent implements OnInit {
     private breakpoint: number = undefined;
     private prevBreakpoint: number = undefined;
 
-    @ViewChild(NgxGalleryThumbnailsComponent) thumbnails: NgxGalleryThumbnailsComponent;
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
 
     @HostBinding('style.width') width: string;
@@ -52,17 +51,20 @@ export class NgxGalleryComponent implements OnInit {
 
         if (this.prevBreakpoint !== this.breakpoint) {
             this.setOptions();
-            this.thumbnails.setDefaultPosition();
         }
     }
 
     getImageHeight(): string {
-        return this.currentOptions.imagePercent + '%';
+        return this.currentOptions.thumbnails ? this.currentOptions.imagePercent + '%' : '100%';
     }
 
     getThumbnailsHeight(): string {
-        return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
+        if (this.currentOptions.image) {
+            return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
             + this.currentOptions.thumbnailsMargin + 'px)';
+        } else {
+            return '100%';
+        }
     }
 
     getThumbnailsMargin(): string {
@@ -80,6 +82,10 @@ export class NgxGalleryComponent implements OnInit {
 
     select(index: number) {
         this.selectedIndex = index;
+
+        if (!this.currentOptions.image && this.currentOptions.thumbnails && this.currentOptions.preview) {
+            this.openPreview(this.selectedIndex);
+        }
     }
 
     private setBreakpoint(): void {

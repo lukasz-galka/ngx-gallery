@@ -2,9 +2,11 @@ export interface INgxGalleryOptions {
     width?: string;
     height?: string;
     breakpoint?: number;
+    image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
+    thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
     thumbnailsPercent?: number;
@@ -20,9 +22,11 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     width?: string;
     height?: string;
     breakpoint?: number;
+    image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
+    thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
     thumbnailsPercent?: number;
@@ -45,10 +49,12 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.width = use(obj.width, '500px');
         this.height = use(obj.height, '400px');
 
+        this.image = use(obj.image, true);
         this.imagePercent = use(obj.imagePercent, 75);
         this.imageArrows = use(obj.imageArrows, true);
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
 
+        this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
         this.thumbnailsRows = use(obj.thumbnailsRows, 1);
         this.thumbnailsPercent = use(obj.thumbnailsPercent, 25);

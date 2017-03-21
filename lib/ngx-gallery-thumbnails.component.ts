@@ -18,6 +18,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() arrowsAutoHide: boolean;
     @Input() margin: number;
     @Input() selectedIndex: number;
+    @Input() clickable: boolean;
 
     @Output() onActiveChange = new EventEmitter();
 
@@ -37,6 +38,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     @HostListener('mouseleave') onMouseLeave() {
         this.mouseenter = false;
+    }
+
+    @HostListener('window:resize') onResize() {
+        this.setDefaultPosition();
     }
 
     handleClick(event: Event, index: number): void {

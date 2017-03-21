@@ -5,7 +5,7 @@
 </div>
 <div class="ngx-gallery-preview-wrapper">
     <div class="ngx-gallery-preview-img-wrapper">
-        <img class="ngx-gallery-preview-img ngx-gallery-center" *ngIf="src" [src]="src" (load)="loaded()" [class.ngx-gallery-active]="!showSpinner"/>
+        <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (load)="loaded()" [class.ngx-gallery-active]="!showSpinner"/>
     </div>
-    <div class="ngx-gallery-preview-text" [style.height]="descriptionPercent" *ngIf="showDescription && description">{{ description }}</div>
+    <div class="ngx-gallery-preview-text" *ngIf="showDescription && description">{{ description }}</div>
 </div>
