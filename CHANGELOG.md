@@ -1,3 +1,8 @@
+<a name="0.4.0"></a>
+# 0.4.0 (2017-03-21)
+
+* Add option to hide image or thumbnails ([83fd1c7](https://github.com/lukasz-galka/ngx-gallery/commit/83fd1c7))
+
 <a name="0.3.0"></a>
 # 0.3.0 (2017-03-20)
 
