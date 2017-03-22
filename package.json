@@ -1,6 +1,6 @@
 {
   "name": "ngx-gallery",
-  "description": "Angular2 gallery plugin",
+  "description": "Angular2 image gallery plugin",
   "version": "0.4.0",
   "license": "MIT",
   "author": "Łukasz Gałka <lukasz-galka@hotmail.com>",
@@ -19,6 +19,7 @@
     "ngx",
     "angular2",
     "gallery",
+    "image",
     "thumbnails",
     "responsive",
     "preview"

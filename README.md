@@ -1,5 +1,5 @@
 # NgxGallery
-Angular2 gallery plugin
+Angular2 image gallery plugin
 
 # Demo
 [Link](https://lukasz-galka.github.io/ngx-gallery-demo/)
