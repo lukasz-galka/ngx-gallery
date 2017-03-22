@@ -1,3 +1,9 @@
+<a name="0.4.1"></a>
+# 0.4.1 (2017-03-22)
+
+* Update description ([a2fc0fa](https://github.com/lukasz-galka/ngx-gallery/commit/a2fc0fa))
+* remove unused dependency ([233a1a7](https://github.com/lukasz-galka/ngx-gallery/commit/233a1a7))
+
 <a name="0.4.0"></a>
 # 0.4.0 (2017-03-21)
 

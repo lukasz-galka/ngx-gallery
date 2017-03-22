@@ -1,7 +1,7 @@
 {
   "name": "ngx-gallery",
   "description": "Angular2 image gallery plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "author": "Łukasz Gałka <lukasz-galka@hotmail.com>",
   "module": "lib/index.js",
