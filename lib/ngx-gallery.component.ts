@@ -1,6 +1,5 @@
 import { Component, Input, HostListener, ViewChild, OnInit, HostBinding } from '@angular/core';
 
-import { NgxGalleryThumbnailsComponent } from './ngx-gallery-thumbnails.component';
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 
 import { NgxGalleryOptions } from './ngx-gallery-options.model';
