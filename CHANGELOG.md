@@ -1,3 +1,8 @@
+<a name="0.5.0"></a>
+# 0.5.0 (2017-03-24)
+
+* Add swipe for touch devices ([bbde7a6](https://github.com/lukasz-galka/ngx-gallery/commit/bbde7a6))
+
 <a name="0.4.1"></a>
 # 0.4.1 (2017-03-22)
 
