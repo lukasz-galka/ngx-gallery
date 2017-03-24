@@ -1,3 +1,6 @@
+[![npm version](https://img.shields.io/npm/v/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
+[![Downloads](https://img.shields.io/npm/dm/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
+
 # NgxGallery
 Angular2 image gallery plugin
 
@@ -40,6 +43,7 @@ import 'hammerjs';
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `imageSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
+- `imageAnimation` | Type: `string` | Default value: `NgxGalleryAnimation.Fade` - animation type
 
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
@@ -61,6 +65,12 @@ import 'hammerjs';
 - `big` | Type: `string` - url used in preview
 - `description` | Type: `string` - description used in preview
 
+# NgxGalleryAnimation
+- `Fade`
+- `Slide`
+- `Rotate`
+- `Zoom`
+
 # Usage
 ````ts
 // app.module.ts
@@ -79,7 +89,7 @@ export class AppModule { }
 
 ````ts
 // app.component.ts
-import { NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 ...
 
 @Component({
@@ -96,7 +106,8 @@ export class AppComponent {
             {
                 width: '600px',
                 height: '400px',
-                thumbnailsColumns: 4
+                thumbnailsColumns: 4,
+                imageAnimation: NgxGalleryAnimation.Slide
             },
             {
                 breakpoint: 800,

@@ -7,7 +7,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
     templateUrl: './ngx-gallery-preview.component.html',
     styleUrls: ['./ngx-gallery-preview.component.scss']
 })
-export class NgxGalleryPreviewComponent {
+export class NgxGalleryPreviewComponent implements OnChanges {
 
     src: string;
     description: string;
