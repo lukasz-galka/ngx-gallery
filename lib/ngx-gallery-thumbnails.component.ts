@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter, HostListener, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+
+import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
     selector: 'ngx-gallery-thumbnails',
@@ -19,17 +21,19 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() margin: number;
     @Input() selectedIndex: number;
     @Input() clickable: boolean;
+    @Input() swipe: boolean;
 
     @Output() onActiveChange = new EventEmitter();
 
     private index = 0;
 
-    constructor(private sanitization: DomSanitizer) {}
+    constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
+        private helperService: NgxGalleryHelperService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['selectedIndex']) {
-            this.validateIndex();
-        }
+        if (changes['selectedIndex']) this.validateIndex();
+        if (changes['swipe']) this.helperService.manageSwipe(this.swipe, this.elementRef,
+            'thumbnails', () => this.moveRight(), () => this.moveLeft());
     }
 
     @HostListener('mouseenter') onMouseEnter() {
@@ -112,14 +116,12 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     validateIndex(): void {
-
         const newIndex = Math.floor(this.selectedIndex / this.rows);
 
         if (newIndex < this.index || newIndex >= this.index + this.columns) {
-
             const maxIndex = this.getMaxIndex() - this.columns;
-
             this.index = newIndex > maxIndex ? maxIndex : newIndex;
+
             this.setThumbnailsPosition();
         }
     }

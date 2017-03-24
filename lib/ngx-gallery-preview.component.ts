@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
+
+import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
     selector: 'ngx-gallery-preview',
@@ -9,17 +11,24 @@ export class NgxGalleryPreviewComponent {
 
     src: string;
     description: string;
-
     showSpinner: boolean = false;
 
     @Input() images: string[];
     @Input() descriptions: string[];
     @Input() showDescription: boolean;
+    @Input() swipe: boolean;
 
     @Output() onClose = new EventEmitter();
 
     private index: number = 0;
     private loadedList: string[] = [];
+
+    constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['swipe']) this.helperService.manageSwipe(this.swipe, this.elementRef,
+            'preview', () => this.showNext(), () => this.showPrev());
+    }
 
     open(index: number): void {
         this.index = index;

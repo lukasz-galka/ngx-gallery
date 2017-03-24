@@ -5,7 +5,7 @@ Angular2 image gallery plugin
 [Link](https://lukasz-galka.github.io/ngx-gallery-demo/)
 
 # Prerequisites
-[Font Awesome](http://fontawesome.io/)
+- [Font Awesome](http://fontawesome.io/) (required for icons)
 
 ```npm install font-awesome --save```
 
@@ -18,6 +18,14 @@ For angular-cli based projects insert styles into .angular-cli.json
 ]
 ````
 
+- [Hammerjs](http://hammerjs.github.io/) (required for swipe)
+
+```npm install hammerjs --save```
+
+````
+import 'hammerjs';
+````
+
 # Installation
 ```npm install ngx-gallery --save```
 
@@ -26,20 +34,26 @@ For angular-cli based projects insert styles into .angular-cli.json
 - `width` | Type: `string` | Default value: `'500px'` - gallery width
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
+
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
+- `imageSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
+
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
 - `thumbnailsRows` | Type: `number` | Default value: `1` - rows count
 - `thumbnailsPercent` | Type: `number` | Default value: `25` - percentage height
 - `thumbnailsMargin` | Type: `number` | Default value: `10` - margin between thumbnails and image
-- `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enablse or disables arrows
+- `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
+- `thumbnailsSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
+
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
+- `previewSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 
 # NgxGalleryImage
 - `small` | Type: `string` - url used in thumbnails

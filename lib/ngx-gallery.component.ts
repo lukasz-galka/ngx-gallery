@@ -1,6 +1,7 @@
 import { Component, Input, HostListener, ViewChild, OnInit, HostBinding } from '@angular/core';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
+import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 import { NgxGalleryOptions } from './ngx-gallery-options.model';
 import { NgxGalleryImage } from './ngx-gallery-image.model';
@@ -8,7 +9,8 @@ import { NgxGalleryImage } from './ngx-gallery-image.model';
 @Component({
     selector: 'ngx-gallery',
     templateUrl: './ngx-gallery.component.html',
-    styleUrls: ['./ngx-gallery.component.scss']
+    styleUrls: ['./ngx-gallery.component.scss'],
+    providers: [ NgxGalleryHelperService ]
 })
 export class NgxGalleryComponent implements OnInit {
     @Input() options: NgxGalleryOptions[];
