@@ -17,6 +17,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() descriptions: string[];
     @Input() showDescription: boolean;
     @Input() swipe: boolean;
+    @Input() fullscreen: boolean;
 
     @Output() onClose = new EventEmitter();
 
@@ -36,6 +37,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     close(): void {
+        this.manageFullscreen();
         this.onClose.emit();
     }
 
@@ -64,6 +66,39 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
     canShowPrev(): boolean {
         return this.index > 0 ? true : false;
+    }
+
+    manageFullscreen(): void {
+
+        if (this.fullscreen) {
+
+            const doc = <any>document;
+            const element = <any>document.documentElement;
+
+            if (!doc.fullscreenElement && !doc.mozFullScreenElement
+                && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                }
+            } else {
+                if (doc.exitFullscreen) {
+                    doc.exitFullscreen();
+                } else if (doc.msExitFullscreen) {
+                    doc.msExitFullscreen();
+                } else if (doc.mozCancelFullScreen) {
+                    doc.mozCancelFullScreen();
+                } else if (doc.webkitExitFullscreen) {
+                    doc.webkitExitFullscreen();
+                }
+            }
+        }
     }
 
     private show() {

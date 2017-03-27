@@ -1,5 +1,6 @@
 <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" ></ngx-gallery-arrows>
 <i class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
+<i class="fa fa-arrows-alt" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
 <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
     <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
 </div>

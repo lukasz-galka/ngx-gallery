@@ -9,7 +9,7 @@ export class NgxGalleryHelperService {
 
     manageSwipe(status: boolean, element: ElementRef, id: string, nextHandler: Function, prevHandler: Function): void {
 
-        let handlers = this.getSwipeHandlers(id);
+        const handlers = this.getSwipeHandlers(id);
 
         // swipeleft and swiperight are available only if hammerjs is included
         try {
@@ -18,11 +18,11 @@ export class NgxGalleryHelperService {
                     this.renderer.listen(element.nativeElement, 'swipeleft', () => nextHandler()),
                     this.renderer.listen(element.nativeElement, 'swiperight', () => prevHandler())
                 ]);
-            } else if(!status && handlers) {
+            } else if (!status && handlers) {
                 handlers.map(handler => handler());
                 this.removeSwipeHandlers(id);
             }
-        } catch(e) {}
+        } catch (e) {}
     }
 
     private getSwipeHandlers(id: string): Function[] {
