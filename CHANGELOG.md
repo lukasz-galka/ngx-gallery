@@ -1,3 +1,8 @@
+<a name="0.7.0"></a>
+# 0.7.0 (2017-03-27)
+
+* Add fullscreen option for preview ([2775459](https://github.com/lukasz-galka/ngx-gallery/commit/2775459))
+
 <a name="0.6.1"></a>
 # 0.6.1 (2017-03-27)
 
