@@ -1,3 +1,7 @@
+<a name="0.6.1"></a>
+# 0.6.1 (2017-03-27)
+
+* Fix jumping arrow on fade animation ([4a8a3f2](https://github.com/lukasz-galka/ngx-gallery/commit/4a8a3f2))
 
 <a name="0.6.0"></a>
 # 0.6.0 (2017-03-24)
