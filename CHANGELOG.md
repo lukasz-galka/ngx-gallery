@@ -1,3 +1,8 @@
+<a name="0.7.1"></a>
+# 0.7.1 (2017-03-29)
+
+* Remove global styles ([e900b0d](https://github.com/lukasz-galka/ngx-gallery/commit/e900b0d))
+
 <a name="0.7.0"></a>
 # 0.7.0 (2017-03-27)
 
