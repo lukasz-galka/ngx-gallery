@@ -4,9 +4,9 @@
 <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
     <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
 </div>
-<div class="ngx-gallery-preview-wrapper">
+<div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()">
     <div class="ngx-gallery-preview-img-wrapper">
-        <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (load)="loaded()" [class.ngx-gallery-active]="!showSpinner"/>
+        <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (load)="loaded()" (click)="$event.stopPropagation()" [class.ngx-gallery-active]="!showSpinner"/>
     </div>
     <div class="ngx-gallery-preview-text" *ngIf="showDescription && description">{{ description }}</div>
 </div>

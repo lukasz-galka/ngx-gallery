@@ -18,6 +18,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() showDescription: boolean;
     @Input() swipe: boolean;
     @Input() fullscreen: boolean;
+    @Input() closeOnClick: boolean;
 
     @Output() onClose = new EventEmitter();
 

@@ -23,6 +23,7 @@ export interface INgxGalleryOptions {
     previewDescription?: boolean;
     previewSwipe?: boolean;
     previewFullscreen?: boolean;
+    previewCloseOnClick?: boolean;
 }
 
 export class NgxGalleryOptions implements INgxGalleryOptions {
@@ -48,6 +49,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewDescription?: boolean;
     previewSwipe?: boolean;
     previewFullscreen?: boolean;
+    previewCloseOnClick?: boolean;
 
     constructor(obj: INgxGalleryOptions) {
 
@@ -82,5 +84,6 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewDescription = use(obj.previewDescription, true);
         this.previewSwipe = use(obj.previewSwipe, false);
         this.previewFullscreen = use(obj.previewFullscreen, false);
+        this.previewCloseOnClick = use(obj.previewCloseOnClick, false);
     }
 }
