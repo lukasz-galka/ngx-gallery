@@ -67,13 +67,13 @@ import 'hammerjs';
 - `description` | Type: `string` - description used in preview
 
 # NgxGalleryAnimation
-- `Fade`
+- `Fade` (default)
 - `Slide`
 - `Rotate`
 - `Zoom`
 
 # NgxGalleryImageSize
-- `Cover`
+- `Cover` (default)
 - `Contain`
 
 # Usage
