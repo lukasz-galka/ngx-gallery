@@ -44,6 +44,7 @@ import 'hammerjs';
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `imageSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `imageAnimation` | Type: `string` | Default value: `NgxGalleryAnimation.Fade` - animation type
+- `imageSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - image size
 
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
