@@ -72,6 +72,10 @@ import 'hammerjs';
 - `Rotate`
 - `Zoom`
 
+# NgxGalleryImageSize
+- `Cover`
+- `Contain`
+
 # Usage
 ````ts
 // app.module.ts

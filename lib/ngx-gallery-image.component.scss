@@ -14,8 +14,8 @@
 }
 
 .ngx-gallery-image {
-    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -24,6 +24,14 @@
     &.ngx-gallery-active {
         z-index: 1000;
     }
+}
+
+.ngx-gallery-image-size-cover .ngx-gallery-image {
+    background-size: cover;
+}
+
+.ngx-gallery-image-size-contain .ngx-gallery-image {
+    background-size: contain;
 }
 
 .ngx-gallery-animation-fade {

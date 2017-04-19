@@ -1,4 +1,5 @@
 import { NgxGalleryAnimation } from './ngx-gallery-animation.model';
+import { NgxGalleryImageSize } from './ngx-gallery-image-size.model';
 
 export interface INgxGalleryOptions {
     width?: string;
@@ -10,6 +11,7 @@ export interface INgxGalleryOptions {
     imageArrowsAutoHide?: boolean;
     imageSwipe?: boolean;
     imageAnimation?: string;
+    imageSize?: string;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -36,6 +38,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageArrowsAutoHide?: boolean;
     imageSwipe?: boolean;
     imageAnimation?: string;
+    imageSize?: string;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -69,6 +72,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
         this.imageSwipe = use(obj.imageSwipe, false);
         this.imageAnimation = use(obj.imageAnimation, NgxGalleryAnimation.Fade);
+        this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
