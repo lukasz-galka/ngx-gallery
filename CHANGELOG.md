@@ -1,3 +1,8 @@
+<a name="0.8.1"></a>
+# 0.8.1 (2017-05-3)
+
+* Detect images change ([44092b8](https://github.com/lukasz-galka/ngx-gallery/commit/44092b8))
+
 <a name="0.8.0"></a>
 # 0.8.0 (2017-04-19)
 
