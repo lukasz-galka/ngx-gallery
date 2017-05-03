@@ -28,8 +28,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['swipe']) this.helperService.manageSwipe(this.swipe, this.elementRef,
+        if (changes['swipe']) {
+            this.helperService.manageSwipe(this.swipe, this.elementRef,
             'preview', () => this.showNext(), () => this.showPrev());
+        }
     }
 
     open(index: number): void {
@@ -62,11 +64,19 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     canShowNext(): boolean {
-        return this.index < this.images.length - 1 ? true : false;
+        if (this.images) {
+            return this.index < this.images.length - 1 ? true : false;
+        } else {
+            return false;
+        }
     }
 
     canShowPrev(): boolean {
-        return this.index > 0 ? true : false;
+        if (this.images) {
+            return this.index > 0 ? true : false;
+        } else {
+            return false;
+        }
     }
 
     manageFullscreen(): void {

@@ -29,6 +29,10 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        if (changes['images']) {
+            this.selectedIndex = 0;
+        }
+
         if (changes['swipe']) {
             this.helperService.manageSwipe(this.swipe, this.elementRef, 'image', () => this.showNext(), () => this.showPrev());
         }
@@ -70,10 +74,18 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
 
     canShowNext(): boolean {
-        return this.selectedIndex < this.images.length - 1 ? true : false;
+        if (this.images) {
+            return this.selectedIndex < this.images.length - 1 ? true : false;
+        } else {
+            return false;
+        }
     }
 
     canShowPrev(): boolean {
-        return this.selectedIndex > 0 ? true : false;
+        if (this.images) {
+            return this.selectedIndex > 0 ? true : false;
+        } else {
+            return false;
+        }
     }
 }

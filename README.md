@@ -95,18 +95,18 @@ export class AppModule { }
 
 ````ts
 // app.component.ts
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, OnInit } from 'ngx-gallery';
 ...
 
 @Component({
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {    
+export class AppComponent implements OnInit {    
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
 
-    constructor() {        
+    ngOnInit(): void {     
 
         this.galleryOptions = [
             {

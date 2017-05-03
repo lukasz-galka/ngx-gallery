@@ -1,4 +1,5 @@
-import { Component, Input, HostListener, ViewChild, OnInit, HostBinding } from '@angular/core';
+import { Component, Input, HostListener, ViewChild, OnInit,
+    OnChanges, HostBinding, SimpleChanges } from '@angular/core';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -12,7 +13,7 @@ import { NgxGalleryImage } from './ngx-gallery-image.model';
     styleUrls: ['./ngx-gallery.component.scss'],
     providers: [ NgxGalleryHelperService ]
 })
-export class NgxGalleryComponent implements OnInit {
+export class NgxGalleryComponent implements OnInit, OnChanges {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
 
@@ -35,16 +36,21 @@ export class NgxGalleryComponent implements OnInit {
     @HostBinding('style.height') height: string;
 
     ngOnInit() {
-
-        this.smallImages = this.images.map(img => img.small);
-        this.mediumImages = this.images.map(img => img.medium);
-        this.bigImages = this.images.map(img => img.big);
-        this.descriptions = this.images.map(img => img.description);
-
         this.options = this.options.map(opt => new NgxGalleryOptions(opt));
         this.sortOptions();
         this.setBreakpoint();
         this.setOptions();
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['images']) {
+            if (this.images) {
+                this.smallImages = this.images.map(img => img.small);
+                this.mediumImages = this.images.map(img => img.medium);
+                this.bigImages = this.images.map(img => img.big);
+                this.descriptions = this.images.map(img => img.description);
+            }
+        }
     }
 
     @HostListener('window:resize') onResize() {

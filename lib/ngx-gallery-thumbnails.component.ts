@@ -31,9 +31,19 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         private helperService: NgxGalleryHelperService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['selectedIndex']) this.validateIndex();
-        if (changes['swipe']) this.helperService.manageSwipe(this.swipe, this.elementRef,
+        if (changes['images']) {
+            this.selectedIndex = 0;
+            this.index = 0;
+        }
+
+        if (changes['selectedIndex']) {
+            this.validateIndex();
+        }
+
+        if (changes['swipe']) {
+            this.helperService.manageSwipe(this.swipe, this.elementRef,
             'thumbnails', () => this.moveRight(), () => this.moveLeft());
+        }
     }
 
     @HostListener('mouseenter') onMouseEnter() {
