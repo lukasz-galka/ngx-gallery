@@ -6,7 +6,7 @@
 <a name="0.8.0"></a>
 # 0.8.0 (2017-04-19)
 
-* Add possibility to manage image size (cover or contain) ([3f1b581](https://github.com/lukasz-galka/ngx-gallery/commit/3f1b581))
+* Add possibility to manage image size (cover or contain) ([3f1b581](https://github.com/lukasz-galka/ngx-gallery/commit/3f1b581)), closes [#1](https://github.com/lukasz-galka/ngx-gallery/issues/1) 
 
 <a name="0.7.2"></a>
 # 0.7.2 (2017-04-18)
