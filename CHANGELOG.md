@@ -1,3 +1,8 @@
+<a name="0.8.2"></a>
+# 0.8.2 (2017-05-6)
+
+* Implement custom change detection for images ([e996e86](https://github.com/lukasz-galka/ngx-gallery/commit/e996e86)), closes [#4], [#6]
+
 <a name="0.8.1"></a>
 # 0.8.1 (2017-05-3)
 
