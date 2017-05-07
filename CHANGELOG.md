@@ -1,3 +1,8 @@
+<a name="0.8.3"></a>
+# 0.8.3 (2017-05-7)
+
+* Fix preview with fullscreen ([ee33a71](https://github.com/lukasz-galka/ngx-gallery/commit/ee33a71))
+
 <a name="0.8.2"></a>
 # 0.8.2 (2017-05-6)
 
