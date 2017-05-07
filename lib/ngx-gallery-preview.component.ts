@@ -40,7 +40,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     close(): void {
-        this.manageFullscreen();
+        this.closeFullscreen();
         this.onClose.emit();
     }
 
@@ -80,35 +80,46 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     manageFullscreen(): void {
-
         if (this.fullscreen) {
-
             const doc = <any>document;
-            const element = <any>document.documentElement;
 
             if (!doc.fullscreenElement && !doc.mozFullScreenElement
                 && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                }
+                this.openFullscreen();
             } else {
-                if (doc.exitFullscreen) {
-                    doc.exitFullscreen();
-                } else if (doc.msExitFullscreen) {
-                    doc.msExitFullscreen();
-                } else if (doc.mozCancelFullScreen) {
-                    doc.mozCancelFullScreen();
-                } else if (doc.webkitExitFullscreen) {
-                    doc.webkitExitFullscreen();
-                }
+                this.closeFullscreen();
             }
+        }
+    }
+
+    private openFullscreen(): void {
+
+        const doc = <any>document;
+        const element = <any>document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        }
+    }
+
+    private closeFullscreen(): void {
+
+        const doc = <any>document;
+
+        if (doc.exitFullscreen) {
+            doc.exitFullscreen();
+        } else if (doc.msExitFullscreen) {
+            doc.msExitFullscreen();
+        } else if (doc.mozCancelFullScreen) {
+            doc.mozCancelFullScreen();
+        } else if (doc.webkitExitFullscreen) {
+            doc.webkitExitFullscreen();
         }
     }
 

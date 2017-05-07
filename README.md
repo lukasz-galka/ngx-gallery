@@ -2,7 +2,7 @@
 [![Downloads](https://img.shields.io/npm/dm/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
 
 # NgxGallery
-Angular2 image gallery plugin
+Angular 2+ image gallery plugin
 
 # Demo
 [Link](https://lukasz-galka.github.io/ngx-gallery-demo/)
