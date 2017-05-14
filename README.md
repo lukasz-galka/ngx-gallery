@@ -95,7 +95,8 @@ export class AppModule { }
 
 ````ts
 // app.component.ts
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, OnInit } from 'ngx-gallery';
+import { Component, OnInit } from '@angular/core';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 ...
 
 @Component({
