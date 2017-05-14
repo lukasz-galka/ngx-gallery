@@ -116,6 +116,7 @@ export class AppComponent implements OnInit {
                 thumbnailsColumns: 4,
                 imageAnimation: NgxGalleryAnimation.Slide
             },
+            // max-width 800
             {
                 breakpoint: 800,
                 width: '100%',
@@ -125,6 +126,7 @@ export class AppComponent implements OnInit {
                 thumbnailsMargin: 20,
                 thumbnailMargin: 20
             },
+            // max-width 400
             {
                 breakpoint: 400,
                 preview: false
