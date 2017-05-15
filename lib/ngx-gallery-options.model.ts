@@ -5,6 +5,7 @@ export interface INgxGalleryOptions {
     width?: string;
     height?: string;
     breakpoint?: number;
+    fullWidth?: boolean;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -32,6 +33,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     width?: string;
     height?: string;
     breakpoint?: number;
+    fullWidth?: boolean;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -65,6 +67,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.breakpoint = use(obj.breakpoint, undefined);
         this.width = use(obj.width, '500px');
         this.height = use(obj.height, '400px');
+        this.fullWidth = use(obj.fullWidth, false);
 
         this.image = use(obj.image, true);
         this.imagePercent = use(obj.imagePercent, 75);

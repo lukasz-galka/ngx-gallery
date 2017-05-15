@@ -1,5 +1,5 @@
-import { Component, Input, HostListener, ViewChild, OnInit, 
-    HostBinding, DoCheck } from '@angular/core';
+import { Component, Input, HostListener, ViewChild, OnInit,
+    HostBinding, DoCheck, ElementRef, AfterViewInit } from '@angular/core';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -13,7 +13,7 @@ import { NgxGalleryImage } from './ngx-gallery-image.model';
     styleUrls: ['./ngx-gallery.component.scss'],
     providers: [ NgxGalleryHelperService ]
 })
-export class NgxGalleryComponent implements OnInit, DoCheck {
+export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
 
@@ -32,21 +32,26 @@ export class NgxGalleryComponent implements OnInit, DoCheck {
 
     private breakpoint: number = undefined;
     private prevBreakpoint: number = undefined;
+    private fullWidthTimeout: any;
 
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
 
     @HostBinding('style.width') width: string;
     @HostBinding('style.height') height: string;
+    @HostBinding('style.left') left: string;
+
+    constructor(private myElement: ElementRef) {}
 
     ngOnInit() {
         this.options = this.options.map(opt => new NgxGalleryOptions(opt));
         this.sortOptions();
         this.setBreakpoint();
         this.setOptions();
+        this.checkFullWidth();
     }
 
     ngDoCheck(): void {
-        if (this.images != undefined && (this.images.length !== this.oldImagesLength) 
+        if (this.images !== undefined && (this.images.length !== this.oldImagesLength)
             || (this.images !== this.oldImages)) {
             this.oldImagesLength = this.images.length;
             this.oldImages = this.images;
@@ -54,11 +59,26 @@ export class NgxGalleryComponent implements OnInit, DoCheck {
         }
     }
 
+    ngAfterViewInit(): void {
+        this.checkFullWidth();
+    }
+
     @HostListener('window:resize') onResize() {
         this.setBreakpoint();
 
         if (this.prevBreakpoint !== this.breakpoint) {
             this.setOptions();
+        }
+
+        if (this.currentOptions.fullWidth) {
+
+            if (this.fullWidthTimeout) {
+                clearTimeout(this.fullWidthTimeout);
+            }
+
+            this.fullWidthTimeout = setTimeout(() => {
+                this.checkFullWidth();
+            }, 200);
         }
     }
 
@@ -93,6 +113,14 @@ export class NgxGalleryComponent implements OnInit, DoCheck {
 
         if (!this.currentOptions.image && this.currentOptions.thumbnails && this.currentOptions.preview) {
             this.openPreview(this.selectedIndex);
+        }
+    }
+
+    private checkFullWidth(): void {
+        if (this.currentOptions.fullWidth) {
+            this.width = document.body.clientWidth + 'px';
+            this.left = (-(document.body.clientWidth -
+                this.myElement.nativeElement.parentNode.innerWidth) / 2) + 'px';
         }
     }
 
