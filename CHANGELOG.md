@@ -1,3 +1,8 @@
+<a name="0.8.4"></a>
+# 0.8.4 (2017-05-15)
+
+* Add fullWidth option ([b5dd459](https://github.com/lukasz-galka/ngx-gallery/commit/b5dd459))
+
 <a name="0.8.3"></a>
 # 0.8.3 (2017-05-7)
 
