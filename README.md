@@ -36,7 +36,7 @@ import 'hammerjs';
 
 - `width` | Type: `string` | Default value: `'500px'` - gallery width
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
-- `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint
+- `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint, works like media query max-width
 - `fullWidth` | Type: `boolean` | Default value: `false` - sets the same width as browser
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
