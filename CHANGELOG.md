@@ -1,3 +1,8 @@
+<a name="0.8.5"></a>
+# 0.8.5 (2017-06-05)
+
+* Add previewKeyboardNavigation option ([672e5c1](https://github.com/lukasz-galka/ngx-gallery/commit/672e5c1))
+
 <a name="0.8.4"></a>
 # 0.8.4 (2017-05-15)
 
