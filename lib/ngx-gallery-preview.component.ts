@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener } from '@angular/core';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
@@ -19,11 +19,13 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() swipe: boolean;
     @Input() fullscreen: boolean;
     @Input() closeOnClick: boolean;
+    @Input() keyboardNavigation: boolean;
 
     @Output() onClose = new EventEmitter();
 
     private index: number = 0;
     private loadedList: string[] = [];
+    private isOpen: boolean = false;
 
     constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
 
@@ -34,12 +36,24 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
+    @HostListener('window:keydown', ['$event']) onKeyDown(e: KeyboardEvent) {
+        if (this.isOpen && this.keyboardNavigation) {
+            if (this.isKeyboardPrev(e)) {
+                this.showPrev();
+            } else if (this.isKeyboardNext(e)) {
+                this.showNext();
+            }
+        }
+    }
+
     open(index: number): void {
         this.index = index;
+        this.isOpen = true;
         this.show();
     }
 
     close(): void {
+        this.isOpen = false;
         this.closeFullscreen();
         this.onClose.emit();
     }
@@ -89,6 +103,22 @@ export class NgxGalleryPreviewComponent implements OnChanges {
             } else {
                 this.closeFullscreen();
             }
+        }
+    }
+
+    private isKeyboardNext(e: KeyboardEvent): boolean {
+        if (e.keyCode === 39) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private isKeyboardPrev(e: KeyboardEvent): boolean {
+        if (e.keyCode === 37) {
+            return true;
+        } else {
+            return false;
         }
     }
 

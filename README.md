@@ -61,6 +61,7 @@ import 'hammerjs';
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
 - `previewSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `previewCloseOnClick` | Type: `boolean` | Default value: `false` - enables or disables closing preview by click
+- `previewKeyboardNavigation` | Type: `boolean` | Default value: `false` - enables or disables navigation by keyboard
 
 # NgxGalleryImage
 - `small` | Type: `string` - url used in thumbnails
