@@ -161,3 +161,6 @@ export class AppComponent implements OnInit {
 // app.component.html
 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 ````
+
+# Troubleshooting
+- Preview doesn't have full size [10](https://github.com/lukasz-galka/ngx-gallery/issues/10), [13](https://github.com/lukasz-galka/ngx-gallery/issues/13)

@@ -122,9 +122,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
-    private openFullscreen(): void {
-
-        const doc = <any>document;
+    private openFullscreen(): void {        
         const element = <any>document.documentElement;
 
         if (element.requestFullscreen) {
