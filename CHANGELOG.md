@@ -1,3 +1,8 @@
+<a name="1.0.0"></a>
+# 1.0.0 (2017-07-11)
+
+* Update build ([fe080a3](https://github.com/lukasz-galka/ngx-gallery/commit/fe080a3))
+
 <a name="0.8.5"></a>
 # 0.8.5 (2017-06-05)
 
