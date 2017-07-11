@@ -4,12 +4,9 @@
   "version": "0.8.5",
   "license": "MIT",
   "author": "Łukasz Gałka <lukasz-galka@hotmail.com>",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "scripts": {
-    "clean": "sh clean.sh",
-    "build": "./node_modules/.bin/ngc",
-    "lint": "tslint \"lib/*.ts\""
+    "build": "gulp build",
+    "publish": "cd ./dist && npm publish"
   },
   "repository": {
     "type": "git",
@@ -29,13 +26,18 @@
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/compiler-cli": "^2.4.0",
-    "@angular/platform-browser": "^2.4.0",
     "@angular/core": "^2.4.0",
+    "@angular/platform-browser": "^2.4.0",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.13.0",
+    "node-sass-tilde-importer": "^1.0.0",
+    "run-sequence": "^2.0.0",
+    "rxjs": "^5.0.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.0",
-    "rxjs": "^5.0.1"
+    "typescript": "~2.0.0"
   }
 }

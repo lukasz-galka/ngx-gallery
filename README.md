@@ -162,5 +162,10 @@ export class AppComponent implements OnInit {
 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 ````
 
+# SystemJS
+````ts
+'ngx-gallery': 'node_modules/ngx-gallery/bundles/ngx-gallery.umd.js',
+````
+
 # Troubleshooting
 - Preview doesn't have full size [10](https://github.com/lukasz-galka/ngx-gallery/issues/10), [13](https://github.com/lukasz-galka/ngx-gallery/issues/13)
