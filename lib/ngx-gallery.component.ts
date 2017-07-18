@@ -1,5 +1,5 @@
 import { Component, Input, HostListener, ViewChild, OnInit,
-    HostBinding, DoCheck, ElementRef, AfterViewInit } from '@angular/core';
+    HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -16,6 +16,8 @@ import { NgxGalleryImage } from './ngx-gallery-image.model';
 export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
+
+    @Output() change = new EventEmitter();
 
     smallImages: string[];
     mediumImages: string[];
@@ -110,6 +112,11 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
 
     select(index: number) {
         this.selectedIndex = index;
+
+        this.change.emit({
+            index: index,
+            image: this.images[index]
+        });
 
         if (!this.currentOptions.image && this.currentOptions.thumbnails && this.currentOptions.preview) {
             this.openPreview(this.selectedIndex);

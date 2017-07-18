@@ -80,6 +80,9 @@ import 'hammerjs';
 - `Cover` (default)
 - `Contain`
 
+# Events
+- `Change` - triggered on image change
+
 # Usage
 ````ts
 // app.module.ts
