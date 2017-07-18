@@ -1,3 +1,8 @@
+<a name="1.0.3"></a>
+# 1.0.3 (2017-07-18)
+
+* Add change event ([f12ed44](https://github.com/lukasz-galka/ngx-gallery/commit/f12ed44))
+
 <a name="1.0.2"></a>
 # 1.0.2 (2017-07-18)
 
