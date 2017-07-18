@@ -1,3 +1,8 @@
+<a name="1.0.2"></a>
+# 1.0.2 (2017-07-18)
+
+* Add thumbnailSize option ([1fa1505](https://github.com/lukasz-galka/ngx-gallery/commit/1fa1505))
+
 <a name="1.0.1"></a>
 # 1.0.1 (2017-07-18)
 
