@@ -22,6 +22,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() selectedIndex: number;
     @Input() clickable: boolean;
     @Input() swipe: boolean;
+    @Input() size: string;
 
     @Output() onActiveChange = new EventEmitter();
 

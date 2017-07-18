@@ -21,7 +21,15 @@
     .ngx-gallery-thumbnail {
         position: absolute;
         height: 100%;
-        background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
     }
+}
+
+.ngx-gallery-thumbnail-size-cover .ngx-gallery-thumbnails .ngx-gallery-thumbnail {
+    background-size: cover;
+}
+
+.ngx-gallery-thumbnail-size-contain .ngx-gallery-thumbnails .ngx-gallery-thumbnail {
+    background-size: contain;
 }
