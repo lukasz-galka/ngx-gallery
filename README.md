@@ -81,7 +81,7 @@ import 'hammerjs';
 - `Contain`
 
 # Events
-- `Change` - triggered on image change
+- `change` - triggered on image change
 
 # Usage
 ````ts
