@@ -1,3 +1,8 @@
+<a name="1.0.1"></a>
+# 1.0.1 (2017-07-18)
+
+* Set old build ([2a03acc](https://github.com/lukasz-galka/ngx-gallery/commit/2a03acc))
+
 <a name="1.0.0"></a>
 # 1.0.0 (2017-07-11)
 
