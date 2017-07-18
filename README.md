@@ -56,6 +56,7 @@ import 'hammerjs';
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
+- `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
