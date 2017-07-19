@@ -1,3 +1,8 @@
+<a name="1.0.4"></a>
+# 1.0.4 (2017-07-19)
+
+* Fix TS types ([ca2a7d8](https://github.com/lukasz-galka/ngx-gallery/commit/ca2a7d8))
+
 <a name="1.0.3"></a>
 # 1.0.3 (2017-07-18)
 
