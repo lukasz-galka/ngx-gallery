@@ -172,7 +172,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.height = this.currentOptions.height;
     }
 
-    private combineOptions(first, second) {
+    private combineOptions(first: NgxGalleryOptions, second: NgxGalleryOptions) {
         Object.keys(second).map(val => first[val] = second[val] !== undefined ? second[val] : first[val]);
     }
 }

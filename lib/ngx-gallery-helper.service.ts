@@ -3,7 +3,7 @@ import { Injectable, ElementRef, Renderer } from '@angular/core';
 @Injectable()
 export class NgxGalleryHelperService {
 
-    private swipeHandlers: Map<string, Function[]> = new Map();
+    private swipeHandlers: Map<string, Function[]> = new Map<string, Function[]>();
 
     constructor(private renderer: Renderer) {}
 
