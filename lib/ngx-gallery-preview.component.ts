@@ -19,6 +19,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() swipe: boolean;
     @Input() fullscreen: boolean;
     @Input() closeOnClick: boolean;
+    @Input() closeOnEsc: boolean;
     @Input() keyboardNavigation: boolean;
 
     @Output() onClose = new EventEmitter();
@@ -37,11 +38,16 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     @HostListener('window:keydown', ['$event']) onKeyDown(e: KeyboardEvent) {
-        if (this.isOpen && this.keyboardNavigation) {
-            if (this.isKeyboardPrev(e)) {
-                this.showPrev();
-            } else if (this.isKeyboardNext(e)) {
-                this.showNext();
+        if (this.isOpen) {
+            if (this.keyboardNavigation) {
+                if (this.isKeyboardPrev(e)) {
+                    this.showPrev();
+                } else if (this.isKeyboardNext(e)) {
+                    this.showNext();
+                }
+            }
+            if (this.closeOnEsc && this.isKeyboardEsc(e)) {
+                this.close();
             }
         }
     }
@@ -107,22 +113,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     private isKeyboardNext(e: KeyboardEvent): boolean {
-        if (e.keyCode === 39) {
-            return true;
-        } else {
-            return false;
-        }
+        return e.keyCode === 39 ? true : false;
     }
 
     private isKeyboardPrev(e: KeyboardEvent): boolean {
-        if (e.keyCode === 37) {
-            return true;
-        } else {
-            return false;
-        }
+        return e.keyCode === 37 ? true : false;
     }
 
-    private openFullscreen(): void {        
+    private isKeyboardEsc(e: KeyboardEvent): boolean {
+        return e.keyCode === 27 ? true : false;
+    }
+
+    private openFullscreen(): void {
         const element = <any>document.documentElement;
 
         if (element.requestFullscreen) {
