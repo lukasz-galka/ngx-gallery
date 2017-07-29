@@ -1,3 +1,8 @@
+<a name="1.0.5"></a>
+# 1.0.5 (2017-07-29)
+
+* Add option previewCloseOnClick ([1f0514f](https://github.com/lukasz-galka/ngx-gallery/commit/1f0514f))
+
 <a name="1.0.4"></a>
 # 1.0.4 (2017-07-19)
 
