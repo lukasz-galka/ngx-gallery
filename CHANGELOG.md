@@ -1,3 +1,8 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2017-08-2)
+
+* Add optios to change icons ([80a5c35](https://github.com/lukasz-galka/ngx-gallery/commit/80a5c35))
+
 <a name="1.0.5"></a>
 # 1.0.5 (2017-07-29)
 
