@@ -1,8 +1,8 @@
-<ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" ></ngx-gallery-arrows>
-<i class="fa fa-times-circle" aria-hidden="true" (click)="close()"></i>
-<i class="fa fa-arrows-alt" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
+<ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+<i class="ngx-gallery-icon ngx-gallery-close {{closeIcon}}" aria-hidden="true" (click)="close()"></i>
+<i class="ngx-gallery-icon ngx-gallery-fullscreen {{fullscreenIcon}}" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
 <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
-    <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+    <i class="ngx-gallery-icon ngx-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
 </div>
 <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()">
     <div class="ngx-gallery-preview-img-wrapper">

@@ -16,6 +16,8 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Input() swipe: boolean;
     @Input() animation: string;
     @Input() size: string;
+    @Input() arrowPrevIcon: string;
+    @Input() arrowNextIcon: string;
 
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();

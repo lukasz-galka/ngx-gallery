@@ -8,6 +8,8 @@ import { Component, Input, Output, EventEmitter, } from '@angular/core';
 export class NgxGalleryArrowsComponent {
     @Input() prevDisabled: boolean;
     @Input() nextDisabled: boolean;
+    @Input() arrowPrevIcon: string;
+    @Input() arrowNextIcon: string;
 
     @Output() onPrevClick = new EventEmitter();
     @Output() onNextClick = new EventEmitter();

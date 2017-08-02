@@ -1,4 +1,4 @@
 <div class="ngx-gallery-image-wrapper ngx-gallery-animation-{{animation}} ngx-gallery-image-size-{{size}}">
     <div class="ngx-gallery-image" *ngFor="let image of images; let i = index" [ngClass]="{ 'ngx-gallery-active': selectedIndex == i, 'ngx-gallery-inactive-left': selectedIndex > i, 'ngx-gallery-inactive-right': selectedIndex < i, 'ngx-gallery-clickable': clickable }" [style.background-image]="'url(' + image + ')'" (click)="handleClick($event, i)"></div>
 </div>
-<ngx-gallery-arrows class="ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" ></ngx-gallery-arrows>
+<ngx-gallery-arrows class="ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>

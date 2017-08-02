@@ -21,6 +21,11 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() closeOnClick: boolean;
     @Input() closeOnEsc: boolean;
     @Input() keyboardNavigation: boolean;
+    @Input() arrowPrevIcon: string;
+    @Input() arrowNextIcon: string;
+    @Input() closeIcon: string;
+    @Input() fullscreenIcon: string;
+    @Input() spinnerIcon: string;
 
     @Output() onClose = new EventEmitter();
 

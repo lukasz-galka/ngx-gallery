@@ -65,6 +65,12 @@ import 'hammerjs';
 - `previewCloseOnEsc` | Type: `boolean` | Default value: `false` - enables or disables closing preview by esc keyboard
 - `previewKeyboardNavigation` | Type: `boolean` | Default value: `false` - enables or disables navigation by keyboard
 
+- `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
+- `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
+- `closeIcon` | Type: `string` | Default value: `'fa fa-times-circle'` - icon for close button
+- `fullscreenIcon` | Type: `string` | Default value: `'fa fa-arrows-alt'` - icon for fullscreen button
+- `spinnerIcon` | Type: `string` | Default value: `'fa fa-spinner fa-pulse fa-3x fa-fw'` - icon for spinner
+
 # NgxGalleryImage
 - `small` | Type: `string` - url used in thumbnails
 - `medium` | Type: `string` - url used in image

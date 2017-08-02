@@ -8,10 +8,8 @@
     z-index: 10000;
     display: inline-block;
 
-    /deep/ .fa {
-        &.fa-arrow-circle-left, &.fa-arrow-circle-right {
-            font-size: 50px;
-        }
+    /deep/ .ngx-gallery-icon.ngx-gallery-arrow {
+        font-size: 50px;
     }
 }
 
@@ -30,20 +28,20 @@
     }
 }
 
-.fa.fa-spinner {
+.ngx-gallery-icon.ngx-gallery-spinner {
     font-size: 50px;
     left: 0px;
     display: inline-block;
 }
 
-.fa.fa-times-circle {
+.ngx-gallery-icon.ngx-gallery-close {
     right: 10px;
     top: 10px;
     font-size: 30px;
     cursor: pointer;
 }
 
-.fa.fa-arrows-alt {
+.ngx-gallery-icon.ngx-gallery-fullscreen {
     top: 13px;
     right: 50px;
     cursor: pointer;
