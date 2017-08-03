@@ -72,9 +72,9 @@ import 'hammerjs';
 - `spinnerIcon` | Type: `string` | Default value: `'fa fa-spinner fa-pulse fa-3x fa-fw'` - icon for spinner
 
 # NgxGalleryImage
-- `small` | Type: `string` - url used in thumbnails
-- `medium` | Type: `string` - url used in image
-- `big` | Type: `string` - url used in preview
+- `small` | Type: `string | SafeResourceUrl` - url used in thumbnails
+- `medium` | Type: `string | SafeResourceUrl` - url used in image
+- `big` | Type: `string | SafeResourceUrl` - url used in preview
 - `description` | Type: `string` - description used in preview
 
 # NgxGalleryAnimation

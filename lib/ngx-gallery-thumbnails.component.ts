@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle, SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
@@ -13,7 +13,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     thumbnailsLeft: string;
     mouseenter: boolean;
 
-    @Input() images: string[];
+    @Input() images: string[] | SafeResourceUrl[];
     @Input() columns: number;
     @Input() rows: number;
     @Input() arrows: boolean;

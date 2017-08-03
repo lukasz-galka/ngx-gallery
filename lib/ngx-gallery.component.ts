@@ -1,5 +1,6 @@
 import { Component, Input, HostListener, ViewChild, OnInit,
     HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -19,9 +20,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
 
     @Output() change = new EventEmitter();
 
-    smallImages: string[];
-    mediumImages: string[];
-    bigImages: string[];
+    smallImages: string[] | SafeResourceUrl[];
+    mediumImages: string[] | SafeResourceUrl;
+    bigImages: string[] | SafeResourceUrl[];
     descriptions: string[];
 
     oldImages: NgxGalleryImage[];

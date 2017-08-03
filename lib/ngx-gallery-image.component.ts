@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener,  ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
@@ -8,7 +9,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
     styleUrls: ['./ngx-gallery-image.component.scss']
 })
 export class NgxGalleryImageComponent implements OnInit, OnChanges {
-    @Input() images: string[];
+    @Input() images: string[] | SafeResourceUrl[];
     @Input() clickable: boolean;
     @Input() selectedIndex: number;
     @Input() arrows: boolean;
