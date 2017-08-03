@@ -1,3 +1,8 @@
+<a name="1.1.1"></a>
+# 1.1.1 (2017-08-3)
+
+* Add support for SafeResourceUrl ([6a80b4b](https://github.com/lukasz-galka/ngx-gallery/commit/6a80b4b))
+
 <a name="1.1.0"></a>
 # 1.1.0 (2017-08-2)
 
