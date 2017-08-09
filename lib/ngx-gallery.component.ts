@@ -102,6 +102,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         return this.currentOptions.thumbnailsMargin + 'px';
     }
 
+    getImageMargin(): string {
+        return this.currentOptions.imageMargin + 'px';
+    }
+
     openPreview(index: number): void {
         this.previewEnabled = true;
         this.preview.open(index);

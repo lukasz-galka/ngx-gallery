@@ -7,12 +7,14 @@ export interface INgxGalleryOptions {
     breakpoint?: number;
     fullWidth?: boolean;
     image?: boolean;
+    imageBelowThumbnails?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
     imageSwipe?: boolean;
     imageAnimation?: string;
     imageSize?: string;
+    imageMargin?: number;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -43,12 +45,14 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     breakpoint?: number;
     fullWidth?: boolean;
     image?: boolean;
+    imageBelowThumbnails?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
     imageSwipe?: boolean;
     imageAnimation?: string;
     imageSize?: string;
+    imageMargin?: number;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -86,12 +90,14 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.fullWidth = use(obj.fullWidth, false);
 
         this.image = use(obj.image, true);
+        this.imageBelowThumbnails = use(obj.imageBelowThumbnails, false);
         this.imagePercent = use(obj.imagePercent, 75);
         this.imageArrows = use(obj.imageArrows, true);
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
         this.imageSwipe = use(obj.imageSwipe, false);
         this.imageAnimation = use(obj.imageAnimation, NgxGalleryAnimation.Fade);
         this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
+        this.imageMargin = use(obj.imageMargin, 10);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
