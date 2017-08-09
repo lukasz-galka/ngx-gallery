@@ -40,12 +40,14 @@ import 'hammerjs';
 - `fullWidth` | Type: `boolean` | Default value: `false` - sets the same width as browser
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
+- `imageBelowThumbnails` | Type: `boolean` | Default value: `false` - enables or disables image option to set image under the thumbnails
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
 - `imageSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `imageAnimation` | Type: `string` | Default value: `NgxGalleryAnimation.Fade` - animation type
 - `imageSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - image size
+- `imageMargin` | Type: `number` | Default value: `10` - margin between image and thumbnails (if image is below thumbnails)
 
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
