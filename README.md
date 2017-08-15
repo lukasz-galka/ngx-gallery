@@ -38,6 +38,7 @@ import 'hammerjs';
 - `height` | Type: `string` | Default value: `'400px'` - gallery height
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint, works like media query max-width
 - `fullWidth` | Type: `boolean` | Default value: `false` - sets the same width as browser
+- `layout` | Type: `string` | Default value: `NgxGalleryLayout.Bottom` - sets thumbnails position
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
@@ -88,6 +89,10 @@ import 'hammerjs';
 # NgxGalleryImageSize
 - `Cover` (default)
 - `Contain`
+
+# NgxGalleryLayout
+- `Top`
+- `Bottom` (default)
 
 # Events
 - `change` - triggered on image change

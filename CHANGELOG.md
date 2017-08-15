@@ -1,3 +1,8 @@
+<a name="1.1.4"></a>
+# 1.1.4 (2017-08-15)
+
+* Add option layout ([06d0eec](https://github.com/lukasz-galka/ngx-gallery/commit/06d0eec))
+
 <a name="1.1.3"></a>
 # 1.1.3 (2017-08-15)
 
