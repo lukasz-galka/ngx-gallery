@@ -1,3 +1,8 @@
+<a name="1.1.2"></a>
+# 1.1.2 (2017-08-15)
+
+* Add option previewForceFullscreen ([fcf7fb5](https://github.com/lukasz-galka/ngx-gallery/commit/fcf7fb5))
+
 <a name="1.1.1"></a>
 # 1.1.1 (2017-08-3)
 
