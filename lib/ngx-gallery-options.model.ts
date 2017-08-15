@@ -1,11 +1,13 @@
 import { NgxGalleryAnimation } from './ngx-gallery-animation.model';
 import { NgxGalleryImageSize } from './ngx-gallery-image-size.model';
+import { NgxGalleryLayout } from './ngx-gallery-layout.model';
 
 export interface INgxGalleryOptions {
     width?: string;
     height?: string;
     breakpoint?: number;
     fullWidth?: boolean;
+    layout?: string;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -43,6 +45,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     height?: string;
     breakpoint?: number;
     fullWidth?: boolean;
+    layout?: string;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -86,6 +89,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.width = use(obj.width, '500px');
         this.height = use(obj.height, '400px');
         this.fullWidth = use(obj.fullWidth, false);
+        this.layout = use(obj.layout, NgxGalleryLayout.ThumbnailsBottom);
 
         this.image = use(obj.image, true);
         this.imagePercent = use(obj.imagePercent, 75);

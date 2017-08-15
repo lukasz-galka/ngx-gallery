@@ -22,4 +22,31 @@
             cursor: pointer;
         }
     }
+
+    .ngx-gallery-layout {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ngx-gallery-layout.thumbnails-top {
+        ngx-gallery-image {
+            order: 2;
+        }
+
+        ngx-gallery-thumbnails {
+            order: 1;
+        }
+    }
+
+    .ngx-gallery-layout.thumbnails-bottom {
+        ngx-gallery-image {
+            order: 1;
+        }
+
+        ngx-gallery-thumbnails {
+            order: 2;
+        }
+    }
 }

@@ -7,6 +7,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 import { NgxGalleryOptions } from './ngx-gallery-options.model';
 import { NgxGalleryImage } from './ngx-gallery-image.model';
+import { NgxGalleryLayout } from './ngx-gallery-layout.model';
 
 @Component({
     selector: 'ngx-gallery',
@@ -98,8 +99,20 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         }
     }
 
-    getThumbnailsMargin(): string {
-        return this.currentOptions.thumbnailsMargin + 'px';
+    getThumbnailsMarginTop(): string {
+        if (this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom) {
+            return this.currentOptions.thumbnailsMargin + 'px';
+        } else {
+            return '0px';
+        }
+    }
+
+    getThumbnailsMarginBottom(): string {
+        if (this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop) {
+            return this.currentOptions.thumbnailsMargin + 'px';
+        } else {
+            return '0px';
+        }
     }
 
     openPreview(index: number): void {
