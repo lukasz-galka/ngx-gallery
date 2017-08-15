@@ -1,3 +1,8 @@
+<a name="1.1.3"></a>
+# 1.1.3 (2017-08-15)
+
+* Enable vertical scroll for gallery with swipe ([ccf5581](https://github.com/lukasz-galka/ngx-gallery/commit/ccf5581))
+
 <a name="1.1.2"></a>
 # 1.1.2 (2017-08-15)
 
