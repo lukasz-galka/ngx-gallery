@@ -61,6 +61,8 @@ import 'hammerjs';
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
 - `previewSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
+- `previewFullscreen` | Type: `boolean` | Default value: `false` - enables or disables fullscreen icon
+- `previewForceFullscreen` | Type: `boolean` | Default value: `false` - enables or disables opening preview in fullscreen mode
 - `previewCloseOnClick` | Type: `boolean` | Default value: `false` - enables or disables closing preview by click
 - `previewCloseOnEsc` | Type: `boolean` | Default value: `false` - enables or disables closing preview by esc keyboard
 - `previewKeyboardNavigation` | Type: `boolean` | Default value: `false` - enables or disables navigation by keyboard

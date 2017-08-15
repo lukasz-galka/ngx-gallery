@@ -20,6 +20,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() showDescription: boolean;
     @Input() swipe: boolean;
     @Input() fullscreen: boolean;
+    @Input() forceFullscreen: boolean;
     @Input() closeOnClick: boolean;
     @Input() closeOnEsc: boolean;
     @Input() keyboardNavigation: boolean;
@@ -63,6 +64,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.index = index;
         this.isOpen = true;
         this.show();
+
+        if (this.forceFullscreen) {
+            this.manageFullscreen();
+        }
     }
 
     close(): void {
@@ -107,7 +112,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     manageFullscreen(): void {
-        if (this.fullscreen) {
+        if (this.fullscreen || this.forceFullscreen) {
             const doc = <any>document;
 
             if (!doc.fullscreenElement && !doc.mozFullScreenElement
