@@ -10,7 +10,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 })
 export class NgxGalleryPreviewComponent implements OnChanges {
 
-    src: string | SafeResourceUrl;
+    src: string;
     srcIndex: number;
     description: string;
     showSpinner: boolean = false;
@@ -33,7 +33,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Output() onClose = new EventEmitter();
 
     private index: number = 0;
-    private loadedList: number[] = [];
+    private loadedList: string[] = [];
     private isOpen: boolean = false;
 
     constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
@@ -78,7 +78,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
     loaded(): void {
         this.showSpinner = false;
-        this.loadedList.push(this.srcIndex);
+        this.loadedList.push(this.src);
     }
 
     showNext(): void {
@@ -166,11 +166,11 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     private show() {
-        this.src = this.images[this.index];
+        this.src = <string>this.images[this.index];
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];
 
-        if (this.loadedList.indexOf(this.srcIndex) === -1) {
+        if (this.loadedList.indexOf(this.src) === -1) {
             this.showSpinner = true;
         }
     }

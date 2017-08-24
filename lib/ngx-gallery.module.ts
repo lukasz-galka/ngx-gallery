@@ -13,7 +13,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     overrides = <any>{
         'pinch': { enable: false },
         'rotate': { enable: false }
-    }
+    };
 }
 
 @NgModule({
