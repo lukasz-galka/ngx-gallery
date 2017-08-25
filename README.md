@@ -29,6 +29,22 @@ For angular-cli based projects insert styles into .angular-cli.json
 import 'hammerjs';
 ````
 
+# Angular Material
+
+**If you are not using Angular Material you can skip this section.**
+
+Angular Material is using `transform: translate3d(0,0,0);` in components styles. Unfortunately  `transform` changes positioning context and preview won't work properly. To avoid this situation you have to override material styles, for example:
+
+````
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; // your theme
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+````
+
+You can read more about this issue [here](https://github.com/angular/material2/issues/998)
+
 # Installation
 ```npm install ngx-gallery --save```
 
@@ -179,6 +195,3 @@ export class AppComponent implements OnInit {
 // app.component.html
 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 ````
-
-# Troubleshooting
-- Preview doesn't have full size [10](https://github.com/lukasz-galka/ngx-gallery/issues/10), [13](https://github.com/lukasz-galka/ngx-gallery/issues/13)
