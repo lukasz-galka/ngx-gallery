@@ -30,6 +30,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() fullscreenIcon: string;
     @Input() spinnerIcon: string;
 
+    @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
 
     private index: number = 0;
@@ -61,6 +62,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     open(index: number): void {
+
+        this.onOpen.emit();
+
         this.index = index;
         this.isOpen = true;
         this.show();

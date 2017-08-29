@@ -20,6 +20,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     @Input() images: NgxGalleryImage[];
 
     @Output() change = new EventEmitter();
+    @Output() previewOpen = new EventEmitter();
+    @Output() previewClose = new EventEmitter();
 
     smallImages: string[] | SafeResourceUrl[];
     mediumImages: string[] | SafeResourceUrl;
@@ -120,8 +122,13 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.preview.open(index);
     }
 
-    onClosePreview(): void {
+    onPreviewOpen(): void {
+        this.previewOpen.emit();
+    }
+
+    onPreviewClose(): void {
         this.previewEnabled = false;
+        this.previewClose.emit();
     }
 
     select(index: number) {
