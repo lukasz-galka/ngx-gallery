@@ -1,7 +1,12 @@
+<a name="1.1.6"></a>
+# 1.1.6 (2017-08-29)
+
+* Add previewOpen and previewClose events ([3422ab0](https://github.com/lukasz-galka/ngx-gallery/commit/3422ab0  ))
+
 <a name="1.1.5"></a>
 # 1.1.5 (2017-08-24)
 
-* Better validation for loaded images ([5069b81  ](https://github.com/lukasz-galka/ngx-gallery/commit/5069b81  ))
+* Better validation for loaded images ([5069b81](https://github.com/lukasz-galka/ngx-gallery/commit/5069b81  ))
 
 <a name="1.1.4"></a>
 # 1.1.4 (2017-08-15)
