@@ -139,6 +139,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         }
     }
 
+    getSafeUrl(image: string): SafeStyle {
+        return this.sanitization.bypassSecurityTrustStyle('url(' + image + ')');
+    }
+
     private getThumbnailPosition(index: number, count: number): SafeStyle {
         return this.getSafeStyle('calc(' + ((100 / count) * index) + '% + '
             + ((this.margin - (((count - 1) * this.margin) / count)) * index) + 'px)');

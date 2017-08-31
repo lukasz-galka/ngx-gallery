@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener } from '@angular/core';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { SafeResourceUrl, DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
@@ -37,7 +37,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private loadedList: string[] = [];
     private isOpen: boolean = false;
 
-    constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
+    constructor(private sanitization: DomSanitizer,
+        private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['swipe']) {
@@ -126,6 +127,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
                 this.closeFullscreen();
             }
         }
+    }
+
+    getSafeUrl(image: string): SafeUrl {
+        return this.sanitization.bypassSecurityTrustUrl(image);
     }
 
     private isKeyboardNext(e: KeyboardEvent): boolean {

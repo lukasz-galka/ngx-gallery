@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener,  ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { SafeResourceUrl, DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
@@ -23,7 +23,8 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();
 
-    constructor(private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
+    constructor(private sanitization: DomSanitizer,
+        private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
 
     ngOnInit(): void {
         if (this.arrows && this.arrowsAutoHide) {
@@ -90,5 +91,9 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
         } else {
             return false;
         }
+    }
+
+    getSafeUrl(image: string): SafeStyle {
+        return this.sanitization.bypassSecurityTrustStyle('url(' + image + ')');
     }
 }
