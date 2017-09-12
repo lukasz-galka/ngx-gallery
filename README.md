@@ -55,6 +55,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `breakpoint` | Type: `number` | Default value: `undefined` - responsive breakpoint, works like media query max-width
 - `fullWidth` | Type: `boolean` | Default value: `false` - sets the same width as browser
 - `layout` | Type: `string` | Default value: `NgxGalleryLayout.Bottom` - sets thumbnails position
+- `startIndex` | Type: `number` | Default value: `0` - sets index of selected image on start
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height

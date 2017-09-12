@@ -8,6 +8,7 @@ export interface INgxGalleryOptions {
     breakpoint?: number;
     fullWidth?: boolean;
     layout?: string;
+    startIndex?: number;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -46,6 +47,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     breakpoint?: number;
     fullWidth?: boolean;
     layout?: string;
+    startIndex?: number;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -90,6 +92,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.height = use(obj.height, '400px');
         this.fullWidth = use(obj.fullWidth, false);
         this.layout = use(obj.layout, NgxGalleryLayout.ThumbnailsBottom);
+        this.startIndex = use(obj.startIndex, 0);
 
         this.image = use(obj.image, true);
         this.imagePercent = use(obj.imagePercent, 75);

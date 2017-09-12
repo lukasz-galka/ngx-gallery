@@ -33,7 +33,8 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['images']) {
+        if (changes['images']
+            && this.selectedIndex >= changes['images'].currentValue.length) {
             this.selectedIndex = 0;
         }
 

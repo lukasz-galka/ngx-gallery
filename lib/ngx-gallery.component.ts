@@ -54,6 +54,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.setBreakpoint();
         this.setOptions();
         this.checkFullWidth();
+        this.selectedIndex = this.currentOptions.startIndex;
     }
 
     ngDoCheck(): void {
