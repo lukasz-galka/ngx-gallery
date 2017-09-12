@@ -1,7 +1,12 @@
+<a name="1.2.0"></a>
+# 1.2.0 (2017-09-12)
+
+* Add option startIndex ([a106f6c](https://github.com/lukasz-galka/ngx-gallery/commit/a106f6c))
+
 <a name="1.1.7"></a>
 # 1.1.7 (2017-08-31)
 
-* Use safe url/style([6aaa4ed](https://github.com/lukasz-galka/ngx-gallery/commit/6aaa4ed))
+* Use safe url/style ([6aaa4ed](https://github.com/lukasz-galka/ngx-gallery/commit/6aaa4ed))
 
 <a name="1.1.6"></a>
 # 1.1.6 (2017-08-29)
