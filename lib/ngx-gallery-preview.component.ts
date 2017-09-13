@@ -13,7 +13,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     src: string;
     srcIndex: number;
     description: string;
-    showSpinner: boolean = false;
+    showSpinner = false;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -33,9 +33,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
 
-    private index: number = 0;
+    private index = 0;
     private loadedList: string[] = [];
-    private isOpen: boolean = false;
+    private isOpen = false;
 
     constructor(private sanitization: DomSanitizer,
         private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}

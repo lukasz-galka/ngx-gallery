@@ -29,9 +29,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     descriptions: string[];
 
     oldImages: NgxGalleryImage[];
-    oldImagesLength: number = 0;
+    oldImagesLength = 0;
 
-    selectedIndex: number = 0;
+    selectedIndex = 0;
     previewEnabled: boolean;
 
     currentOptions: NgxGalleryOptions;
@@ -49,7 +49,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     constructor(private myElement: ElementRef) {}
 
     ngOnInit() {
-        this.options = this.options.map(opt => new NgxGalleryOptions(opt));
+        this.options = this.options.map((opt) => new NgxGalleryOptions(opt));
         this.sortOptions();
         this.setBreakpoint();
         this.setOptions();
@@ -136,7 +136,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.selectedIndex = index;
 
         this.change.emit({
-            index: index,
+            index,
             image: this.images[index]
         });
 
@@ -154,18 +154,18 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     private setImages(): void {
-        this.smallImages = this.images.map(img => img.small);
-        this.mediumImages = this.images.map(img => img.medium);
-        this.bigImages = this.images.map(img => img.big);
-        this.descriptions = this.images.map(img => img.description);
+        this.smallImages = this.images.map((img) => img.small);
+        this.mediumImages = this.images.map((img) => img.medium);
+        this.bigImages = this.images.map((img) => img.big);
+        this.descriptions = this.images.map((img) => img.description);
     }
 
     private setBreakpoint(): void {
 
         this.prevBreakpoint = this.breakpoint;
 
-        const breakpoints = this.options.filter(opt => opt.breakpoint >= window.innerWidth)
-            .map(opt => opt.breakpoint);
+        const breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
+            .map((opt) => opt.breakpoint);
 
         if (breakpoints.length) {
             this.breakpoint = breakpoints.pop();
@@ -176,9 +176,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
 
     private sortOptions(): void {
         this.options = [
-            ...this.options.filter(a => a.breakpoint === undefined),
+            ...this.options.filter((a) => a.breakpoint === undefined),
             ...this.options
-                .filter(a => a.breakpoint !== undefined)
+                .filter((a) => a.breakpoint !== undefined)
                 .sort((a, b) => b.breakpoint - a.breakpoint)
         ];
     }
@@ -187,14 +187,14 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.currentOptions = new NgxGalleryOptions({});
 
         this.options
-            .filter(opt => opt.breakpoint === undefined || opt.breakpoint >= this.breakpoint)
-            .map(opt => this.combineOptions(this.currentOptions, opt));
+            .filter((opt) => opt.breakpoint === undefined || opt.breakpoint >= this.breakpoint)
+            .map((opt) => this.combineOptions(this.currentOptions, opt));
 
         this.width = this.currentOptions.width;
         this.height = this.currentOptions.height;
     }
 
     private combineOptions(first: NgxGalleryOptions, second: NgxGalleryOptions) {
-        Object.keys(second).map(val => first[val] = second[val] !== undefined ? second[val] : first[val]);
+        Object.keys(second).map((val) => first[val] = second[val] !== undefined ? second[val] : first[val]);
     }
 }

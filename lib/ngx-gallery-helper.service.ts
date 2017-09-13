@@ -19,7 +19,7 @@ export class NgxGalleryHelperService {
                     this.renderer.listen(element.nativeElement, 'swiperight', () => prevHandler())
                 ]);
             } else if (!status && handlers) {
-                handlers.map(handler => handler());
+                handlers.map((handler) => handler());
                 this.removeSwipeHandlers(id);
             }
         } catch (e) {}

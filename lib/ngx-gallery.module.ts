@@ -38,4 +38,3 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ]
 })
 export class NgxGalleryModule { }
-

@@ -1,4 +1,4 @@
 export class NgxGalleryImageSize {
-    static Cover: string = 'cover';
-    static Contain: string = 'contain';
+    static Cover = 'cover';
+    static Contain = 'contain';
 }
