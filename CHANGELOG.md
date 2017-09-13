@@ -1,3 +1,9 @@
+605ce55
+<a name="1.3.0"></a>
+# 1.3.0 (2017-09-13)
+
+* Remove lint warnings ([605ce55](https://github.com/lukasz-galka/ngx-gallery/commit/605ce55))
+
 <a name="1.2.0"></a>
 # 1.2.0 (2017-09-12)
 
