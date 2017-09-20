@@ -16,6 +16,8 @@ export interface INgxGalleryOptions {
     imageSwipe?: boolean;
     imageAnimation?: string;
     imageSize?: string;
+    imageAutoPlay?: boolean;
+    imageAutoPlayInterval?: number;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -34,6 +36,8 @@ export interface INgxGalleryOptions {
     previewCloseOnClick?: boolean;
     previewCloseOnEsc?: boolean;
     previewKeyboardNavigation?: boolean;
+    previewAutoPlay?: boolean;
+    previewAutoPlayInterval?: number;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -55,6 +59,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageSwipe?: boolean;
     imageAnimation?: string;
     imageSize?: string;
+    imageAutoPlay?: boolean;
+    imageAutoPlayInterval?: number;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -73,6 +79,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewCloseOnClick?: boolean;
     previewCloseOnEsc?: boolean;
     previewKeyboardNavigation?: boolean;
+    previewAutoPlay?: boolean;
+    previewAutoPlayInterval?: number;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -101,6 +109,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageSwipe = use(obj.imageSwipe, false);
         this.imageAnimation = use(obj.imageAnimation, NgxGalleryAnimation.Fade);
         this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
+        this.imageAutoPlay = use(obj.imageAutoPlay, false);
+        this.imageAutoPlayInterval = use(obj.imageAutoPlayInterval, 2000);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
@@ -121,6 +131,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewCloseOnClick = use(obj.previewCloseOnClick, false);
         this.previewCloseOnEsc = use(obj.previewCloseOnEsc, false);
         this.previewKeyboardNavigation = use(obj.previewKeyboardNavigation, false);
+        this.previewAutoPlay = use(obj.previewAutoPlay, false);
+        this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');

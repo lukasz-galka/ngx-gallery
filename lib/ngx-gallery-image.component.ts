@@ -19,6 +19,8 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Input() size: string;
     @Input() arrowPrevIcon: string;
     @Input() arrowNextIcon: string;
+    @Input() autoPlay: boolean;
+    @Input() autoPlayInterval: number;
 
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();
@@ -29,6 +31,15 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         if (this.arrows && this.arrowsAutoHide) {
             this.arrows = false;
+        }
+
+        if (this.autoPlay) {
+            setInterval(() => {
+                if (!this.showNext()) {
+                    this.selectedIndex = -1;
+                    this.showNext();
+                }
+            }, this.autoPlayInterval);
         }
     }
 
@@ -64,10 +75,13 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
         }
     }
 
-    showNext(): void {
+    showNext(): boolean {
         if (this.canShowNext()) {
             this.selectedIndex++;
             this.onActiveChange.emit(this.selectedIndex);
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -64,6 +64,8 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `imageSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `imageAnimation` | Type: `string` | Default value: `NgxGalleryAnimation.Fade` - animation type
 - `imageSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - image size
+- `imageAutoPlay` | Type: `boolean` | Default value `false` - enables or disables auto play
+- `imageAutoPlayInterval` | Type: `number` | Default value: `2000` - interval for auto play
 
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
@@ -84,6 +86,8 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewCloseOnClick` | Type: `boolean` | Default value: `false` - enables or disables closing preview by click
 - `previewCloseOnEsc` | Type: `boolean` | Default value: `false` - enables or disables closing preview by esc keyboard
 - `previewKeyboardNavigation` | Type: `boolean` | Default value: `false` - enables or disables navigation by keyboard
+- `previewAutoPlay` | Type: `boolean` | Default value `false` - enables or disables auto play
+- `previewAutoPlayInterval` | Type: `number` | Default value: `2000` - interval for auto play
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow

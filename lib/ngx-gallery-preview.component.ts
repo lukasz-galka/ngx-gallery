@@ -29,6 +29,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() closeIcon: string;
     @Input() fullscreenIcon: string;
     @Input() spinnerIcon: string;
+    @Input() autoPlay: boolean;
+    @Input() autoPlayInterval: number;
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
@@ -36,6 +38,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private index = 0;
     private loadedList: string[] = [];
     private isOpen = false;
+    private timer = null;
 
     constructor(private sanitization: DomSanitizer,
         private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
@@ -73,12 +76,25 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         if (this.forceFullscreen) {
             this.manageFullscreen();
         }
+
+        if (this.autoPlay) {
+            this.timer = setInterval(() => {
+                if (!this.showNext()) {
+                    this.index = -1;
+                    this.showNext();
+                }
+            }, this.autoPlayInterval);
+        }
     }
 
     close(): void {
         this.isOpen = false;
         this.closeFullscreen();
         this.onClose.emit();
+
+        if (this.autoPlay) {
+            clearInterval(this.timer);
+        }
     }
 
     loaded(): void {
@@ -86,10 +102,13 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.loadedList.push(this.src);
     }
 
-    showNext(): void {
+    showNext(): boolean {
         if (this.canShowNext()) {
             this.index++;
             this.show();
+            return true;
+        } else {
+            return false;
         }
     }
 
