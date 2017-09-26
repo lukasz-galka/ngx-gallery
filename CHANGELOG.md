@@ -1,3 +1,8 @@
+<a name="1.5.0"></a>
+# 1.5.0 (2017-09-26)
+
+* Add support for compilation with strictNullChecks ([6700950](https://github.com/lukasz-galka/ngx-gallery/commit/6700950))
+
 <a name="1.4.0"></a>
 # 1.4.0 (2017-09-20)
 
