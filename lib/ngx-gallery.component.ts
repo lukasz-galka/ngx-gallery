@@ -36,8 +36,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
 
     currentOptions: NgxGalleryOptions;
 
-    private breakpoint: number = undefined;
-    private prevBreakpoint: number = undefined;
+    private breakpoint: number | undefined = undefined;
+    private prevBreakpoint: number | undefined = undefined;
     private fullWidthTimeout: any;
 
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
@@ -54,7 +54,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.setBreakpoint();
         this.setOptions();
         this.checkFullWidth();
-        this.selectedIndex = this.currentOptions.startIndex;
+        this.selectedIndex = <number>this.currentOptions.startIndex;
     }
 
     ngDoCheck(): void {
@@ -154,10 +154,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     private setImages(): void {
-        this.smallImages = this.images.map((img) => img.small);
-        this.mediumImages = this.images.map((img) => img.medium);
-        this.bigImages = this.images.map((img) => img.big);
-        this.descriptions = this.images.map((img) => img.description);
+        this.smallImages = this.images.map((img) => <string>img.small);
+        this.mediumImages = this.images.map((img) => <string>img.medium);
+        this.bigImages = this.images.map((img) => <string>img.big);
+        this.descriptions = this.images.map((img) => <string>img.description);
     }
 
     private setBreakpoint(): void {
@@ -190,8 +190,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
             .filter((opt) => opt.breakpoint === undefined || opt.breakpoint >= this.breakpoint)
             .map((opt) => this.combineOptions(this.currentOptions, opt));
 
-        this.width = this.currentOptions.width;
-        this.height = this.currentOptions.height;
+        this.width = <string>this.currentOptions.width;
+        this.height = <string>this.currentOptions.height;
     }
 
     private combineOptions(first: NgxGalleryOptions, second: NgxGalleryOptions) {

@@ -38,7 +38,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private index = 0;
     private loadedList: string[] = [];
     private isOpen = false;
-    private timer = null;
+    private timer;
 
     constructor(private sanitization: DomSanitizer,
         private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}

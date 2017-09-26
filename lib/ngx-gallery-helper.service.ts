@@ -25,7 +25,7 @@ export class NgxGalleryHelperService {
         } catch (e) {}
     }
 
-    private getSwipeHandlers(id: string): Function[] {
+    private getSwipeHandlers(id: string): Function[] | undefined {
         return this.swipeHandlers.get(id);
     }
 
