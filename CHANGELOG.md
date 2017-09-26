@@ -1,3 +1,8 @@
+<a name="1.6.0"></a>
+# 1.6.0 (2017-09-26)
+
+* Add infinity scroll for image and preview ([1a78631](https://github.com/lukasz-galka/ngx-gallery/commit/1a78631))
+
 <a name="1.5.0"></a>
 # 1.5.0 (2017-09-26)
 
