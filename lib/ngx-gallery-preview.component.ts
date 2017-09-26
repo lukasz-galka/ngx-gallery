@@ -31,6 +31,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() spinnerIcon: string;
     @Input() autoPlay: boolean;
     @Input() autoPlayInterval: number;
+    @Input() infinityMove: boolean;
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
@@ -105,6 +106,11 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     showNext(): boolean {
         if (this.canShowNext()) {
             this.index++;
+
+            if (this.index === this.images.length) {
+                this.index = 0;
+            }
+
             this.show();
             return true;
         } else {
@@ -115,13 +121,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     showPrev(): void {
         if (this.canShowPrev()) {
             this.index--;
+
+            if (this.index < 0) {
+                this.index = this.images.length - 1;
+            }
+
             this.show();
         }
     }
 
     canShowNext(): boolean {
         if (this.images) {
-            return this.index < this.images.length - 1 ? true : false;
+            return this.infinityMove || this.index < this.images.length - 1 ? true : false;
         } else {
             return false;
         }
@@ -129,7 +140,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
     canShowPrev(): boolean {
         if (this.images) {
-            return this.index > 0 ? true : false;
+            return this.infinityMove || this.index > 0 ? true : false;
         } else {
             return false;
         }
