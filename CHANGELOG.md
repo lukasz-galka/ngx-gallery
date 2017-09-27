@@ -1,3 +1,8 @@
+<a name="1.6.1"></a>
+# 1.6.1 (2017-09-27)
+
+* Remove KeyboardEvent for universal ([d7eafb1](https://github.com/lukasz-galka/ngx-gallery/commit/d7eafb1))
+
 <a name="1.6.0"></a>
 # 1.6.0 (2017-09-26)
 
