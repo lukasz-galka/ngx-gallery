@@ -51,7 +51,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
-    @HostListener('window:keydown', ['$event']) onKeyDown(e: KeyboardEvent) {
+    @HostListener('window:keydown', ['$event']) onKeyDown(e) {
         if (this.isOpen) {
             if (this.keyboardNavigation) {
                 if (this.isKeyboardPrev(e)) {
@@ -163,15 +163,15 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         return this.sanitization.bypassSecurityTrustUrl(image);
     }
 
-    private isKeyboardNext(e: KeyboardEvent): boolean {
+    private isKeyboardNext(e): boolean {
         return e.keyCode === 39 ? true : false;
     }
 
-    private isKeyboardPrev(e: KeyboardEvent): boolean {
+    private isKeyboardPrev(e): boolean {
         return e.keyCode === 37 ? true : false;
     }
 
-    private isKeyboardEsc(e: KeyboardEvent): boolean {
+    private isKeyboardEsc(e): boolean {
         return e.keyCode === 27 ? true : false;
     }
 

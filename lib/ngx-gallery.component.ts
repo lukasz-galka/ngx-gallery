@@ -161,13 +161,15 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     private setBreakpoint(): void {
-
         this.prevBreakpoint = this.breakpoint;
+        let breakpoints;
 
-        const breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
-            .map((opt) => opt.breakpoint);
+        if (window) {
+            breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
+                .map((opt) => opt.breakpoint);
+        }
 
-        if (breakpoints.length) {
+        if (breakpoints && breakpoints.length) {
             this.breakpoint = breakpoints.pop();
         } else {
             this.breakpoint = undefined;
