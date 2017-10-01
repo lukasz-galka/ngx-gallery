@@ -18,6 +18,7 @@ export interface INgxGalleryOptions {
     imageSize?: string;
     imageAutoPlay?: boolean;
     imageAutoPlayInterval?: number;
+    imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
@@ -39,6 +40,7 @@ export interface INgxGalleryOptions {
     previewKeyboardNavigation?: boolean;
     previewAutoPlay?: boolean;
     previewAutoPlayInterval?: number;
+    previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
@@ -63,6 +65,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageSize?: string;
     imageAutoPlay?: boolean;
     imageAutoPlayInterval?: number;
+    imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
@@ -84,6 +87,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewKeyboardNavigation?: boolean;
     previewAutoPlay?: boolean;
     previewAutoPlayInterval?: number;
+    previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
@@ -115,6 +119,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
         this.imageAutoPlay = use(obj.imageAutoPlay, false);
         this.imageAutoPlayInterval = use(obj.imageAutoPlayInterval, 2000);
+        this.imageAutoPlayPauseOnHover= use(obj.imageAutoPlayPauseOnHover, false);
         this.imageInfinityMove = use(obj.imageInfinityMove, false);
 
         this.thumbnails = use(obj.thumbnails, true);
@@ -138,6 +143,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewKeyboardNavigation = use(obj.previewKeyboardNavigation, false);
         this.previewAutoPlay = use(obj.previewAutoPlay, false);
         this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
+        this.previewAutoPlayPauseOnHover = use(obj.previewAutoPlayPauseOnHover, false);
         this.previewInfinityMove = use(obj.previewInfinityMove, false);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');

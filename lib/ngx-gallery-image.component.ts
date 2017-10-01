@@ -21,10 +21,13 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Input() arrowNextIcon: string;
     @Input() autoPlay: boolean;
     @Input() autoPlayInterval: number;
+    @Input() autoPlayPauseOnHover: boolean;
     @Input() infinityMove: boolean;
 
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();
+
+    private timer;
 
     constructor(private sanitization: DomSanitizer,
         private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
@@ -35,12 +38,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
         }
 
         if (this.autoPlay) {
-            setInterval(() => {
-                if (!this.showNext()) {
-                    this.selectedIndex = -1;
-                    this.showNext();
-                }
-            }, this.autoPlayInterval);
+            this.startAutoPlay();
         }
     }
 
@@ -59,11 +57,36 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
         if (this.arrowsAutoHide && !this.arrows) {
             this.arrows = true;
         }
+
+        if (this.autoPlay && this.autoPlayPauseOnHover) {
+            this.stopAutoPlay();
+        }
     }
 
     @HostListener('mouseleave') onMouseLeave() {
         if (this.arrowsAutoHide && this.arrows) {
             this.arrows = false;
+        }
+
+        if (this.autoPlay && this.autoPlayPauseOnHover) {
+            this.startAutoPlay();
+        }
+    }
+
+    startAutoPlay(): void {
+        this.stopAutoPlay();
+
+        this.timer = setInterval(() => {
+            if (!this.showNext()) {
+                this.selectedIndex = -1;
+                this.showNext();
+            }
+        }, this.autoPlayInterval);
+    }
+
+    stopAutoPlay() {
+        if (this.timer) {
+            clearInterval(this.timer);
         }
     }
 

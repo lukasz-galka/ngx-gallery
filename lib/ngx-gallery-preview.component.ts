@@ -31,6 +31,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() spinnerIcon: string;
     @Input() autoPlay: boolean;
     @Input() autoPlayInterval: number;
+    @Input() autoPlayPauseOnHover: boolean;
     @Input() infinityMove: boolean;
 
     @Output() onOpen = new EventEmitter();
@@ -79,12 +80,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
 
         if (this.autoPlay) {
-            this.timer = setInterval(() => {
-                if (!this.showNext()) {
-                    this.index = -1;
-                    this.showNext();
-                }
-            }, this.autoPlayInterval);
+            this.startAutoPlay();
         }
     }
 
@@ -93,14 +89,41 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.closeFullscreen();
         this.onClose.emit();
 
-        if (this.autoPlay) {
-            clearInterval(this.timer);
-        }
+        this.stopAutoPlay();
     }
 
     loaded(): void {
         this.showSpinner = false;
         this.loadedList.push(this.src);
+    }
+
+    imageMouseEnter(): void {
+        if (this.autoPlay && this.autoPlayPauseOnHover) {
+            this.stopAutoPlay();
+        }
+    }
+
+    imageMouseLeave(): void {
+        if (this.autoPlay && this.autoPlayPauseOnHover) {
+            this.startAutoPlay();
+        }
+    }
+
+    startAutoPlay(): void {
+        this.stopAutoPlay();
+
+        this.timer = setInterval(() => {
+            if (!this.showNext()) {
+                this.index = -1;
+                this.showNext();
+            }
+        }, this.autoPlayInterval);
+    }
+
+    stopAutoPlay(): void {
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
     }
 
     showNext(): boolean {
