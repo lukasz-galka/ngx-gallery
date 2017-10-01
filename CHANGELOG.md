@@ -1,3 +1,8 @@
+<a name="1.7.0"></a>
+# 1.7.0 (2017-10-01)
+
+* Add possibility to stop autoplay on hover ([75d803c](https://github.com/lukasz-galka/ngx-gallery/commit/75d803c))
+
 <a name="1.6.1"></a>
 # 1.6.1 (2017-09-27)
 
