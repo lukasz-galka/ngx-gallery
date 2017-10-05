@@ -29,6 +29,13 @@ For angular-cli based projects insert styles into .angular-cli.json
 import 'hammerjs';
 ````
 
+# SystemJS
+```
+map: {
+  'ngx-gallery': 'node_modules/ngx-gallery/bundles/ngx-gallery.umd.js',
+}
+```
+
 # Angular Material
 
 **If you are not using Angular Material you can skip this section.**

@@ -1,6 +1,8 @@
 import { Component, Input, HostListener, ViewChild, OnInit,
-    HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+    HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter, Inject } from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -13,9 +15,9 @@ import { NgxGalleryLayout } from './ngx-gallery-layout.model';
     selector: 'ngx-gallery',
     templateUrl: './ngx-gallery.component.html',
     styleUrls: ['./ngx-gallery.component.scss'],
-    providers: [ NgxGalleryHelperService ]
+    providers: [NgxGalleryHelperService]
 })
-export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
+export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
 
@@ -46,7 +48,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     @HostBinding('style.height') height: string;
     @HostBinding('style.left') left: string;
 
-    constructor(private myElement: ElementRef) {}
+    constructor(private myElement: ElementRef, 
+        @Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
         this.options = this.options.map((opt) => new NgxGalleryOptions(opt));
@@ -54,7 +57,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.setBreakpoint();
         this.setOptions();
         this.checkFullWidth();
-        this.selectedIndex = <number>this.currentOptions.startIndex;
+        if (this.currentOptions) {
+            this.selectedIndex = <number>this.currentOptions.startIndex;
+        }
     }
 
     ngDoCheck(): void {
@@ -77,7 +82,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
             this.setOptions();
         }
 
-        if (this.currentOptions.fullWidth) {
+        if (this.currentOptions && this.currentOptions.fullWidth) {
 
             if (this.fullWidthTimeout) {
                 clearTimeout(this.fullWidthTimeout);
@@ -90,11 +95,12 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     getImageHeight(): string {
-        return this.currentOptions.thumbnails ? this.currentOptions.imagePercent + '%' : '100%';
+        return (this.currentOptions && this.currentOptions.thumbnails) ? 
+            this.currentOptions.imagePercent + '%' : '100%';
     }
 
     getThumbnailsHeight(): string {
-        if (this.currentOptions.image) {
+        if (this.currentOptions && this.currentOptions.image) {
             return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
             + this.currentOptions.thumbnailsMargin + 'px)';
         } else {
@@ -103,7 +109,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     getThumbnailsMarginTop(): string {
-        if (this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom) {
+        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom) {
             return this.currentOptions.thumbnailsMargin + 'px';
         } else {
             return '0px';
@@ -111,7 +117,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     getThumbnailsMarginBottom(): string {
-        if (this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop) {
+        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop) {
             return this.currentOptions.thumbnailsMargin + 'px';
         } else {
             return '0px';
@@ -140,13 +146,13 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
             image: this.images[index]
         });
 
-        if (!this.currentOptions.image && this.currentOptions.thumbnails && this.currentOptions.preview) {
+        if (this.currentOptions && !this.currentOptions.image && this.currentOptions.thumbnails && this.currentOptions.preview) {
             this.openPreview(this.selectedIndex);
         }
     }
 
     private checkFullWidth(): void {
-        if (this.currentOptions.fullWidth) {
+        if (this.currentOptions && this.currentOptions.fullWidth) {
             this.width = document.body.clientWidth + 'px';
             this.left = (-(document.body.clientWidth -
                 this.myElement.nativeElement.parentNode.innerWidth) / 2) + 'px';
@@ -163,11 +169,11 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     private setBreakpoint(): void {
         this.prevBreakpoint = this.breakpoint;
         let breakpoints;
-
-        if (window) {
+        
+        if (isPlatformBrowser(this.platformId)) {
             breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
                 .map((opt) => opt.breakpoint);
-        }
+        }        
 
         if (breakpoints && breakpoints.length) {
             this.breakpoint = breakpoints.pop();

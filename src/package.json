@@ -1,0 +1,32 @@
+{
+  "name": "ngx-gallery",
+  "description": "Angular image gallery plugin",
+  "version": "1.7.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukasz-galka/ngx-gallery"
+  },
+  "author": {
+    "name": "Łukasz Gałka",
+    "email": "lukasz.galka@intive.com"
+  },
+  "keywords": [
+    "ngx",
+    "angular",
+    "angular2",
+    "angular4",
+    "gallery",
+    "image",
+    "thumbnails",
+    "responsive",
+    "preview"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukasz-galka/ngx-gallery/issues"
+  },
+  "main": "bundles/ngx-gallery.umd.js",
+  "module": "ngx-gallery.js",
+  "jsnext:main": "ngx-gallery.js",
+  "typings": "ngx-gallery.d.ts"
+}
