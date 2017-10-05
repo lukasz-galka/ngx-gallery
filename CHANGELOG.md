@@ -1,3 +1,8 @@
+<a name="2.0.0"></a>
+# 2.0.0 (2017-10-05)
+
+* New build system ([3b5ad42](https://github.com/lukasz-galka/ngx-gallery/commit/3b5ad42))
+
 <a name="1.7.0"></a>
 # 1.7.0 (2017-10-01)
 

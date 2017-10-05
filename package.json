@@ -1,6 +1,6 @@
 {
   "name": "ngx-gallery",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "description": "Angular image gallery plugin",
   "scripts": {
     "build": "gulp build",
