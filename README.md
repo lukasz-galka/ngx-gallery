@@ -1,5 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
 [![Downloads](https://img.shields.io/npm/dm/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
+[![DevDependencies](https://david-dm.org/lukasz-galka/ngx-gallery/dev-status.svg)](https://david-dm.org/lukasz-galka/ngx-gallery?type=dev)
 
 # NgxGallery
 Angular 2/4 image gallery plugin
