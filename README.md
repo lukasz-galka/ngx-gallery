@@ -3,10 +3,13 @@
 [![DevDependencies](https://david-dm.org/lukasz-galka/ngx-gallery/dev-status.svg)](https://david-dm.org/lukasz-galka/ngx-gallery?type=dev)
 
 # NgxGallery
-Angular 2/4 image gallery plugin
+Angular image gallery plugin
 
 # Demo
 [Link](https://lukasz-galka.github.io/ngx-gallery-demo/)
+
+# Playground
+You can play with gallery using [Plunker](https://plnkr.co/edit/D1tdBCeFo6L9tMOCOb9p?p=preview) or [CodePen](https://codepen.io/lukasz-galka/project/editor/XGgxrL)
 
 # Prerequisites
 - [Font Awesome](http://fontawesome.io/) (required for icons)
