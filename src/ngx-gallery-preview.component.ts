@@ -183,7 +183,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     getSafeUrl(image: string): SafeUrl {
-        return this.sanitization.bypassSecurityTrustUrl(image);
+        return image.substr(0, 10) === 'data:image' ?
+            image : this.sanitization.bypassSecurityTrustUrl(image);
     }
 
     private isKeyboardNext(e): boolean {
