@@ -1,3 +1,8 @@
+<a name="2.0.1"></a>
+# 2.0.1 (2017-10-08)
+
+* Fix browser crash for base64 images ([2b4bd4b](https://github.com/lukasz-galka/ngx-gallery/commit/2b4bd4b))
+
 <a name="2.0.0"></a>
 # 2.0.0 (2017-10-05)
 
