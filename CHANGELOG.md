@@ -1,3 +1,8 @@
+<a name="2.1.0"></a>
+# 2.1.0 (2017-10-09)
+
+* Add option thumbnailsMoveSize ([ec913b9](https://github.com/lukasz-galka/ngx-gallery/commit/ec913b9))
+
 <a name="2.0.1"></a>
 # 2.0.1 (2017-10-08)
 
