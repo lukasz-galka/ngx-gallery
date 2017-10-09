@@ -25,6 +25,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() size: string;
     @Input() arrowPrevIcon: string;
     @Input() arrowNextIcon: string;
+    @Input() moveSize: number;
 
     @Output() onActiveChange = new EventEmitter();
 
@@ -72,14 +73,25 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     moveRight(): void {
         if (this.canMoveRight()) {
-            this.index++;
+            this.index += this.moveSize;
+            let maxIndex = this.getMaxIndex() - this.columns;
+
+            if(this.index > maxIndex) {
+                this.index = maxIndex;
+            }
+
             this.setThumbnailsPosition();
         }
     }
 
     moveLeft(): void {
         if (this.canMoveLeft()) {
-            this.index--;
+            this.index-= this.moveSize;
+
+            if (this.index < 0) {
+                this.index = 0;
+            }
+
             this.setThumbnailsPosition();
         }
     }

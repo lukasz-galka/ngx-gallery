@@ -28,6 +28,7 @@ export interface INgxGalleryOptions {
     thumbnailsArrows?: boolean;
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailsSwipe?: boolean;
+    thumbnailsMoveSize?: number;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -75,6 +76,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsArrows?: boolean;
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailsSwipe?: boolean;
+    thumbnailsMoveSize?: number;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -130,6 +132,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsArrows = use(obj.thumbnailsArrows, true);
         this.thumbnailsArrowsAutoHide = use(obj.thumbnailsArrowsAutoHide, false);
         this.thumbnailsSwipe = use(obj.thumbnailsSwipe, false);
+        this.thumbnailsMoveSize = use(obj.thumbnailsMoveSize, 1);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
 

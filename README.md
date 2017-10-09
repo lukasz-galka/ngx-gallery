@@ -88,6 +88,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
+- `thumbnailsMoveSize` | Type: `number` | Default value: `1` - number of items to move on arrow click
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 
