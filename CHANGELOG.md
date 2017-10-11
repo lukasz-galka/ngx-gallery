@@ -1,3 +1,8 @@
+<a name="2.2.0"></a>
+# 2.2.0 (2017-10-11)
+
+* Add navigation methods ([c897081](https://github.com/lukasz-galka/ngx-gallery/commit/c897081))
+
 <a name="2.1.0"></a>
 # 2.1.0 (2017-10-09)
 
