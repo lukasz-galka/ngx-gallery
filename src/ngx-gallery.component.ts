@@ -5,6 +5,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
+import { NgxGalleryImageComponent } from './ngx-gallery-image.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 import { NgxGalleryOptions } from './ngx-gallery-options.model';
@@ -43,12 +44,13 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     private fullWidthTimeout: any;
 
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
+    @ViewChild(NgxGalleryImageComponent) image: NgxGalleryImageComponent;
 
     @HostBinding('style.width') width: string;
     @HostBinding('style.height') height: string;
     @HostBinding('style.left') left: string;
 
-    constructor(private myElement: ElementRef, 
+    constructor(private myElement: ElementRef,
         @Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
@@ -95,7 +97,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     getImageHeight(): string {
-        return (this.currentOptions && this.currentOptions.thumbnails) ? 
+        return (this.currentOptions && this.currentOptions.thumbnails) ?
             this.currentOptions.imagePercent + '%' : '100%';
     }
 
@@ -151,6 +153,31 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         }
     }
 
+    showNext(): void {
+        this.image.showNext();
+    }
+
+    showPrev(): void {
+        this.image.showPrev();
+    }
+
+    canShowNext(): boolean {
+        if (this.images && this.currentOptions) {
+            return (this.currentOptions.imageInfinityMove || this.selectedIndex < this.images.length - 1)
+                ? true : false;
+        } else {
+            return false;
+        }
+    }
+
+    canShowPrev(): boolean {
+        if (this.images && this.currentOptions) {
+            return (this.currentOptions.imageInfinityMove || this.selectedIndex > 0) ? true : false;
+        } else {
+            return false;
+        }
+    }
+
     private checkFullWidth(): void {
         if (this.currentOptions && this.currentOptions.fullWidth) {
             this.width = document.body.clientWidth + 'px';
@@ -169,11 +196,11 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     private setBreakpoint(): void {
         this.prevBreakpoint = this.breakpoint;
         let breakpoints;
-        
+
         if (isPlatformBrowser(this.platformId)) {
             breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
                 .map((opt) => opt.breakpoint);
-        }        
+        }
 
         if (breakpoints && breakpoints.length) {
             this.breakpoint = breakpoints.pop();

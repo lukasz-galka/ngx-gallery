@@ -136,6 +136,13 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewOpen` - triggered on preview open
 - `previewClose` - triggered on preview close
 
+# Methods
+- `showNext(): void` - shows next image
+- `showPrev(): void` - shows prev image
+- `canShowNext(): boolean` - returns true if there is next image
+- `canShowPrev(): boolean` - returns true if there is prev image
+- `openPreview(index: number): void` - opens preview at index
+
 # Usage
 ````ts
 // app.module.ts
