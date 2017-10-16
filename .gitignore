@@ -31,5 +31,8 @@ Desktop.ini
 # Build files
 dist/*
 
+# Coverage
+coverage/*
+
 # Playground tmp files
 .playground

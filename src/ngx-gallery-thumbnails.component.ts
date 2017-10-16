@@ -5,7 +5,14 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
     selector: 'ngx-gallery-thumbnails',
-    templateUrl: './ngx-gallery-thumbnails.component.html',
+    template: `
+    <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
+        <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft">
+            <div class="ngx-gallery-thumbnail" *ngFor="let image of images; let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }"></div>
+        </div>
+    </div>
+    <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+    `,
     styleUrls: ['./ngx-gallery-thumbnails.component.scss']
 })
 export class NgxGalleryThumbnailsComponent implements OnChanges {

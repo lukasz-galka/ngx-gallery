@@ -5,7 +5,12 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
     selector: 'ngx-gallery-image',
-    templateUrl: './ngx-gallery-image.component.html',
+    template: `
+        <div class="ngx-gallery-image-wrapper ngx-gallery-animation-{{animation}} ngx-gallery-image-size-{{size}}">
+            <div class="ngx-gallery-image" *ngFor="let image of images; let i = index" [ngClass]="{ 'ngx-gallery-active': selectedIndex == i, 'ngx-gallery-inactive-left': selectedIndex > i, 'ngx-gallery-inactive-right': selectedIndex < i, 'ngx-gallery-clickable': clickable }" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)"></div>
+        </div>
+        <ngx-gallery-arrows class="ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+    `,
     styleUrls: ['./ngx-gallery-image.component.scss']
 })
 export class NgxGalleryImageComponent implements OnInit, OnChanges {
