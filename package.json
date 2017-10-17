@@ -1,7 +1,7 @@
 {
   "name": "ngx-gallery",
-  "version": "2.2.0",
-  "description": "Angular image gallery plugin",
+  "version": "2.3.0",
+  "description": "Responsive Angular 2 / 4 image gallery plugin",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",

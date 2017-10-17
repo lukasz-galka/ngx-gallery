@@ -1,3 +1,8 @@
+<a name="2.3.0"></a>
+# 2.3.0 (2017-10-17)
+
+* Add option thumbnailsOrder ([ab1bfb2](https://github.com/lukasz-galka/ngx-gallery/commit/ab1bfb2))
+
 <a name="2.2.0"></a>
 # 2.2.0 (2017-10-11)
 
