@@ -89,6 +89,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `thumbnailsSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `thumbnailsMoveSize` | Type: `number` | Default value: `1` - number of items to move on arrow click
+- `thumbnailsOrder` | Type: `number` | Default value: `NgxGalleryOrder.Column` - images order
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 
@@ -130,6 +131,10 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 # NgxGalleryLayout
 - `Top`
 - `Bottom` (default)
+
+# NgxGalleryOrder
+- `Column` (default)
+- `Row`
 
 # Events
 - `change` - triggered on image change

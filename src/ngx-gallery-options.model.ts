@@ -1,6 +1,7 @@
 import { NgxGalleryAnimation } from './ngx-gallery-animation.model';
 import { NgxGalleryImageSize } from './ngx-gallery-image-size.model';
 import { NgxGalleryLayout } from './ngx-gallery-layout.model';
+import { NgxGalleryOrder } from './ngx-gallery-order.model';
 
 export interface INgxGalleryOptions {
     width?: string;
@@ -29,6 +30,7 @@ export interface INgxGalleryOptions {
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailsSwipe?: boolean;
     thumbnailsMoveSize?: number;
+    thumbnailsOrder?: NgxGalleryOrder;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -77,6 +79,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsArrowsAutoHide?: boolean;
     thumbnailsSwipe?: boolean;
     thumbnailsMoveSize?: number;
+    thumbnailsOrder?: NgxGalleryOrder;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -133,6 +136,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsArrowsAutoHide = use(obj.thumbnailsArrowsAutoHide, false);
         this.thumbnailsSwipe = use(obj.thumbnailsSwipe, false);
         this.thumbnailsMoveSize = use(obj.thumbnailsMoveSize, 1);
+        this.thumbnailsOrder = use(obj.thumbnailsOrder, NgxGalleryOrder.Column);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
 

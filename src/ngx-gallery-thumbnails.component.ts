@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, HostListener, OnChanges, Simple
 import { DomSanitizer, SafeStyle, SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
+import { NgxGalleryOrder } from './ngx-gallery-order.model';
 
 @Component({
     selector: 'ngx-gallery-thumbnails',
@@ -33,6 +34,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() arrowPrevIcon: string;
     @Input() arrowNextIcon: string;
     @Input() moveSize: number;
+    @Input() order: number;
 
     @Output() onActiveChange = new EventEmitter();
 
@@ -112,12 +114,26 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     getThumbnailLeft(index: number): SafeStyle {
-        const calculatedIndex = Math.floor(index / this.rows);
+        let calculatedIndex;
+
+        if (this.order === NgxGalleryOrder.Column) {
+            calculatedIndex = Math.floor(index / this.rows);
+        } else {
+            calculatedIndex = index % Math.ceil(this.images.length / this.rows);
+        }
+
         return this.getThumbnailPosition(calculatedIndex, this.columns);
     }
 
     getThumbnailTop(index: number): SafeStyle {
-        const calculatedIndex = index % this.rows;
+        let calculatedIndex;
+
+        if (this.order === NgxGalleryOrder.Column) {
+            calculatedIndex = index % this.rows;
+        } else {
+            calculatedIndex = Math.floor(index / Math.ceil(this.images.length / this.rows));
+        }
+
         return this.getThumbnailPosition(calculatedIndex, this.rows);
     }
 
