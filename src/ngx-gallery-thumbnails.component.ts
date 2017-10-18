@@ -165,7 +165,13 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     validateIndex(): void {
-        const newIndex = Math.floor(this.selectedIndex / this.rows);
+        let newIndex;
+
+        if (this.order === NgxGalleryOrder.Column) {
+            newIndex = Math.floor(this.selectedIndex / this.rows);
+        } else {
+            newIndex = this.selectedIndex % Math.ceil(this.images.length / this.rows);
+        }
 
         if (newIndex < this.index || newIndex >= this.index + this.columns) {
             const maxIndex = this.getMaxIndex() - this.columns;
