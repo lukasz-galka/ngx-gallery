@@ -1,3 +1,10 @@
+
+<a name="2.3.1"></a>
+# 2.3.1 (2017-10-18)
+
+* Fix thumbnails position after image change ([48ea609](https://github.com/lukasz-galka/ngx-gallery/commit/48ea609))
+* Fix errors when images array is undefined ([e61851e](https://github.com/lukasz-galka/ngx-gallery/commit/e61851e))
+
 <a name="2.3.0"></a>
 # 2.3.0 (2017-10-17)
 
