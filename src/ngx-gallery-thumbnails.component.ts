@@ -44,7 +44,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         private helperService: NgxGalleryHelperService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['images']
+        if (changes['images'] && changes['images'].currentValue
             && this.selectedIndex >= changes['images'].currentValue.length) {
             this.selectedIndex = 0;
             this.index = 0;
