@@ -9,7 +9,11 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
     template: `
     <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
         <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft">
-            <div class="ngx-gallery-thumbnail" *ngFor="let image of images; let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }"></div>
+            <div class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }">
+            <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
+                <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
+            </div>
+            </div>
         </div>
     </div>
     <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
@@ -20,6 +24,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     thumbnailsLeft: string;
     mouseenter: boolean;
+    remainingCountValue: number;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() columns: number;
@@ -35,6 +40,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() arrowNextIcon: string;
     @Input() moveSize: number;
     @Input() order: number;
+    @Input() remainingCount: boolean;
 
     @Output() onActiveChange = new EventEmitter();
 
@@ -58,6 +64,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
             this.helperService.manageSwipe(this.swipe, this.elementRef,
             'thumbnails', () => this.moveRight(), () => this.moveLeft());
         }
+
+        if (this.images) {
+            this.remainingCountValue = this.images.length - this.columns;
+        }
     }
 
     @HostListener('mouseenter') onMouseEnter() {
@@ -70,6 +80,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     @HostListener('window:resize') onResize() {
         this.setDefaultPosition();
+    }
+
+    getImages(): string[] | SafeResourceUrl[] {
+        return this.images && this.remainingCount ? this.images.slice(0, this.columns) : this.images;
     }
 
     handleClick(event: Event, index: number): void {
@@ -156,7 +170,9 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     canShowArrows(): boolean {
-        if (this.arrows && this.images && this.images.length > this.getVisibleCount()
+        if (this.remainingCount) {
+            return false;
+        } else if (this.arrows && this.images && this.images.length > this.getVisibleCount()
             && (!this.arrowsAutoHide || this.mouseenter)) {
             return true;
         } else {
@@ -171,6 +187,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
             newIndex = Math.floor(this.selectedIndex / this.rows);
         } else {
             newIndex = this.selectedIndex % Math.ceil(this.images.length / this.rows);
+        }
+
+        if (this.remainingCount) {
+            newIndex = 0;
         }
 
         if (newIndex < this.index || newIndex >= this.index + this.columns) {

@@ -90,6 +90,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `thumbnailsMoveSize` | Type: `number` | Default value: `1` - number of items to move on arrow click
 - `thumbnailsOrder` | Type: `number` | Default value: `NgxGalleryOrder.Column` - images order
+- `thumbnailsRemainingCount` | Type: `boolean` | Default value: `false` - if true arrows are disabled and last item has label with remaining count
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 
