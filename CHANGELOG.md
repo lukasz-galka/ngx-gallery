@@ -1,3 +1,7 @@
+<a name="2.4.0"></a>
+# 2.4.0 (2017-10-19)
+
+* add option thumbnailsRemainingCount ([1c23bc3](https://github.com/lukasz-galka/ngx-gallery/commit/1c23bc3))
 
 <a name="2.3.1"></a>
 # 2.3.1 (2017-10-18)
