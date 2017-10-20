@@ -25,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/lukasz-galka/ngx-gallery/issues"
   },
+  "homepage": "https://lukasz-galka.github.io/ngx-gallery-demo",
   "main": "bundles/ngx-gallery.umd.js",
   "module": "ngx-gallery.js",
   "jsnext:main": "ngx-gallery.js",

@@ -38,6 +38,7 @@
   "bugs": {
     "url": "https://github.com/lukasz-galka/ngx-gallery/issues"
   },
+  "homepage": "https://lukasz-galka.github.io/ngx-gallery-demo",
   "devDependencies": {
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
