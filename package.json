@@ -53,6 +53,7 @@
     "codelyzer": "~3.2.1",
     "concurrently": "^3.4.0",
     "core-js": "^2.4.1",
+    "coveralls": "^3.0.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
