@@ -57,6 +57,7 @@
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.15.0",
+    "jasmine": "^2.8.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -76,7 +77,7 @@
     "rxjs": "^5.1.0",
     "systemjs": "^0.20.12",
     "ts-node": "~3.3.0",
-    "tslint": "~5.7.0",
+    "tslint": "~5.8.0",
     "typescript": "~2.5.3",
     "zone.js": "^0.8.4"
   },
