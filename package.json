@@ -13,7 +13,8 @@
     "lite": "lite-server",
     "playground:build": "tsc -p playground -w",
     "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
-    "test": "tsc && karma start"
+    "test": "tsc && karma start",
+    "coveralls": "coveralls < coverage/lcovonly/lcov.info"
   },
   "repository": {
     "type": "git",

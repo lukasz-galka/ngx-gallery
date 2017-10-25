@@ -40,6 +40,15 @@ module.exports = function(config) {
         },
         compilerOptions: {
           lib: ['ES2015', 'DOM']
+        },
+        reports:
+        {
+            "lcovonly": {
+                "directory": "coverage",
+                "filename": "lcov.info",
+                "subdirectory": "lcovonly"
+            },
+            "html": "coverage"
         }
       },
 
@@ -48,10 +57,8 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'karma-typescript'],
 
-
     // web server port
     port: 9876,
-
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
