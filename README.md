@@ -108,12 +108,15 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewAutoPlayInterval` | Type: `number` | Default value: `2000` - interval for auto play (ms)
 - `previewAutoPlayPauseOnHover` | Type: `boolean` | Default value: `false` - enables or disables pouse auto play on hover
 - `previewInfinityMove` | Type: `boolean` | Default value: `false` - enables or disables infinity move by arrows
+- `previewZoom` | Type: `boolean` | Default value: `false` - enables or disables zoom in and zoom out
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
 - `closeIcon` | Type: `string` | Default value: `'fa fa-times-circle'` - icon for close button
 - `fullscreenIcon` | Type: `string` | Default value: `'fa fa-arrows-alt'` - icon for fullscreen button
 - `spinnerIcon` | Type: `string` | Default value: `'fa fa-spinner fa-pulse fa-3x fa-fw'` - icon for spinner
+- `zoomInIcon` | Type: `string` | Default value: `'fa fa-search-plus'` - icon for zoom in
+- `zoomOutIcon` | Type: `string` | Default value: `'fa fa-search-minus'` - icon for zoom out
 
 # NgxGalleryImage
 - `small` | Type: `string | SafeResourceUrl` - url used in thumbnails

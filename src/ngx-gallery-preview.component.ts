@@ -7,14 +7,20 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
     selector: 'ngx-gallery-preview',
     template: `
         <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
-        <i class="ngx-gallery-icon ngx-gallery-close {{closeIcon}}" aria-hidden="true" (click)="close()"></i>
-        <i class="ngx-gallery-icon ngx-gallery-fullscreen {{fullscreenIcon}}" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
+        <div class="ngx-gallery-preview-top">
+            <div class="ngx-gallery-preview-icons">
+                <i class="ngx-gallery-icon {{zoomOutIcon}}" aria-hidden="true" (click)="zoomOut()"></i>
+                <i class="ngx-gallery-icon {{zoomInIcon}}" aria-hidden="true" (click)="zoomIn()"></i>
+                <i class="ngx-gallery-icon ngx-gallery-fullscreen {{fullscreenIcon}}" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
+                <i class="ngx-gallery-icon ngx-gallery-close {{closeIcon}}" aria-hidden="true" (click)="close()"></i>
+            </div>
+        </div>
         <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
             <i class="ngx-gallery-icon ngx-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
         </div>
-        <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()">
+        <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
             <div class="ngx-gallery-preview-img-wrapper">
-                <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? getSafeUrl(src) : '#'" (load)="loaded()" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" [class.ngx-gallery-active]="!showSpinner"/>
+                <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? getSafeUrl(src) : '#'" (load)="loaded()" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!showSpinner" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
             <div class="ngx-gallery-preview-text" *ngIf="showDescription && description">{{ description }}</div>
         </div>
@@ -27,6 +33,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     srcIndex: number;
     description: string;
     showSpinner = false;
+    positionLeft = 0;
+    positionTop = 0;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -46,6 +54,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() autoPlayInterval: number;
     @Input() autoPlayPauseOnHover: boolean;
     @Input() infinityMove: boolean;
+    @Input() zoom: boolean;
+    @Input() zoomInIcon: string;
+    @Input() zoomOutIcon: string;
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
@@ -54,6 +65,12 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private loadedList: string[] = [];
     private isOpen = false;
     private timer;
+    private zoomValue = 1;
+    private initialX = 0;
+    private initialY = 0;
+    private initialLeft = 0;
+    private initialTop = 0;
+    private isMove = false;
 
     constructor(private sanitization: DomSanitizer,
         private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
@@ -200,6 +217,60 @@ export class NgxGalleryPreviewComponent implements OnChanges {
             image : this.sanitization.bypassSecurityTrustUrl(image);
     }
 
+    zoomIn(): void {
+        this.zoomValue += 0.1;
+    }
+
+    zoomOut(): void {
+        this.zoomValue -= 0.1;
+
+        if(this.zoomValue === 1) {
+            this.resetPosition()
+        }
+    }
+
+    canDragOnZoom() {
+        return this.zoom && this.zoomValue > 1;
+    }
+
+    mouseDownHandler(e): void {
+        if (this.canDragOnZoom()) {
+            this.initialX = this.getClientX(e);
+            this.initialY = this.getClientY(e);
+            this.initialLeft = this.positionLeft;
+            this.initialTop = this.positionTop;
+            this.isMove = true;
+
+            e.preventDefault();
+        }
+    }
+
+    mouseUpHandler(e): void {
+        this.isMove = false;
+    }
+
+    mouseMoveHandler(e) {
+        if (this.isMove) {
+            this.positionLeft = this.initialLeft + (this.getClientX(e) - this.initialX);
+            this.positionTop = this.initialTop + (this.getClientY(e) - this.initialY);
+        }
+    }
+
+    private getClientX(e): number {
+        return e.touches && e.touches.length ? e.touches[0].clientX : e.clientX;
+    }
+
+    private getClientY(e): number {
+        return e.touches && e.touches.length ? e.touches[0].clientY : e.clientY;
+    }
+
+    private resetPosition() {
+        if (this.zoom) {
+            this.positionLeft = 0;
+            this.positionTop = 0;
+        }
+    }
+
     private isKeyboardNext(e): boolean {
         return e.keyCode === 39 ? true : false;
     }
@@ -242,6 +313,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     private show() {
+        this.zoomValue = 1;
+        this.resetPosition();
+
         this.src = <string>this.images[this.index];
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];

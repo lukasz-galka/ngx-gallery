@@ -22,9 +22,15 @@
     max-width: 90%;
     max-height: 90%;
     transition: opacity 0.5s ease-in-out;
+    user-select: none;
 
     &.ngx-gallery-active {
         opacity: 1;
+    }
+
+    &.ngx-gallery-grab {
+        cursor: grab;
+        cursor: -webkit-grab;
     }
 }
 
@@ -34,16 +40,21 @@
     display: inline-block;
 }
 
-.ngx-gallery-icon.ngx-gallery-close {
-    right: 10px;
-    top: 10px;
-    font-size: 30px;
-    cursor: pointer;
+.ngx-gallery-preview-top {
+    position: absolute;
+    width: 100%;
+    user-select: none;
 }
 
-.ngx-gallery-icon.ngx-gallery-fullscreen {
-    top: 13px;
-    right: 50px;
+.ngx-gallery-preview-icons {
+    float: right;
+}
+
+.ngx-gallery-preview-icons .ngx-gallery-icon {
+    position: relative;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -74,6 +85,7 @@
     color: white;
     font-size: 16px;
     flex: 0 1 auto;
+    z-index: 10;
 }
 
 .ngx-gallery-preview-wrapper {

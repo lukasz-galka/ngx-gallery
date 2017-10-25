@@ -46,11 +46,14 @@ export interface INgxGalleryOptions {
     previewAutoPlayInterval?: number;
     previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
+    previewZoom?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
     fullscreenIcon?: string;
     spinnerIcon?: string;
+    zoomInIcon?: string;
+    zoomOutIcon?: string;
 }
 
 export class NgxGalleryOptions implements INgxGalleryOptions {
@@ -96,11 +99,14 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewAutoPlayInterval?: number;
     previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
+    previewZoom?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
     fullscreenIcon?: string;
     spinnerIcon?: string;
+    zoomInIcon?: string;
+    zoomOutIcon?: string;
 
     constructor(obj: INgxGalleryOptions) {
 
@@ -155,11 +161,14 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
         this.previewAutoPlayPauseOnHover = use(obj.previewAutoPlayPauseOnHover, false);
         this.previewInfinityMove = use(obj.previewInfinityMove, false);
+        this.previewZoom = use(obj.previewZoom, false);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');
         this.closeIcon = use(obj.closeIcon, 'fa fa-times-circle');
         this.fullscreenIcon = use(obj.fullscreenIcon, 'fa fa-arrows-alt');
         this.spinnerIcon = use(obj.spinnerIcon, 'fa fa-spinner fa-pulse fa-3x fa-fw');
+        this.zoomInIcon = use(obj.zoomInIcon, 'fa fa-search-plus');
+        this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
     }
 }
