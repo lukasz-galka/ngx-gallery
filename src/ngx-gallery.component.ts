@@ -1,8 +1,6 @@
 import { Component, Input, HostListener, ViewChild, OnInit,
     HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter, Inject } from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
-import { PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryImageComponent } from './ngx-gallery-image.component';
@@ -58,8 +56,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @HostBinding('style.height') height: string;
     @HostBinding('style.left') left: string;
 
-    constructor(private myElement: ElementRef,
-        @Inject(PLATFORM_ID) private platformId: Object) {}
+    constructor(private myElement: ElementRef) {}
 
     ngOnInit() {
         this.options = this.options.map((opt) => new NgxGalleryOptions(opt));
@@ -214,7 +211,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         this.prevBreakpoint = this.breakpoint;
         let breakpoints;
 
-        if (isPlatformBrowser(this.platformId)) {
+        if (typeof window !== 'undefined') {
             breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
                 .map((opt) => opt.breakpoint);
         }
