@@ -1,3 +1,8 @@
+<a name="2.4.1"></a>
+# 2.4.1 (2017-10-26)
+
+* remove usage of PLATFORM_ID for Angular 2 apps ([24168e4](https://github.com/lukasz-galka/ngx-gallery/commit/24168e4))
+
 <a name="2.4.0"></a>
 # 2.4.0 (2017-10-19)
 
