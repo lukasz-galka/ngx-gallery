@@ -1,12 +1,21 @@
+<a name="3.0.0"></a>
+# 3.0.0 (2017-10-31)
+
+* Add option previewZoom ([c13a4ee](https://github.com/lukasz-galka/ngx-gallery/commit/c13a4ee))
+
+### BREAKING CHANGES
+
+* Preview icons html and css 
+
 <a name="2.4.1"></a>
 # 2.4.1 (2017-10-26)
 
-* remove usage of PLATFORM_ID for Angular 2 apps ([24168e4](https://github.com/lukasz-galka/ngx-gallery/commit/24168e4))
+* Remove usage of PLATFORM_ID for Angular 2 apps ([24168e4](https://github.com/lukasz-galka/ngx-gallery/commit/24168e4))
 
 <a name="2.4.0"></a>
 # 2.4.0 (2017-10-19)
 
-* add option thumbnailsRemainingCount ([1c23bc3](https://github.com/lukasz-galka/ngx-gallery/commit/1c23bc3))
+* Add option thumbnailsRemainingCount ([1c23bc3](https://github.com/lukasz-galka/ngx-gallery/commit/1c23bc3))
 
 <a name="2.3.1"></a>
 # 2.3.1 (2017-10-18)
