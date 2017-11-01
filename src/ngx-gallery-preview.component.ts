@@ -35,6 +35,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     showSpinner = false;
     positionLeft = 0;
     positionTop = 0;
+    zoomValue = 1;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -65,7 +66,6 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private loadedList: string[] = [];
     private isOpen = false;
     private timer;
-    private zoomValue = 1;
     private initialX = 0;
     private initialY = 0;
     private initialLeft = 0;
