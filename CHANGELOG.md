@@ -1,7 +1,12 @@
+<a name="3.1.0"></a>
+# 3.1.0 (2017-11-04)
+
+* Add options previewZoomStep, previewZoomMax and previewZoomMin ([f2fc2d4](https://github.com/lukasz-galka/ngx-gallery/commit/f2fc2d4))
+
 <a name="3.0.1"></a>
 # 3.0.1 (2017-11-01)
 
-* fix zoomValue accessibility ([b16614d](https://github.com/lukasz-galka/ngx-gallery/commit/b16614d))
+* Fix zoomValue accessibility ([b16614d](https://github.com/lukasz-galka/ngx-gallery/commit/b16614d))
 
 <a name="3.0.0"></a>
 # 3.0.0 (2017-10-31)

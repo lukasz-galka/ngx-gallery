@@ -109,6 +109,9 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewAutoPlayPauseOnHover` | Type: `boolean` | Default value: `false` - enables or disables pouse auto play on hover
 - `previewInfinityMove` | Type: `boolean` | Default value: `false` - enables or disables infinity move by arrows
 - `previewZoom` | Type: `boolean` | Default value: `false` - enables or disables zoom in and zoom out
+- `previewZoomStep` | Type: `number` | Default value: `0.1` - step for zoom change
+- `previewZoomMax` | Type: `number` | Default value: `2` - max value for zoom
+- `previewZoomMin` | Type: `number` | Default value: `0.5` - min value for zoom 
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
