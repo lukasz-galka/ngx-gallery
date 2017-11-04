@@ -9,8 +9,8 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
-                <i class="ngx-gallery-icon {{zoomOutIcon}}" aria-hidden="true" (click)="zoomOut()" *ngIf="zoom"></i>
-                <i class="ngx-gallery-icon {{zoomInIcon}}" aria-hidden="true" (click)="zoomIn()" *ngIf="zoom"></i>
+                <i class="ngx-gallery-icon {{zoomOutIcon}}" aria-hidden="true" (click)="zoomOut()" *ngIf="zoom" [class.ngx-gallery-icon-disabled]="!canZoomOut()"></i>
+                <i class="ngx-gallery-icon {{zoomInIcon}}" aria-hidden="true" (click)="zoomIn()" *ngIf="zoom" [class.ngx-gallery-icon-disabled]="!canZoomIn()"></i>
                 <i class="ngx-gallery-icon ngx-gallery-fullscreen {{fullscreenIcon}}" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
                 <i class="ngx-gallery-icon ngx-gallery-close {{closeIcon}}" aria-hidden="true" (click)="close()"></i>
             </div>
@@ -56,6 +56,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() autoPlayPauseOnHover: boolean;
     @Input() infinityMove: boolean;
     @Input() zoom: boolean;
+    @Input() zoomStep: number;
+    @Input() zoomMax: number;
+    @Input() zoomMin: number;
     @Input() zoomInIcon: string;
     @Input() zoomOutIcon: string;
 
@@ -218,15 +221,35 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     zoomIn(): void {
-        this.zoomValue += 0.1;
+        if (this.canZoomIn()) {
+            this.zoomValue += this.zoomStep;
+
+            if (this.zoomValue > this.zoomMax) {
+                this.zoomValue = this.zoomMax;
+            }
+        }
     }
 
     zoomOut(): void {
-        this.zoomValue -= 0.1;
+        if (this.canZoomOut()) {
+            this.zoomValue -= this.zoomStep;
 
-        if(this.zoomValue === 1) {
-            this.resetPosition()
+            if (this.zoomValue < this.zoomMin) {
+                this.zoomValue = this.zoomMin;
+            }
+
+            if(this.zoomValue <= 1) {
+                this.resetPosition()
+            }
         }
+    }
+
+    canZoomIn(): boolean {
+        return this.zoomValue < this.zoomMax ? true : false;
+    }
+
+    canZoomOut(): boolean {
+        return this.zoomValue > this.zoomMin ? true : false;
     }
 
     canDragOnZoom() {

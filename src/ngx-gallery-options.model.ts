@@ -47,6 +47,9 @@ export interface INgxGalleryOptions {
     previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
     previewZoom?: boolean;
+    previewZoomStep?: number;
+    previewZoomMax?: number;
+    previewZoomMin?: number;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -100,6 +103,9 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewAutoPlayPauseOnHover?: boolean;
     previewInfinityMove?: boolean;
     previewZoom?: boolean;
+    previewZoomStep?: number;
+    previewZoomMax?: number;
+    previewZoomMin?: number;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -162,6 +168,9 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewAutoPlayPauseOnHover = use(obj.previewAutoPlayPauseOnHover, false);
         this.previewInfinityMove = use(obj.previewInfinityMove, false);
         this.previewZoom = use(obj.previewZoom, false);
+        this.previewZoomStep = use(obj.previewZoomStep, 0.1);
+        this.previewZoomMax = use(obj.previewZoomMax, 2);
+        this.previewZoomMin = use(obj.previewZoomMin, 0.5);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');

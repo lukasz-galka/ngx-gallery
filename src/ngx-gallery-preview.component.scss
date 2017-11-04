@@ -56,6 +56,11 @@
     margin-top: 10px;
     font-size: 25px;
     cursor: pointer;
+
+    &.ngx-gallery-icon-disabled {
+        cursor: default;
+        opacity: 0.4;
+    }
 }
 
 .ngx-spinner-wrapper {
