@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -20,7 +20,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         </div>
         <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
             <div class="ngx-gallery-preview-img-wrapper">
-                <img class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? getSafeUrl(src) : '#'" (load)="loaded()" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!showSpinner" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
+                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? getSafeUrl(src) : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
             <div class="ngx-gallery-preview-text" *ngIf="showDescription && description">{{ description }}</div>
         </div>
@@ -36,6 +36,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     positionLeft = 0;
     positionTop = 0;
     zoomValue = 1;
+    loading = false;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -65,8 +66,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
 
+    @ViewChild('previewImage') previewImage: ElementRef;
+
     private index = 0;
-    private loadedList: string[] = [];
     private isOpen = false;
     private timer;
     private initialX = 0;
@@ -106,14 +108,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
         this.index = index;
         this.isOpen = true;
-        this.show();
+        this.show(true);
 
         if (this.forceFullscreen) {
             this.manageFullscreen();
-        }
-
-        if (this.autoPlay) {
-            this.startAutoPlay();
         }
     }
 
@@ -123,11 +121,6 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.onClose.emit();
 
         this.stopAutoPlay();
-    }
-
-    loaded(): void {
-        this.showSpinner = false;
-        this.loadedList.push(this.src);
     }
 
     imageMouseEnter(): void {
@@ -143,19 +136,21 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     startAutoPlay(): void {
-        this.stopAutoPlay();
+        if (this.autoPlay) {
+            this.stopAutoPlay();
 
-        this.timer = setInterval(() => {
-            if (!this.showNext()) {
-                this.index = -1;
-                this.showNext();
-            }
-        }, this.autoPlayInterval);
+            this.timer = setTimeout(() => {
+                if (!this.showNext()) {
+                    this.index = -1;
+                    this.showNext();
+                }
+            }, this.autoPlayInterval);
+        }
     }
 
     stopAutoPlay(): void {
         if (this.timer) {
-            clearInterval(this.timer);
+            clearTimeout(this.timer);
         }
     }
 
@@ -187,7 +182,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     canShowNext(): boolean {
-        if (this.images) {
+        if (this.loading) {
+            return false;
+        } else if (this.images) {
             return this.infinityMove || this.index < this.images.length - 1 ? true : false;
         } else {
             return false;
@@ -195,7 +192,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     canShowPrev(): boolean {
-        if (this.images) {
+        if (this.loading) {
+            return false;
+        } else if (this.images) {
             return this.infinityMove || this.index > 0 ? true : false;
         } else {
             return false;
@@ -335,7 +334,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
-    private show() {
+    private show(first: boolean = false) {
+        this.loading = true;
+        this.stopAutoPlay();
+
+        if (first) {
+            this._show();
+        } else {
+            setTimeout(() => this._show(), 600);
+        }
+    }
+
+    private _show() {
         this.zoomValue = 1;
         this.resetPosition();
 
@@ -343,8 +353,36 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];
 
-        if (this.loadedList.indexOf(this.src) === -1) {
-            this.showSpinner = true;
+        setTimeout(() => {
+            if (this.isLoaded(this.previewImage.nativeElement)) {
+                this.loading = false;
+                this.startAutoPlay();
+            } else {
+                setTimeout(() => {
+                    if (this.loading) {
+                        this.showSpinner = true;
+                    }
+                })
+
+                this.previewImage.nativeElement.onload = () => {
+                    this.loading = false;
+                    this.showSpinner = false;
+                    this.previewImage.nativeElement.onload = null;
+                    this.startAutoPlay();
+                }
+            }
+        })
+    }
+
+    private isLoaded(img): boolean {
+        if (!img.complete) {
+            return false;
         }
+
+        if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
+            return false;
+        }
+
+        return true;
     }
 }
