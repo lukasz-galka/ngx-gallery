@@ -1,3 +1,8 @@
+<a name="3.1.1"></a>
+# 3.1.1 (2017-11-07)
+
+* Fix loading of preview images ([9755810](https://github.com/lukasz-galka/ngx-gallery/commit/9755810))
+
 <a name="3.1.0"></a>
 # 3.1.0 (2017-11-04)
 
