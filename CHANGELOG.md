@@ -1,3 +1,8 @@
+<a name="3.1.2"></a>
+# 3.1.2 (2017-11-21)
+
+* Fix images reload on preview ([403a619](https://github.com/lukasz-galka/ngx-gallery/commit/403a619))
+
 <a name="3.1.1"></a>
 # 3.1.1 (2017-11-07)
 
