@@ -1,3 +1,8 @@
+<a name="3.1.3"></a>
+# 3.1.3 (2017-11-21)
+
+* Fix parenthesis and spaces in url ([094661d](https://github.com/lukasz-galka/ngx-gallery/commit/094661d))
+
 <a name="3.1.2"></a>
 # 3.1.2 (2017-11-21)
 
