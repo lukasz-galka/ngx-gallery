@@ -20,7 +20,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         </div>
         <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
             <div class="ngx-gallery-preview-img-wrapper">
-                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? getSafeUrl(src) : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
+                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
             <div class="ngx-gallery-preview-text" *ngIf="showDescription && description">{{ description }}</div>
         </div>
@@ -29,7 +29,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 })
 export class NgxGalleryPreviewComponent implements OnChanges {
 
-    src: string;
+    src: SafeUrl;
     srcIndex: number;
     description: string;
     showSpinner = false;
@@ -349,7 +349,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.zoomValue = 1;
         this.resetPosition();
 
-        this.src = <string>this.images[this.index];
+        this.src = this.getSafeUrl(<string>this.images[this.index]);
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];
 
