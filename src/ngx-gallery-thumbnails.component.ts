@@ -202,7 +202,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     getSafeUrl(image: string): SafeStyle {
-        return this.sanitization.bypassSecurityTrustStyle('url(' + image + ')');
+        return this.sanitization.bypassSecurityTrustStyle(this.helperService.getBackgroundUrl(image));
     }
 
     private getThumbnailPosition(index: number, count: number): SafeStyle {

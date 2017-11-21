@@ -25,6 +25,10 @@ export class NgxGalleryHelperService {
         } catch (e) {}
     }
 
+    getBackgroundUrl(image: string) {
+        return 'url(\'' + encodeURI(image) + '\')';
+    }
+
     private getSwipeHandlers(id: string): Function[] | undefined {
         return this.swipeHandlers.get(id);
     }
