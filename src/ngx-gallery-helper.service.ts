@@ -25,8 +25,12 @@ export class NgxGalleryHelperService {
         } catch (e) {}
     }
 
+    validateUrl(url: string): string {
+        return url.replace(new RegExp(' ', 'g'), '%20');
+    }
+
     getBackgroundUrl(image: string) {
-        return 'url(\'' + encodeURI(image) + '\')';
+        return 'url(\'' + this.validateUrl(image) + '\')';
     }
 
     private getSwipeHandlers(id: string): Function[] | undefined {
