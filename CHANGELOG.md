@@ -1,3 +1,8 @@
+<a name="3.1.4"></a>
+# 3.1.4 (2017-11-22)
+
+* Fix replacing % in url ([e8cc079](https://github.com/lukasz-galka/ngx-gallery/commit/e8cc079))
+
 <a name="3.1.3"></a>
 # 3.1.3 (2017-11-21)
 
