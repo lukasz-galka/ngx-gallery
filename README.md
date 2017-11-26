@@ -70,6 +70,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `fullWidth` | Type: `boolean` | Default value: `false` - sets the same width as browser
 - `layout` | Type: `string` | Default value: `NgxGalleryLayout.Bottom` - sets thumbnails position
 - `startIndex` | Type: `number` | Default value: `0` - sets index of selected image on start
+- `linkTarget` | Type: `string` | Default value: `_blank` - sets target attribute of link
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
@@ -93,6 +94,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsMoveSize` | Type: `number` | Default value: `1` - number of items to move on arrow click
 - `thumbnailsOrder` | Type: `number` | Default value: `NgxGalleryOrder.Column` - images order
 - `thumbnailsRemainingCount` | Type: `boolean` | Default value: `false` - if true arrows are disabled and last item has label with remaining count
+- `thumbnailsAsLinks` | Type: `boolean` | Default value: `false` - enables or disables links on thumbnails
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 
@@ -126,6 +128,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `medium` | Type: `string | SafeResourceUrl` - url used in image
 - `big` | Type: `string | SafeResourceUrl` - url used in preview
 - `description` | Type: `string` - description used in preview
+- `url` | Type: `string` - url used in link
 
 # NgxGalleryAnimation
 - `Fade` (default)
