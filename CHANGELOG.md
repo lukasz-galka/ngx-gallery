@@ -1,3 +1,9 @@
+<a name="3.2.0"></a>
+# 3.2.0 (2017-11-26)
+
+* Add event imagesReady ([c20e354](https://github.com/lukasz-galka/ngx-gallery/commit/c20e354))
+* Add method show ([e24f837](https://github.com/lukasz-galka/ngx-gallery/commit/e24f837))
+
 <a name="3.1.4"></a>
 # 3.1.4 (2017-11-22)
 
