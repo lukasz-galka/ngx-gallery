@@ -158,6 +158,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         }
     }
 
+    show(index: number): void {
+        this.select(index);
+    }
+
     showNext(): void {
         this.image.showNext();
     }

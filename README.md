@@ -151,6 +151,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewClose` - triggered on preview close
 
 # Methods
+- `show(index: number): void` - shows image at index
 - `showNext(): void` - shows next image
 - `showPrev(): void` - shows prev image
 - `canShowNext(): boolean` - returns true if there is next image
