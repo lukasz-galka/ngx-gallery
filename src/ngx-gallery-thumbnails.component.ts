@@ -9,11 +9,11 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
     template: `
     <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
         <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft">
-            <div class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }">
-            <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
-                <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
-            </div>
-            </div>
+            <a [href]="hasLinks() ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }">
+                <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
+                    <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
+                </div>
+            </a>
         </div>
     </div>
     <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
@@ -27,6 +27,8 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     remainingCountValue: number;
 
     @Input() images: string[] | SafeResourceUrl[];
+    @Input() links: string[];
+    @Input() linkTarget: string;
     @Input() columns: number;
     @Input() rows: number;
     @Input() arrows: boolean;
@@ -87,11 +89,17 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     handleClick(event: Event, index: number): void {
-        this.selectedIndex = index;
-        this.onActiveChange.emit(index);
+        if (!this.hasLinks()) {
+            this.selectedIndex = index;
+            this.onActiveChange.emit(index);
 
-        event.stopPropagation();
-        event.preventDefault();
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
+
+    hasLinks(): boolean {
+        if (this.links && this.links.length) return true;
     }
 
     moveRight(): void {

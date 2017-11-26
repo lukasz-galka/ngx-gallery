@@ -10,6 +10,7 @@ export interface INgxGalleryOptions {
     fullWidth?: boolean;
     layout?: string;
     startIndex?: number;
+    linkTarget?: string;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -32,6 +33,7 @@ export interface INgxGalleryOptions {
     thumbnailsMoveSize?: number;
     thumbnailsOrder?: NgxGalleryOrder;
     thumbnailsRemainingCount?: boolean;
+    thumbnailsAsLinks?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -66,6 +68,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     fullWidth?: boolean;
     layout?: string;
     startIndex?: number;
+    linkTarget?: string;
     image?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
@@ -88,6 +91,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsMoveSize?: number;
     thumbnailsOrder?: NgxGalleryOrder;
     thumbnailsRemainingCount?: boolean;
+    thumbnailsAsLinks?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     preview?: boolean;
@@ -128,6 +132,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.fullWidth = use(obj.fullWidth, false);
         this.layout = use(obj.layout, NgxGalleryLayout.ThumbnailsBottom);
         this.startIndex = use(obj.startIndex, 0);
+        this.linkTarget = use(obj.linkTarget, '_blank');
 
         this.image = use(obj.image, true);
         this.imagePercent = use(obj.imagePercent, 75);
@@ -152,6 +157,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsMoveSize = use(obj.thumbnailsMoveSize, 1);
         this.thumbnailsOrder = use(obj.thumbnailsOrder, NgxGalleryOrder.Column);
         this.thumbnailsRemainingCount = use(obj.thumbnailsRemainingCount, false);
+        this.thumbnailsAsLinks = use(obj.thumbnailsAsLinks, false);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
 
