@@ -1,3 +1,8 @@
+<a name="3.3.0"></a>
+# 3.3.0 (2017-11-26)
+
+* Add option thumbnailsAsLinks and linkTarget ([3fe30e0](https://github.com/lukasz-galka/ngx-gallery/commit/3fe30e0))
+
 <a name="3.2.0"></a>
 # 3.2.0 (2017-11-26)
 
