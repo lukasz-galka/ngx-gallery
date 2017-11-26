@@ -28,6 +28,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
 
+    @Output() imagesReady = new EventEmitter();
     @Output() change = new EventEmitter();
     @Output() previewOpen = new EventEmitter();
     @Output() previewClose = new EventEmitter();
@@ -75,6 +76,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
             this.oldImagesLength = this.images.length;
             this.oldImages = this.images;
             this.setImages();
+
+            if (this.images && this.images.length) {
+                this.imagesReady.emit();
+            }
         }
     }
 

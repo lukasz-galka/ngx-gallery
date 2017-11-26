@@ -147,6 +147,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 
 # Events
 - `change` - triggered on image change
+- `imagesReady` - triggered when images length > 0
 - `previewOpen` - triggered on preview open
 - `previewClose` - triggered on preview close
 
