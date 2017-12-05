@@ -2,7 +2,8 @@ import {} from 'jasmine';
 import { Renderer, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService } from "./";
+import { NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService,
+    NgxGalleryOrderedImage } from "./";
 
 export class CustomHammerConfig extends HammerGestureConfig  {
     overrides = <any>{
@@ -30,7 +31,9 @@ describe('NgxGalleryArrowsComponent', () => {
 
         fixture = TestBed.createComponent(NgxGalleryImageComponent);
         comp = fixture.componentInstance;
-        comp.images = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg'];
+        comp.images = [new NgxGalleryOrderedImage({ src: 'image-1.jpg', index: 0}),
+        new NgxGalleryOrderedImage({ src: 'image-2.jpg', index: 1}),
+        new NgxGalleryOrderedImage({ src: 'image-3.jpg', index: 2})];
         el = fixture.debugElement.nativeElement;
     });
 
@@ -178,7 +181,8 @@ describe('NgxGalleryArrowsComponent', () => {
         fixture.detectChanges();
         comp.selectedIndex = 2;
 
-        comp.images = ['image1.jpg', 'image2.jpg'];
+        comp.images = [new NgxGalleryOrderedImage({ src: 'image-1.jpg', index: 0}),
+        new NgxGalleryOrderedImage({ src: 'image-2.jpg', index: 1})];
         comp.ngOnChanges({
             images: new SimpleChange(null, comp.images, true)
         });
