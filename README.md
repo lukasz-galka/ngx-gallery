@@ -245,3 +245,7 @@ export class AppComponent implements OnInit {
 // app.component.html
 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 ````
+
+# Donate
+
+If you like my work you can buy me a :beer: or :pizza: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/galer88)
