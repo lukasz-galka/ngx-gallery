@@ -1,3 +1,11 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2017-12-05)
+
+* Add lazy loading ([ce900c9](https://github.com/lukasz-galka/ngx-gallery/commit/ce900c9))
+
+### BREAKING CHANGES
+* lazy loading is enabled by default 
+
 <a name="3.3.0"></a>
 # 3.3.0 (2017-11-26)
 
