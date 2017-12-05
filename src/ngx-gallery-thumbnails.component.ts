@@ -26,6 +26,8 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     mouseenter: boolean;
     remainingCountValue: number;
 
+    minStopIndex = 0;
+
     @Input() images: string[] | SafeResourceUrl[];
     @Input() links: string[];
     @Input() linkTarget: string;
@@ -43,6 +45,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() moveSize: number;
     @Input() order: number;
     @Input() remainingCount: boolean;
+    @Input() lazyLoading: boolean;
 
     @Output() onActiveChange = new EventEmitter();
 
@@ -85,7 +88,27 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     getImages(): string[] | SafeResourceUrl[] {
-        return this.images && this.remainingCount ? this.images.slice(0, this.columns) : this.images;
+        if (this.remainingCount) {
+            return this.images.slice(0, this.columns);
+        }
+        else if (this.lazyLoading && this.order != NgxGalleryOrder.Row) {
+            let stopIndex = this.index + this.columns + this.moveSize;
+
+            if (this.rows > 1 && this.order === NgxGalleryOrder.Column) {
+                stopIndex = stopIndex * this.rows;
+            }
+
+            if (stopIndex <= this.minStopIndex) {
+                stopIndex = this.minStopIndex;
+            } else {
+                this.minStopIndex = stopIndex;
+            }
+
+            return this.images.slice(0, stopIndex);
+        }
+        else {
+            return this.images;
+        }
     }
 
     handleClick(event: Event, index: number): void {

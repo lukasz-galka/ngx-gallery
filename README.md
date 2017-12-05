@@ -71,6 +71,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `layout` | Type: `string` | Default value: `NgxGalleryLayout.Bottom` - sets thumbnails position
 - `startIndex` | Type: `number` | Default value: `0` - sets index of selected image on start
 - `linkTarget` | Type: `string` | Default value: `_blank` - sets target attribute of link
+- `lazyLoading` | Type: `boolean` | Default value: `true` - enables/disables lazy loading for images
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
