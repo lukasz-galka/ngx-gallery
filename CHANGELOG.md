@@ -1,3 +1,8 @@
+<a name="4.1.0"></a>
+# 4.1.0 (2017-12-10)
+
+* Allow html in image description ([36ea9c9](https://github.com/lukasz-galka/ngx-gallery/commit/36ea9c9))
+
 <a name="4.0.0"></a>
 # 4.0.0 (2017-12-05)
 
