@@ -145,11 +145,19 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     onPreviewOpen(): void {
         this.previewOpen.emit();
+
+        if (this.image && this.image.autoPlay) {
+            this.image.stopAutoPlay();
+        }
     }
 
     onPreviewClose(): void {
         this.previewEnabled = false;
         this.previewClose.emit();
+
+        if (this.image && this.image.autoPlay) {
+            this.image.startAutoPlay();
+        }
     }
 
     selectFromImage(index: number) {
