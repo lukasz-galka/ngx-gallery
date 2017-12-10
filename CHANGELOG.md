@@ -1,3 +1,8 @@
+<a name="4.1.1"></a>
+# 4.1.1 (2017-12-10)
+
+* Stop image auto play when preview is open ([c1216ce](https://github.com/lukasz-galka/ngx-gallery/commit/c1216ce))
+
 <a name="4.1.0"></a>
 # 4.1.0 (2017-12-10)
 
