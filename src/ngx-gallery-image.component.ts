@@ -53,11 +53,6 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['images'] && changes['images'].currentValue
-            && this.selectedIndex >= changes['images'].currentValue.length) {
-            this.selectedIndex = 0;
-        }
-
         if (changes['swipe']) {
             this.helperService.manageSwipe(this.swipe, this.elementRef, 'image', () => this.showNext(), () => this.showPrev());
         }
@@ -81,6 +76,10 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
         if (this.autoPlay && this.autoPlayPauseOnHover) {
             this.startAutoPlay();
         }
+    }
+
+    reset(index: number): void {
+        this.selectedIndex = index;
     }
 
     getImages(): NgxGalleryOrderedImage[] {

@@ -4,6 +4,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
 import { NgxGalleryImageComponent } from './ngx-gallery-image.component';
+import { NgxGalleryThumbnailsComponent } from './ngx-gallery-thumbnails.component';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 import { NgxGalleryOptions } from './ngx-gallery-options.model';
@@ -54,6 +55,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
     @ViewChild(NgxGalleryImageComponent) image: NgxGalleryImageComponent;
+    @ViewChild(NgxGalleryThumbnailsComponent) thubmnails: NgxGalleryThumbnailsComponent;
 
     @HostBinding('style.width') width: string;
     @HostBinding('style.height') height: string;
@@ -81,6 +83,14 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
             if (this.images && this.images.length) {
                 this.imagesReady.emit();
+            }
+
+            if (this.image) {
+                this.image.reset(<number>this.currentOptions.startIndex);
+            }
+
+            if (this.thubmnails) {
+                this.thubmnails.reset(<number>this.currentOptions.startIndex);
             }
         }
     }
