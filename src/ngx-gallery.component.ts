@@ -15,9 +15,9 @@ import { NgxGalleryOrderedImage } from './ngx-gallery-ordered-image.model';
     selector: 'ngx-gallery',
     template: `
     <div class="ngx-gallery-layout {{currentOptions?.layout}}">
-        <ngx-gallery-image *ngIf="currentOptions?.image" [style.height]="getImageHeight()" [images]="mediumImages" [clickable]="currentOptions?.preview" [selectedIndex]="selectedIndex" [arrows]="currentOptions?.imageArrows" [arrowsAutoHide]="currentOptions?.imageArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [swipe]="currentOptions?.imageSwipe" [animation]="currentOptions?.imageAnimation" [size]="currentOptions?.imageSize" [autoPlay]="currentOptions?.imageAutoPlay" [autoPlayInterval]="currentOptions?.imageAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.imageAutoPlayPauseOnHover" [infinityMove]="currentOptions?.imageInfinityMove"  [lazyLoading]="currentOptions?.lazyLoading" (onClick)="openPreview($event)" (onActiveChange)="selectFromImage($event)"></ngx-gallery-image>
+        <ngx-gallery-image *ngIf="currentOptions?.image" [style.height]="getImageHeight()" [style.width]="getImageWidth()" [images]="mediumImages" [clickable]="currentOptions?.preview" [selectedIndex]="selectedIndex" [arrows]="currentOptions?.imageArrows" [arrowsAutoHide]="currentOptions?.imageArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [swipe]="currentOptions?.imageSwipe" [animation]="currentOptions?.imageAnimation" [size]="currentOptions?.imageSize" [autoPlay]="currentOptions?.imageAutoPlay" [autoPlayInterval]="currentOptions?.imageAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.imageAutoPlayPauseOnHover" [infinityMove]="currentOptions?.imageInfinityMove"  [lazyLoading]="currentOptions?.lazyLoading" (onClick)="openPreview($event)" (onActiveChange)="selectFromImage($event)"></ngx-gallery-image>
 
-        <ngx-gallery-thumbnails *ngIf="currentOptions?.thumbnails" [style.marginTop]="getThumbnailsMarginTop()" [style.marginBottom]="getThumbnailsMarginBottom()" [style.height]="getThumbnailsHeight()" [images]="smallImages" [links]="currentOptions?.thumbnailsAsLinks ? links : []" [linkTarget]="currentOptions?.linkTarget" [selectedIndex]="selectedIndex" [columns]="currentOptions?.thumbnailsColumns" [rows]="currentOptions?.thumbnailsRows" [margin]="currentOptions?.thumbnailMargin" [arrows]="currentOptions?.thumbnailsArrows" [arrowsAutoHide]="currentOptions?.thumbnailsArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [clickable]="currentOptions?.image || currentOptions?.preview" [swipe]="currentOptions?.thumbnailsSwipe" [size]="currentOptions?.thumbnailSize" [moveSize]="currentOptions?.thumbnailsMoveSize" [order]="currentOptions?.thumbnailsOrder" [remainingCount]="currentOptions?.thumbnailsRemainingCount" [lazyLoading]="currentOptions?.lazyLoading" (onActiveChange)="selectFromThumbnails($event)"></ngx-gallery-thumbnails>
+        <ngx-gallery-thumbnails *ngIf="currentOptions?.thumbnails" [style.marginTop]="getThumbnailsMarginTop()" [style.marginBottom]="getThumbnailsMarginBottom()" [style.marginLeft]="getThumbnailsMarginLeft()" [style.marginRight]="getThumbnailsMarginRight()" [style.height]="getThumbnailsHeight()" [style.width]="getThumbnailsWidth()" [images]="smallImages" [links]="currentOptions?.thumbnailsAsLinks ? links : []" [linkTarget]="currentOptions?.linkTarget" [selectedIndex]="selectedIndex" [columns]="currentOptions?.thumbnailsColumns" [rows]="currentOptions?.thumbnailsRows" [margin]="currentOptions?.thumbnailMargin" [arrows]="currentOptions?.thumbnailsArrows" [arrowsAutoHide]="currentOptions?.thumbnailsArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [clickable]="currentOptions?.image || currentOptions?.preview" [swipe]="currentOptions?.thumbnailsSwipe" [size]="currentOptions?.thumbnailSize" [moveSize]="currentOptions?.thumbnailsMoveSize" [order]="currentOptions?.thumbnailsOrder" [remainingCount]="currentOptions?.thumbnailsRemainingCount" [lazyLoading]="currentOptions?.lazyLoading" [verticalLayout]="isVerticalLayout()" (onActiveChange)="selectFromThumbnails($event)"></ngx-gallery-thumbnails>
 
         <ngx-gallery-preview [images]="bigImages" [descriptions]="descriptions" [showDescription]="currentOptions?.previewDescription" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [closeIcon]="currentOptions?.closeIcon" [fullscreenIcon]="currentOptions?.fullscreenIcon" [spinnerIcon]="currentOptions?.spinnerIcon" [swipe]="currentOptions?.previewSwipe" [fullscreen]="currentOptions?.previewFullscreen" [forceFullscreen]="currentOptions?.previewForceFullscreen" [closeOnClick]="currentOptions?.previewCloseOnClick" [closeOnEsc]="currentOptions?.previewCloseOnEsc" [keyboardNavigation]="currentOptions?.previewKeyboardNavigation" [autoPlay]="currentOptions?.previewAutoPlay" [autoPlayInterval]="currentOptions?.previewAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.previewAutoPlayPauseOnHover" [infinityMove]="currentOptions?.previewInfinityMove" [zoom]="currentOptions?.previewZoom" [zoomStep]="currentOptions?.previewZoomStep" [zoomMax]="currentOptions?.previewZoomMax" [zoomMin]="currentOptions?.previewZoomMin" [zoomInIcon]="currentOptions?.zoomInIcon" [zoomOutIcon]="currentOptions?.zoomOutIcon" (onClose)="onPreviewClose()" (onOpen)="onPreviewOpen()" [class.ngx-gallery-active]="previewEnabled"></ngx-gallery-preview>
     </div>
@@ -109,12 +109,35 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     getImageHeight(): string {
-        return (this.currentOptions && this.currentOptions.thumbnails) ?
+        return (this.currentOptions && this.currentOptions.thumbnails && this.isVerticalLayout()) ?
             this.currentOptions.imagePercent + '%' : '100%';
     }
 
+    getImageWidth(): string {
+        return (this.currentOptions && this.currentOptions.thumbnails && !this.isVerticalLayout()) ?
+            this.currentOptions.imagePercent + '%' : '100%';
+    }
+
+    isVerticalLayout(): boolean {
+        if (this.currentOptions && (this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop
+            || this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     getThumbnailsHeight(): string {
-        if (this.currentOptions && this.currentOptions.image) {
+        if (this.currentOptions && this.currentOptions.image && this.isVerticalLayout()) {
+            return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
+            + this.currentOptions.thumbnailsMargin + 'px)';
+        } else {
+            return '100%';
+        }
+    }
+
+    getThumbnailsWidth(): string {
+        if (this.currentOptions && this.currentOptions.image && !this.isVerticalLayout()) {
             return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
             + this.currentOptions.thumbnailsMargin + 'px)';
         } else {
@@ -132,6 +155,22 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     getThumbnailsMarginBottom(): string {
         if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop) {
+            return this.currentOptions.thumbnailsMargin + 'px';
+        } else {
+            return '0px';
+        }
+    }
+
+    getThumbnailsMarginLeft(): string {
+        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsRight) {
+            return this.currentOptions.thumbnailsMargin + 'px';
+        } else {
+            return '0px';
+        }
+    }
+
+    getThumbnailsMarginRight(): string {
+        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsLeft) {
             return this.currentOptions.thumbnailsMargin + 'px';
         } else {
             return '0px';

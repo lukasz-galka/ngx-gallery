@@ -16,7 +16,7 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
             </a>
         </div>
     </div>
-    <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+    <ngx-gallery-arrows *ngIf="canShowArrows()" [class.vertical-layout]="verticalLayout" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
     `,
     styleUrls: ['./ngx-gallery-thumbnails.component.scss']
 })
@@ -46,6 +46,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() order: number;
     @Input() remainingCount: boolean;
     @Input() lazyLoading: boolean;
+    @Input() verticalLayout: boolean;
 
     @Output() onActiveChange = new EventEmitter();
 

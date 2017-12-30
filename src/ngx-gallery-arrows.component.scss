@@ -37,3 +37,39 @@
         right: 10px;
     }
 }
+
+
+:host.vertical-layout {
+    .ngx-gallery-arrow-wrapper {
+        width: 100%;
+        height: 1px;
+    }
+
+    .ngx-gallery-arrow-left {
+        top: 0px;
+    }
+
+    .ngx-gallery-arrow-right {
+        bottom: 0px;
+    }
+
+    .ngx-gallery-arrow {
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    .ngx-gallery-arrow-left {
+        .ngx-gallery-arrow {
+            top: 10px;
+            left: auto;
+        }
+    }
+
+    .ngx-gallery-arrow-right {
+        .ngx-gallery-arrow {
+            bottom: 10px;
+            top: auto;
+            right: auto;
+        }
+    }
+}

@@ -30,7 +30,8 @@
         flex-direction: column;
     }
 
-    .ngx-gallery-layout.thumbnails-top {
+    .ngx-gallery-layout.thumbnails-top,
+    .ngx-gallery-layout.thumbnails-left {
         ngx-gallery-image {
             order: 2;
         }
@@ -40,7 +41,8 @@
         }
     }
 
-    .ngx-gallery-layout.thumbnails-bottom {
+    .ngx-gallery-layout.thumbnails-bottom,
+    .ngx-gallery-layout.thumbnails-right {
         ngx-gallery-image {
             order: 1;
         }
@@ -48,5 +50,10 @@
         ngx-gallery-thumbnails {
             order: 2;
         }
+    }
+
+    .ngx-gallery-layout.thumbnails-left,
+    .ngx-gallery-layout.thumbnails-right {
+        flex-direction: row;
     }
 }
