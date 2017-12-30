@@ -176,19 +176,4 @@ describe('NgxGalleryArrowsComponent', () => {
             done();
         }, 150)
     });
-
-    it('should validate selected index after images count change', () => {
-        fixture.detectChanges();
-        comp.selectedIndex = 2;
-
-        comp.images = [new NgxGalleryOrderedImage({ src: 'image-1.jpg', index: 0}),
-        new NgxGalleryOrderedImage({ src: 'image-2.jpg', index: 1})];
-        comp.ngOnChanges({
-            images: new SimpleChange(null, comp.images, true)
-        });
-
-        fixture.detectChanges();
-
-        expect(comp.selectedIndex).toEqual(0);
-    });
 })

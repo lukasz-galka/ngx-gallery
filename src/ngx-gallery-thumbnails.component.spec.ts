@@ -51,20 +51,6 @@ describe('NgxGalleryThumbnailsComponent', () => {
         expect(thumbnails.getAttribute('style')).toEqual('left: calc(0% - 0px);');
     });
 
-    it('should validate selected index after images count change', () => {
-        fixture.detectChanges();
-        comp.selectedIndex = 2;
-
-        comp.images = ['image1.jpg', 'image2.jpg'];
-        comp.ngOnChanges({
-            images: new SimpleChange(null, comp.images, true)
-        });
-
-        fixture.detectChanges();
-
-        expect(comp.selectedIndex).toEqual(0);
-    });
-
     it('should validate selected index after selected index change', () => {
         fixture.detectChanges();
         comp.selectedIndex = 5;
