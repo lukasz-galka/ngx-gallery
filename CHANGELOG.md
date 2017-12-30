@@ -1,3 +1,8 @@
+<a name="4.1.2"></a>
+# 4.1.2 (2017-12-30)
+
+* Reset position after images change ([767dd4d](https://github.com/lukasz-galka/ngx-gallery/commit/767dd4d))
+
 <a name="4.1.1"></a>
 # 4.1.1 (2017-12-10)
 
