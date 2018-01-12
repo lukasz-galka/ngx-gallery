@@ -92,8 +92,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     getImages(): string[] | SafeResourceUrl[] {
         if (this.remainingCount) {
             return this.images.slice(0, this.columns);
-        }
-        else if (this.lazyLoading && this.order != NgxGalleryOrder.Row) {
+        } else if (this.lazyLoading && this.order != NgxGalleryOrder.Row) {
             let stopIndex = this.index + this.columns + this.moveSize;
 
             if (this.rows > 1 && this.order === NgxGalleryOrder.Column) {
@@ -107,8 +106,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
             }
 
             return this.images.slice(0, stopIndex);
-        }
-        else {
+        } else {
             return this.images;
         }
     }
@@ -132,7 +130,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
             this.index += this.moveSize;
             let maxIndex = this.getMaxIndex() - this.columns;
 
-            if(this.index > maxIndex) {
+            if (this.index > maxIndex) {
                 this.index = maxIndex;
             }
 
@@ -142,7 +140,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     moveLeft(): void {
         if (this.canMoveLeft()) {
-            this.index-= this.moveSize;
+            this.index -= this.moveSize;
 
             if (this.index < 0) {
                 this.index = 0;

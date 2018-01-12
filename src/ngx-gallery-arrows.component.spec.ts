@@ -1,6 +1,6 @@
 import {} from 'jasmine';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { NgxGalleryArrowsComponent } from "./";
+import { NgxGalleryArrowsComponent } from './';
 
 describe('NgxGalleryArrowsComponent', () => {
     let fixture: ComponentFixture<NgxGalleryArrowsComponent>;

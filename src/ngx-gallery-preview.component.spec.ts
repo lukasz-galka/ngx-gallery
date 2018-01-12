@@ -1,7 +1,8 @@
 import {} from 'jasmine';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Renderer, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService } from "./";
+import { NgxGalleryActionComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService } from './';
 
 describe('NgxGalleryPreviewComponent', () => {
     let fixture: ComponentFixture<NgxGalleryPreviewComponent>;
@@ -10,7 +11,7 @@ describe('NgxGalleryPreviewComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-          declarations: [ NgxGalleryPreviewComponent, NgxGalleryArrowsComponent ],
+            declarations: [ NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryActionComponent ],
           providers: [ NgxGalleryHelperService, Renderer ]
         })
         .overrideComponent(NgxGalleryPreviewComponent, {
@@ -168,6 +169,41 @@ describe('NgxGalleryPreviewComponent', () => {
             expect(image.getAttribute('src')).toEqual('image-2.jpg');
             done();
         }, 1000)
+    });
+
+    it('should trigger change event on show next', () => {
+        spyOn(comp.onActiveChange, 'emit');
+
+        comp.showNext();
+        expect(comp.onActiveChange.emit).toHaveBeenCalled();
+    });
+
+    it('should trigger change event on show previous', () => {
+        spyOn(comp.onActiveChange, 'emit');
+        comp.open(1);
+        comp.loading = false;
+
+        comp.showPrev();
+        expect(comp.onActiveChange.emit).toHaveBeenCalled();
+    });
+
+    it('should emit change events during autoplay', (done) => {
+        spyOn(comp.onActiveChange, 'emit');
+
+        comp.autoPlay = true;
+        comp.autoPlayInterval = 1;
+        comp.autoPlayPauseOnHover = true;
+        comp.open(0);
+        comp.loading = false;
+
+        image.dispatchEvent(new Event('mouseenter'));
+        image.dispatchEvent(new Event('mouseleave'));
+
+        setTimeout(() => {
+            fixture.detectChanges();
+            expect(comp.onActiveChange.emit).toHaveBeenCalledTimes(2);
+            done();
+        }, 1000);
     });
 
     // it('should close on escape', (done) => {

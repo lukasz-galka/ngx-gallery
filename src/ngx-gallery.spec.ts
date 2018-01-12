@@ -1,6 +1,6 @@
 // import {} from 'jasmine';
 // import { TestBed, inject, async } from '@angular/core/testing';
-// import { NgxGalleryModule } from "./";
+// import { NgxGalleryModule } from './';
 
 // describe('NgxGallery', () => {
 //     beforeEach(() => {
