@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-import { INgxGalleryAction } from './ngx-gallery-options.model';
+import { NgxGalleryAction } from './ngx-gallery-action.model';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
@@ -64,7 +64,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() zoomMin: number;
     @Input() zoomInIcon: string;
     @Input() zoomOutIcon: string;
-    @Input() actions: INgxGalleryAction[];
+    @Input() actions: NgxGalleryAction[];
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
