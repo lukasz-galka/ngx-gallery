@@ -7,14 +7,14 @@
     background: rgba(0, 0, 0, 0.7);
     z-index: 10000;
     display: inline-block;
-
-    /deep/ .ngx-gallery-icon.ngx-gallery-arrow {
-        font-size: 50px;
-    }
 }
 
 :host {
     display: none;
+
+    /deep/ .ngx-gallery-arrow {
+        font-size: 50px;
+    }
 }
 
 .ngx-gallery-preview-img {
