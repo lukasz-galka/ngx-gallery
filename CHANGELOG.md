@@ -1,3 +1,8 @@
+<a name="4.2.0"></a>
+# 4.2.0 (2017-01-21)
+
+* Add event previewChange and custom action on preview ([6a38465](https://github.com/lukasz-galka/ngx-gallery/commit/6a38465))
+
 <a name="4.1.2"></a>
 # 4.1.2 (2017-12-30)
 

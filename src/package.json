@@ -1,7 +1,7 @@
 {
   "name": "ngx-gallery",
   "description": "Responsive Angular 2 / 4 image gallery plugin",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukasz-galka/ngx-gallery"
