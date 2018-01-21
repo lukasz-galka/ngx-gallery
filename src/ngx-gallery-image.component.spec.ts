@@ -1,9 +1,9 @@
 import {} from 'jasmine';
-import { Renderer, SimpleChange } from '@angular/core';
+import { Renderer } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService,
-    NgxGalleryOrderedImage } from "./";
+    NgxGalleryOrderedImage } from './';
 
 export class CustomHammerConfig extends HammerGestureConfig  {
     overrides = <any>{

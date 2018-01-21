@@ -1,10 +1,12 @@
 import { NgxGalleryImage } from './ngx-gallery-image.model';
-import {} from 'jasmine';
+import { } from 'jasmine';
 import { Renderer, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { NgxGalleryComponent, NgxGalleryImageComponent, NgxGalleryThumbnailsComponent,
-     NgxGalleryPreviewComponent, NgxGalleryArrowsComponent,NgxGalleryHelperService,
-     NgxGalleryOptions } from "./";
+import {
+    NgxGalleryComponent, NgxGalleryActionComponent, NgxGalleryImageComponent, NgxGalleryThumbnailsComponent,
+    NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService,
+    NgxGalleryOptions
+} from './';
 
 describe('NgxGalleryComponent', () => {
     let fixture: ComponentFixture<NgxGalleryComponent>;
@@ -13,15 +15,15 @@ describe('NgxGalleryComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-          declarations: [ NgxGalleryComponent, NgxGalleryThumbnailsComponent,
-            NgxGalleryImageComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent ],
-          providers: [ NgxGalleryHelperService, Renderer ]
+            declarations: [ NgxGalleryComponent, NgxGalleryActionComponent, NgxGalleryThumbnailsComponent,
+                NgxGalleryImageComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent ],
+            providers: [ NgxGalleryHelperService, Renderer ]
         })
-        .overrideComponent(NgxGalleryComponent, {
-            set: {
-                styleUrls: [],
-            }
-        })
+            .overrideComponent(NgxGalleryComponent, {
+                set: {
+                    styleUrls: [],
+                }
+            })
 
         fixture = TestBed.createComponent(NgxGalleryComponent);
         comp = fixture.componentInstance;
@@ -43,7 +45,7 @@ describe('NgxGalleryComponent', () => {
                 big: 'assets/3-big.jpg'
             })
         ];
-        comp.options = [new NgxGalleryOptions({})];
+        comp.options = [ new NgxGalleryOptions({}) ];
         fixture.detectChanges();
 
         el = fixture.debugElement.nativeElement;

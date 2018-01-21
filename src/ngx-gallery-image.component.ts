@@ -89,7 +89,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
 
             if (prevIndex === -1 && this.infinityMove) {
                 indexes.push(this.images.length - 1)
-            } else if(prevIndex >= 0) {
+            } else if (prevIndex >= 0) {
                 indexes.push(prevIndex);
             }
 

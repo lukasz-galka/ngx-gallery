@@ -1,7 +1,7 @@
 import {} from 'jasmine';
 import { Renderer, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { NgxGalleryThumbnailsComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService } from "./";
+import { NgxGalleryThumbnailsComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService } from './';
 
 describe('NgxGalleryThumbnailsComponent', () => {
     let fixture: ComponentFixture<NgxGalleryThumbnailsComponent>;

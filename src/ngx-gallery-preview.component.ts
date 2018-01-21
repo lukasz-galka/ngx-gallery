@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
+import { NgxGalleryAction } from './ngx-gallery-action.model';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
@@ -9,10 +10,11 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
-                <i class="ngx-gallery-icon {{zoomOutIcon}}" aria-hidden="true" (click)="zoomOut()" *ngIf="zoom" [class.ngx-gallery-icon-disabled]="!canZoomOut()"></i>
-                <i class="ngx-gallery-icon {{zoomInIcon}}" aria-hidden="true" (click)="zoomIn()" *ngIf="zoom" [class.ngx-gallery-icon-disabled]="!canZoomIn()"></i>
-                <i class="ngx-gallery-icon ngx-gallery-fullscreen {{fullscreenIcon}}" aria-hidden="true" *ngIf="fullscreen" (click)="manageFullscreen()"></i>
-                <i class="ngx-gallery-icon ngx-gallery-close {{closeIcon}}" aria-hidden="true" (click)="close()"></i>
+                <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event)"></ngx-gallery-action>
+                <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
+                <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
+                <ngx-gallery-action *ngIf="fullscreen" [icon]="'ngx-gallery-fullscreen ' + fullscreenIcon" (onClick)="manageFullscreen()"></ngx-gallery-action>
+                <ngx-gallery-action [icon]="'ngx-gallery-close ' + closeIcon" (onClick)="close()"></ngx-gallery-action>
             </div>
         </div>
         <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
@@ -62,9 +64,11 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() zoomMin: number;
     @Input() zoomInIcon: string;
     @Input() zoomOutIcon: string;
+    @Input() actions: NgxGalleryAction[];
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
+    @Output() onActiveChange = new EventEmitter<number>();
 
     @ViewChild('previewImage') previewImage: ElementRef;
 
@@ -237,7 +241,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
                 this.zoomValue = this.zoomMin;
             }
 
-            if(this.zoomValue <= 1) {
+            if (this.zoomValue <= 1) {
                 this.resetPosition()
             }
         }
@@ -334,9 +338,11 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
-    private show(first: boolean = false) {
+    private show(first = false) {
         this.loading = true;
         this.stopAutoPlay();
+
+        this.onActiveChange.emit(this.index);
 
         if (first) {
             this._show();
@@ -379,7 +385,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
             return false;
         }
 
-        if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
+        if (typeof img.naturalWidth !== 'undefined' && img.naturalWidth === 0) {
             return false;
         }
 

@@ -114,7 +114,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewZoom` | Type: `boolean` | Default value: `false` - enables or disables zoom in and zoom out
 - `previewZoomStep` | Type: `number` | Default value: `0.1` - step for zoom change
 - `previewZoomMax` | Type: `number` | Default value: `2` - max value for zoom
-- `previewZoomMin` | Type: `number` | Default value: `0.5` - min value for zoom 
+- `previewZoomMin` | Type: `number` | Default value: `0.5` - min value for zoom
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
@@ -123,6 +123,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `spinnerIcon` | Type: `string` | Default value: `'fa fa-spinner fa-pulse fa-3x fa-fw'` - icon for spinner
 - `zoomInIcon` | Type: `string` | Default value: `'fa fa-search-plus'` - icon for zoom in
 - `zoomOutIcon` | Type: `string` | Default value: `'fa fa-search-minus'` - icon for zoom out
+- `actions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of new custom actions that will be added to the left of the current close/zoom/fullscreen icons
 
 # NgxGalleryImage
 - `small` | Type: `string | SafeResourceUrl` - url used in thumbnails
@@ -149,11 +150,18 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `Column` (default)
 - `Row`
 
+# NgxGalleryAction
+- `icon` | Type: `string` - icon for custom action
+- `disabled` | Type: `boolean` | Default value: `false` - if the icon should be disabled
+- `titleText` | Type: `string` | Default value: `''` - text to set the title attribute to
+- `onClick` | Type: `(event: Event) => void` - Output function to call when custom action icon is clicked
+
 # Events
 - `change` - triggered on image change
 - `imagesReady` - triggered when images length > 0
 - `previewOpen` - triggered on preview open
 - `previewClose` - triggered on preview close
+- `previewChange` - triggered on preview image change
 
 # Methods
 - `show(index: number): void` - shows image at index
@@ -189,11 +197,11 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {    
+export class AppComponent implements OnInit {
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
 
-    ngOnInit(): void {     
+    ngOnInit(): void {
 
         this.galleryOptions = [
             {

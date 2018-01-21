@@ -2,6 +2,7 @@ import { NgxGalleryAnimation } from './ngx-gallery-animation.model';
 import { NgxGalleryImageSize } from './ngx-gallery-image-size.model';
 import { NgxGalleryLayout } from './ngx-gallery-layout.model';
 import { NgxGalleryOrder } from './ngx-gallery-order.model';
+import { NgxGalleryAction } from './ngx-gallery-action.model';
 
 export interface INgxGalleryOptions {
     width?: string;
@@ -60,6 +61,7 @@ export interface INgxGalleryOptions {
     spinnerIcon?: string;
     zoomInIcon?: string;
     zoomOutIcon?: string;
+    actions?: NgxGalleryAction[];
 }
 
 export class NgxGalleryOptions implements INgxGalleryOptions {
@@ -119,6 +121,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     spinnerIcon?: string;
     zoomInIcon?: string;
     zoomOutIcon?: string;
+    actions?: NgxGalleryAction[];
 
     constructor(obj: INgxGalleryOptions) {
 
@@ -146,7 +149,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
         this.imageAutoPlay = use(obj.imageAutoPlay, false);
         this.imageAutoPlayInterval = use(obj.imageAutoPlayInterval, 2000);
-        this.imageAutoPlayPauseOnHover= use(obj.imageAutoPlayPauseOnHover, false);
+        this.imageAutoPlayPauseOnHover = use(obj.imageAutoPlayPauseOnHover, false);
         this.imageInfinityMove = use(obj.imageInfinityMove, false);
 
         this.thumbnails = use(obj.thumbnails, true);
@@ -188,5 +191,10 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.spinnerIcon = use(obj.spinnerIcon, 'fa fa-spinner fa-pulse fa-3x fa-fw');
         this.zoomInIcon = use(obj.zoomInIcon, 'fa fa-search-plus');
         this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
+
+        if (obj && obj.actions && obj.actions.length) {
+            obj.actions = obj.actions.map(action => new NgxGalleryAction(action));
+        }
+        this.actions = use(obj.actions, []);
     }
 }
