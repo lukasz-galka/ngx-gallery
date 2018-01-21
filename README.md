@@ -246,6 +246,14 @@ export class AppComponent implements OnInit {
 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 ````
 
+# Styling
+- Active thumbnail
+```
+/deep/ .ngx-gallery-thumbnail.ngx-gallery-active {  
+    /* your styles */
+}
+```
+
 # Donate
 
 If you like my work you can buy me a :beer: or :pizza: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/galer88)
