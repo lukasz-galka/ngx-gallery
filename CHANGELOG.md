@@ -1,3 +1,8 @@
+<a name="4.2.1"></a>
+# 4.2.1 (2017-01-21)
+
+* Fix styles path for arrow in preview ([f49df04](https://github.com/lukasz-galka/ngx-gallery/commit/f49df04))
+
 <a name="4.2.0"></a>
 # 4.2.0 (2017-01-21)
 

@@ -262,6 +262,26 @@ export class AppComponent implements OnInit {
 }
 ```
 
+- Arrow
+```
+ngx-gallery /deep/ .ngx-gallery-arrow {
+    /* your styles */
+}
+```
+
+- Arrow in particular element
+```
+ngx-gallery /deep/ ngx-gallery-image .ngx-gallery-arrow {
+    /* your styles */
+}
+ngx-gallery /deep/ ngx-gallery-thumbnails .ngx-gallery-arrow {
+    /* your styles */
+}
+ngx-gallery /deep/ ngx-gallery-preview .ngx-gallery-arrow {
+    /* your styles */
+}
+```
+
 # Donate
 
 If you like my work you can buy me a :beer: or :pizza: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/galer88)
