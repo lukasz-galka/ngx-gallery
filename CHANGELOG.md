@@ -1,3 +1,8 @@
+<a name="4.2.2"></a>
+# 4.2.2 (2017-01-22)
+
+* Fix private handler previewSelect ([a7686a5](https://github.com/lukasz-galka/ngx-gallery/commit/a7686a5))
+
 <a name="4.2.1"></a>
 # 4.2.1 (2017-01-21)
 
