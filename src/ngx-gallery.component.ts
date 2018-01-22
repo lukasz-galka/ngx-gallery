@@ -213,6 +213,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         }
     }
 
+    previewSelect(index: number) {
+        this.previewChange.emit({index, image: this.images[index]});
+    }
+
     private select(index: number) {
         this.selectedIndex = index;
 
@@ -220,10 +224,6 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
             index,
             image: this.images[index]
         });
-    }
-
-    private previewSelect(index: number) {
-        this.previewChange.emit({index, image: this.images[index]});
     }
 
     private checkFullWidth(): void {
