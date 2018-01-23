@@ -1,3 +1,8 @@
+<a name="4.2.3"></a>
+# 4.2.3 (2017-01-23)
+
+* Fix thubnails animation on iphone ([72e6cdf](https://github.com/lukasz-galka/ngx-gallery/commit/72e6cdf))
+
 <a name="4.2.2"></a>
 # 4.2.2 (2017-01-22)
 
