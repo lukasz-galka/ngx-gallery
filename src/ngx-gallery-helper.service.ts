@@ -26,7 +26,13 @@ export class NgxGalleryHelperService {
     }
 
     validateUrl(url: string): string {
-        return url.replace(new RegExp(' ', 'g'), '%20');
+        if (url.replace) {
+            console.log(' replace ');
+            return url.replace(new RegExp(' ', 'g'), '%20');
+        } else {
+            console.log(' no replace ');
+            return url;
+        }
     }
 
     getBackgroundUrl(image: string) {
