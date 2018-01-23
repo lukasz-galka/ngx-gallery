@@ -1,3 +1,8 @@
+<a name="4.2.4"></a>
+# 4.2.4 (2017-01-23)
+
+* Check replace method before url validation ([cb32a21](https://github.com/lukasz-galka/ngx-gallery/commit/cb32a21))
+
 <a name="4.2.3"></a>
 # 4.2.3 (2017-01-23)
 
