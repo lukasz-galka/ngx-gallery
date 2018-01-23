@@ -39,7 +39,7 @@ describe('NgxGalleryThumbnailsComponent', () => {
         comp.moveRight();
         fixture.detectChanges();
 
-        expect(thumbnails.getAttribute('style')).toEqual('left: calc(-50% - 5px);');
+        expect(thumbnails.getAttribute('style')).toEqual('left: -50%; margin-left: -5px;');
     });
 
     it('should show prev images', () => {
@@ -48,7 +48,7 @@ describe('NgxGalleryThumbnailsComponent', () => {
         comp.moveLeft();
         fixture.detectChanges();
 
-        expect(thumbnails.getAttribute('style')).toEqual('left: calc(0% - 0px);');
+        expect(thumbnails.getAttribute('style')).toEqual('left: 0%; margin-left: 0px;');
     });
 
     it('should validate selected index after selected index change', () => {
@@ -61,7 +61,7 @@ describe('NgxGalleryThumbnailsComponent', () => {
 
         fixture.detectChanges();
 
-        expect(thumbnails.getAttribute('style')).toEqual('left: calc(-50% - 5px);');
+        expect(thumbnails.getAttribute('style')).toEqual('left: -50%; margin-left: -5px;');
     });
 
     it('should emit event onActiveChange after click on image', (done) => {
