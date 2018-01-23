@@ -8,7 +8,7 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
     selector: 'ngx-gallery-thumbnails',
     template: `
     <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
-        <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft">
+        <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft" [style.marginLeft]="thumbnailsMarginLeft">
             <a [href]="hasLinks() ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }">
                 <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
                     <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
@@ -23,6 +23,7 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
 export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     thumbnailsLeft: string;
+    thumbnailsMarginLeft: string;
     mouseenter: boolean;
     remainingCountValue: number;
 
@@ -191,13 +192,15 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     setThumbnailsPosition(): void {
-        this.thumbnailsLeft = 'calc(-' + ((100 / this.columns) * this.index)
-            + '% - ' + ((this.margin - (((this.columns - 1)
-            * this.margin) / this.columns)) * this.index) + 'px)';
+        this.thumbnailsLeft = - ((100 / this.columns) * this.index) + '%'
+
+        this.thumbnailsMarginLeft = - ((this.margin - (((this.columns - 1)
+        * this.margin) / this.columns)) * this.index) + 'px';
     }
 
     setDefaultPosition(): void {
         this.thumbnailsLeft = '0px';
+        this.thumbnailsMarginLeft = '0px';
     }
 
     canShowArrows(): boolean {
