@@ -1,3 +1,8 @@
+<a name="4.2.5"></a>
+# 4.2.5 (2017-01-23)
+
+* Export action model ([52edf54](https://github.com/lukasz-galka/ngx-gallery/commit/52edf54))
+
 <a name="4.2.4"></a>
 # 4.2.4 (2017-01-23)
 
