@@ -1,3 +1,9 @@
+
+<a name="4.3.0"></a>
+# 4.3.0 (2017-01-24)
+
+* Add custom action for image and thumbnail ([8e9fa7e](https://github.com/lukasz-galka/ngx-gallery/commit/8e9fa7e))
+
 <a name="4.2.5"></a>
 # 4.2.5 (2017-01-23)
 
