@@ -21,6 +21,18 @@
         .ngx-gallery-clickable {
             cursor: pointer;
         }
+
+        .ngx-gallery-icons-wrapper .ngx-gallery-icon {
+            position: relative;
+            margin-right: 5px;
+            margin-top: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .ngx-gallery-icons-wrapper {
+            float: right;
+        }
     }
 
     .ngx-gallery-layout {

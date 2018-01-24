@@ -21,5 +21,8 @@ export class NgxGalleryActionComponent {
         if (!this.disabled) {
             this.onClick.emit(event);
         }
+
+        event.stopPropagation();
+        event.preventDefault();
     }
 }

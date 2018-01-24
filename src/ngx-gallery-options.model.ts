@@ -24,6 +24,7 @@ export interface INgxGalleryOptions {
     imageAutoPlayInterval?: number;
     imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
+    imageActions?: NgxGalleryAction[];
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -38,6 +39,7 @@ export interface INgxGalleryOptions {
     thumbnailsAsLinks?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
+    thumbnailActions?: NgxGalleryAction[];
     preview?: boolean;
     previewDescription?: boolean;
     previewSwipe?: boolean;
@@ -84,6 +86,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageAutoPlayInterval?: number;
     imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
+    imageActions?: NgxGalleryAction[];
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -98,6 +101,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsAsLinks?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
+    thumbnailActions?: NgxGalleryAction[];
     preview?: boolean;
     previewDescription?: boolean;
     previewSwipe?: boolean;
@@ -151,6 +155,10 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageAutoPlayInterval = use(obj.imageAutoPlayInterval, 2000);
         this.imageAutoPlayPauseOnHover = use(obj.imageAutoPlayPauseOnHover, false);
         this.imageInfinityMove = use(obj.imageInfinityMove, false);
+        if (obj && obj.imageActions && obj.imageActions.length) {
+            obj.imageActions = obj.imageActions.map(action => new NgxGalleryAction(action));
+        }
+        this.imageActions = use(obj.imageActions, []);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
@@ -166,6 +174,10 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsAsLinks = use(obj.thumbnailsAsLinks, false);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
+        if (obj && obj.thumbnailActions && obj.thumbnailActions.length) {
+            obj.thumbnailActions = obj.thumbnailActions.map(action => new NgxGalleryAction(action));
+        }
+        this.thumbnailActions = use(obj.thumbnailActions, []);
 
         this.preview = use(obj.preview, true);
         this.previewDescription = use(obj.previewDescription, true);

@@ -84,6 +84,8 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `imageAutoPlayInterval` | Type: `number` | Default value: `2000` - interval for auto play (ms)
 - `imageAutoPlayPauseOnHover` | Type: `boolean` | Default value: `false` - enables or disables pouse auto play on hover
 - `imageInfinityMove` | Type: `boolean` | Default value: `false` - enables or disables infinity move by arrows
+- `imageActions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of custom actions
+
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
 - `thumbnailsRows` | Type: `number` | Default value: `1` - rows count
@@ -98,6 +100,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsAsLinks` | Type: `boolean` | Default value: `false` - enables or disables links on thumbnails
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
+- `thumbnailActions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of custom actions
 
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images

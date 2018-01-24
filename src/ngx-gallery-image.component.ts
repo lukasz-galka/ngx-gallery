@@ -4,12 +4,17 @@ import { SafeResourceUrl, DomSanitizer, SafeStyle } from '@angular/platform-brow
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 import { NgxGalleryOrderedImage } from './ngx-gallery-ordered-image.model';
 import { NgxGalleryAnimation } from './ngx-gallery-animation.model';
+import { NgxGalleryAction } from './ngx-gallery-action.model';
 
 @Component({
     selector: 'ngx-gallery-image',
     template: `
         <div class="ngx-gallery-image-wrapper ngx-gallery-animation-{{animation}} ngx-gallery-image-size-{{size}}">
-            <div class="ngx-gallery-image" *ngFor="let image of getImages();" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }" [style.background-image]="getSafeUrl(image.src)" (click)="handleClick($event, image.index)"></div>
+            <div class="ngx-gallery-image" *ngFor="let image of getImages(); let i = index;" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }" [style.background-image]="getSafeUrl(image.src)" (click)="handleClick($event, image.index)">
+                <div class="ngx-gallery-icons-wrapper">
+                    <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, image.index)"></ngx-gallery-action>
+                </div>
+            </div>
         </div>
         <ngx-gallery-arrows class="ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
     `,
@@ -31,6 +36,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Input() autoPlayPauseOnHover: boolean;
     @Input() infinityMove: boolean;
     @Input() lazyLoading: boolean;
+    @Input() actions: NgxGalleryAction[];
 
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();

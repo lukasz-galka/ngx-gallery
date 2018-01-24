@@ -3,6 +3,7 @@ import { DomSanitizer, SafeStyle, SafeResourceUrl } from '@angular/platform-brow
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 import { NgxGalleryOrder } from './ngx-gallery-order.model';
+import { NgxGalleryAction } from './ngx-gallery-action.model';
 
 @Component({
     selector: 'ngx-gallery-thumbnails',
@@ -10,6 +11,9 @@ import { NgxGalleryOrder } from './ngx-gallery-order.model';
     <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
         <div class="ngx-gallery-thumbnails" [style.left]="thumbnailsLeft" [style.marginLeft]="thumbnailsMarginLeft">
             <a [href]="hasLinks() ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }">
+                <div class="ngx-gallery-icons-wrapper">
+                    <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, i)"></ngx-gallery-action>
+                </div>
                 <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
                     <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
                 </div>
@@ -47,6 +51,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     @Input() order: number;
     @Input() remainingCount: boolean;
     @Input() lazyLoading: boolean;
+    @Input() actions: NgxGalleryAction[];
 
     @Output() onActiveChange = new EventEmitter();
 
