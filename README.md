@@ -37,6 +37,8 @@ import 'hammerjs';
 ````
 
 # SystemJS
+
+**If you are not using SystemJS you can skip this section.**
 ```
 map: {
   'ngx-gallery': 'node_modules/ngx-gallery/bundles/ngx-gallery.umd.js',
