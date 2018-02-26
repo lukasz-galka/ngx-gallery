@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from 
 @Component({
     selector: 'ngx-gallery-action',
     template: `
-        <i class="ngx-gallery-icon {{ icon }}" [class.ngx-gallery-icon-disabled]="disabled"
+        <div class="ngx-gallery-icon" [class.ngx-gallery-icon-disabled]="disabled"
             aria-hidden="true"
             title="{{ titleText }}"
             (click)="handleClick($event)">
-        </i>`,
+                <i class="ngx-gallery-icon-content {{ icon }}"></i>
+        </div>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxGalleryActionComponent {
