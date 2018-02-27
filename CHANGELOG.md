@@ -1,3 +1,24 @@
+<a name="5.0.0"></a>
+# 5.0.0 (2017-02-27)
+
+* Add support for fontawesome 5 and svg icons ([de0116b](https://github.com/lukasz-galka/ngx-gallery/commit/de0116b))
+
+### BREAKING CHANGES
+
+* New icons structure because of fontawesome 5 [#132](https://github.com/lukasz-galka/ngx-gallery/issues/132)
+
+BEFORE: 
+
+```
+<i class="ngx-gallery-icon fa fa-arrow-circle-right"></i>
+```
+
+AFTER:
+```
+<div class="ngx-gallery-icon">
+    <i class="fa fa-arrow-circle-right"></i>
+</div>
+```
 
 <a name="4.3.0"></a>
 # 4.3.0 (2017-01-24)
