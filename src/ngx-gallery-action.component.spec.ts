@@ -5,7 +5,7 @@ import { NgxGalleryActionComponent } from './';
 describe('NgxGalleryActionComponent', () => {
     let fixture: ComponentFixture<NgxGalleryActionComponent>;
     let comp: NgxGalleryActionComponent;
-    let el, icon;
+    let el, icon, iconContent;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -20,6 +20,7 @@ describe('NgxGalleryActionComponent', () => {
 
         el = fixture.debugElement.nativeElement;
         icon = el.querySelector('.ngx-gallery-icon');
+        iconContent = el.querySelector('.ngx-gallery-icon-content');
     });
 
     it('should emit event onClick after click', () => {
@@ -39,6 +40,6 @@ describe('NgxGalleryActionComponent', () => {
         comp.disabled = true;
         fixture.detectChanges();
 
-        expect(icon.classList.contains('test')).toBeTruthy();
+        expect(iconContent.classList.contains('test')).toBeTruthy();
     });
 });
