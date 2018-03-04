@@ -22,7 +22,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         </div>
         <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
             <div class="ngx-gallery-preview-img-wrapper">
-                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
+                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
             <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description"></div>
         </div>
@@ -64,6 +64,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() zoomMin: number;
     @Input() zoomInIcon: string;
     @Input() zoomOutIcon: string;
+    @Input() animation: boolean;
     @Input() actions: NgxGalleryAction[];
 
     @Output() onOpen = new EventEmitter();
@@ -344,7 +345,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
         this.onActiveChange.emit(this.index);
 
-        if (first) {
+        if (first || !this.animation) {
             this._show();
         } else {
             setTimeout(() => this._show(), 600);

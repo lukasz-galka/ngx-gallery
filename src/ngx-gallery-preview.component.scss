@@ -21,8 +21,11 @@
     opacity: 0;
     max-width: 90%;
     max-height: 90%;
-    transition: opacity 0.5s linear;
     user-select: none;
+
+    &.animation {
+        transition: opacity 0.5s linear;
+    }
 
     &.ngx-gallery-active {
         opacity: 1;

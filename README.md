@@ -112,6 +112,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewCloseOnClick` | Type: `boolean` | Default value: `false` - enables or disables closing preview by click
 - `previewCloseOnEsc` | Type: `boolean` | Default value: `false` - enables or disables closing preview by esc keyboard
 - `previewKeyboardNavigation` | Type: `boolean` | Default value: `false` - enables or disables navigation by keyboard
+- `previewAnimation` | Type: `boolean` | Default value: `true` - enables or disables image loading animation
 - `previewAutoPlay` | Type: `boolean` | Default value `false` - enables or disables auto play
 - `previewAutoPlayInterval` | Type: `number` | Default value: `2000` - interval for auto play (ms)
 - `previewAutoPlayPauseOnHover` | Type: `boolean` | Default value: `false` - enables or disables pouse auto play on hover
