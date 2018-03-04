@@ -1,3 +1,8 @@
+<a name="5.1.0"></a>
+# 5.1.0 (2017-03-04)
+
+* Add option `previewAnimation` ([f7ec362](https://github.com/lukasz-galka/ngx-gallery/commit/f7ec362))
+
 <a name="5.0.0"></a>
 # 5.0.0 (2017-02-27)
 
