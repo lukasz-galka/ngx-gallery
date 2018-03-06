@@ -14,6 +14,7 @@ export interface INgxGalleryOptions {
     linkTarget?: string;
     lazyLoading?: boolean;
     image?: boolean;
+    imageTag?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
@@ -48,7 +49,6 @@ export interface INgxGalleryOptions {
     previewCloseOnClick?: boolean;
     previewCloseOnEsc?: boolean;
     previewKeyboardNavigation?: boolean;
-    previewAnimation?: boolean;
     previewAutoPlay?: boolean;
     previewAutoPlayInterval?: number;
     previewAutoPlayPauseOnHover?: boolean;
@@ -57,6 +57,8 @@ export interface INgxGalleryOptions {
     previewZoomStep?: number;
     previewZoomMax?: number;
     previewZoomMin?: number;
+    preventDefault?: boolean;
+    placeholder?: string;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -77,6 +79,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     linkTarget?: string;
     lazyLoading?: boolean;
     image?: boolean;
+    imageTag?: boolean;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
@@ -111,7 +114,6 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewCloseOnClick?: boolean;
     previewCloseOnEsc?: boolean;
     previewKeyboardNavigation?: boolean;
-    previewAnimation?: boolean;
     previewAutoPlay?: boolean;
     previewAutoPlayInterval?: number;
     previewAutoPlayPauseOnHover?: boolean;
@@ -120,6 +122,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewZoomStep?: number;
     previewZoomMax?: number;
     previewZoomMin?: number;
+    preventDefault?: boolean;
+    placeholder?: string;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -130,11 +134,12 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     actions?: NgxGalleryAction[];
 
     constructor(obj: INgxGalleryOptions) {
-
         const preventDefaults = obj.breakpoint === undefined ? false : true;
 
         function use<T>(source: T, defaultValue: T): T {
-            return obj && (source !== undefined || preventDefaults) ? source : defaultValue;
+            return obj && (source !== undefined || preventDefaults)
+                ? source
+                : defaultValue;
         }
 
         this.breakpoint = use(obj.breakpoint, undefined);
@@ -147,6 +152,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.lazyLoading = use(obj.lazyLoading, true);
 
         this.image = use(obj.image, true);
+        this.imageTag = use(obj.imageTag, false);
         this.imagePercent = use(obj.imagePercent, 75);
         this.imageArrows = use(obj.imageArrows, true);
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);
@@ -155,10 +161,15 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.imageSize = use(obj.imageSize, NgxGalleryImageSize.Cover);
         this.imageAutoPlay = use(obj.imageAutoPlay, false);
         this.imageAutoPlayInterval = use(obj.imageAutoPlayInterval, 2000);
-        this.imageAutoPlayPauseOnHover = use(obj.imageAutoPlayPauseOnHover, false);
+        this.imageAutoPlayPauseOnHover = use(
+            obj.imageAutoPlayPauseOnHover,
+            false
+        );
         this.imageInfinityMove = use(obj.imageInfinityMove, false);
         if (obj && obj.imageActions && obj.imageActions.length) {
-            obj.imageActions = obj.imageActions.map(action => new NgxGalleryAction(action));
+            obj.imageActions = obj.imageActions.map(
+                action => new NgxGalleryAction(action)
+            );
         }
         this.imageActions = use(obj.imageActions, []);
 
@@ -168,16 +179,24 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsPercent = use(obj.thumbnailsPercent, 25);
         this.thumbnailsMargin = use(obj.thumbnailsMargin, 10);
         this.thumbnailsArrows = use(obj.thumbnailsArrows, true);
-        this.thumbnailsArrowsAutoHide = use(obj.thumbnailsArrowsAutoHide, false);
+        this.thumbnailsArrowsAutoHide = use(
+            obj.thumbnailsArrowsAutoHide,
+            false
+        );
         this.thumbnailsSwipe = use(obj.thumbnailsSwipe, false);
         this.thumbnailsMoveSize = use(obj.thumbnailsMoveSize, 1);
         this.thumbnailsOrder = use(obj.thumbnailsOrder, NgxGalleryOrder.Column);
-        this.thumbnailsRemainingCount = use(obj.thumbnailsRemainingCount, false);
+        this.thumbnailsRemainingCount = use(
+            obj.thumbnailsRemainingCount,
+            false
+        );
         this.thumbnailsAsLinks = use(obj.thumbnailsAsLinks, false);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
         if (obj && obj.thumbnailActions && obj.thumbnailActions.length) {
-            obj.thumbnailActions = obj.thumbnailActions.map(action => new NgxGalleryAction(action));
+            obj.thumbnailActions = obj.thumbnailActions.map(
+                action => new NgxGalleryAction(action)
+            );
         }
         this.thumbnailActions = use(obj.thumbnailActions, []);
 
@@ -188,27 +207,39 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewForceFullscreen = use(obj.previewForceFullscreen, false);
         this.previewCloseOnClick = use(obj.previewCloseOnClick, false);
         this.previewCloseOnEsc = use(obj.previewCloseOnEsc, false);
-        this.previewKeyboardNavigation = use(obj.previewKeyboardNavigation, false);
-        this.previewAnimation = use(obj.previewAnimation, true);
+        this.previewKeyboardNavigation = use(
+            obj.previewKeyboardNavigation,
+            false
+        );
         this.previewAutoPlay = use(obj.previewAutoPlay, false);
         this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
-        this.previewAutoPlayPauseOnHover = use(obj.previewAutoPlayPauseOnHover, false);
+        this.previewAutoPlayPauseOnHover = use(
+            obj.previewAutoPlayPauseOnHover,
+            false
+        );
         this.previewInfinityMove = use(obj.previewInfinityMove, false);
         this.previewZoom = use(obj.previewZoom, false);
         this.previewZoomStep = use(obj.previewZoomStep, 0.1);
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
+        this.preventDefault = use(obj.preventDefault, false);
+        this.placeholder = use(obj.placeholder, '');
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');
         this.closeIcon = use(obj.closeIcon, 'fa fa-times-circle');
         this.fullscreenIcon = use(obj.fullscreenIcon, 'fa fa-arrows-alt');
-        this.spinnerIcon = use(obj.spinnerIcon, 'fa fa-spinner fa-pulse fa-3x fa-fw');
+        this.spinnerIcon = use(
+            obj.spinnerIcon,
+            'fa fa-spinner fa-pulse fa-3x fa-fw'
+        );
         this.zoomInIcon = use(obj.zoomInIcon, 'fa fa-search-plus');
         this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
 
         if (obj && obj.actions && obj.actions.length) {
-            obj.actions = obj.actions.map(action => new NgxGalleryAction(action));
+            obj.actions = obj.actions.map(
+                action => new NgxGalleryAction(action)
+            );
         }
         this.actions = use(obj.actions, []);
     }

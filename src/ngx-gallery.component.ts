@@ -1,5 +1,16 @@
-import { Component, Input, HostListener, ViewChild, OnInit,
-    HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    Input,
+    HostListener,
+    ViewChild,
+    OnInit,
+    HostBinding,
+    DoCheck,
+    ElementRef,
+    AfterViewInit,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
@@ -16,25 +27,30 @@ import { NgxGalleryOrderedImage } from './ngx-gallery-ordered-image.model';
     selector: 'ngx-gallery',
     template: `
     <div class="ngx-gallery-layout {{currentOptions?.layout}}">
-        <ngx-gallery-image *ngIf="currentOptions?.image" [style.height]="getImageHeight()" [images]="mediumImages" [clickable]="currentOptions?.preview" [selectedIndex]="selectedIndex" [arrows]="currentOptions?.imageArrows" [arrowsAutoHide]="currentOptions?.imageArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [swipe]="currentOptions?.imageSwipe" [animation]="currentOptions?.imageAnimation" [size]="currentOptions?.imageSize" [autoPlay]="currentOptions?.imageAutoPlay" [autoPlayInterval]="currentOptions?.imageAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.imageAutoPlayPauseOnHover" [infinityMove]="currentOptions?.imageInfinityMove"  [lazyLoading]="currentOptions?.lazyLoading" [actions]="currentOptions?.imageActions" (onClick)="openPreview($event)" (onActiveChange)="selectFromImage($event)"></ngx-gallery-image>
+        <ngx-gallery-image *ngIf="currentOptions?.image" [style.height]="getImageHeight()" [placeholder]="currentOptions?.placeholder" [preventDefault]="currentOptions?.preventDefault" [imageTag]="currentOptions?.imageTag" [images]="mediumImages" [clickable]="currentOptions?.preview" [selectedIndex]="selectedIndex" [arrows]="currentOptions?.imageArrows" [arrowsAutoHide]="currentOptions?.imageArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [swipe]="currentOptions?.imageSwipe" [animation]="currentOptions?.imageAnimation" [size]="currentOptions?.imageSize" [autoPlay]="currentOptions?.imageAutoPlay" [autoPlayInterval]="currentOptions?.imageAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.imageAutoPlayPauseOnHover" [infinityMove]="currentOptions?.imageInfinityMove"  [lazyLoading]="currentOptions?.lazyLoading" [actions]="currentOptions?.imageActions" (onClick)="openPreview($event)" (onActiveChange)="selectFromImage($event)"></ngx-gallery-image>
 
         <ngx-gallery-thumbnails *ngIf="currentOptions?.thumbnails" [style.marginTop]="getThumbnailsMarginTop()" [style.marginBottom]="getThumbnailsMarginBottom()" [style.height]="getThumbnailsHeight()" [images]="smallImages" [links]="currentOptions?.thumbnailsAsLinks ? links : []" [linkTarget]="currentOptions?.linkTarget" [selectedIndex]="selectedIndex" [columns]="currentOptions?.thumbnailsColumns" [rows]="currentOptions?.thumbnailsRows" [margin]="currentOptions?.thumbnailMargin" [arrows]="currentOptions?.thumbnailsArrows" [arrowsAutoHide]="currentOptions?.thumbnailsArrowsAutoHide" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [clickable]="currentOptions?.image || currentOptions?.preview" [swipe]="currentOptions?.thumbnailsSwipe" [size]="currentOptions?.thumbnailSize" [moveSize]="currentOptions?.thumbnailsMoveSize" [order]="currentOptions?.thumbnailsOrder" [remainingCount]="currentOptions?.thumbnailsRemainingCount" [lazyLoading]="currentOptions?.lazyLoading" [actions]="currentOptions?.thumbnailActions"  (onActiveChange)="selectFromThumbnails($event)"></ngx-gallery-thumbnails>
 
-        <ngx-gallery-preview [images]="bigImages" [descriptions]="descriptions" [showDescription]="currentOptions?.previewDescription" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [closeIcon]="currentOptions?.closeIcon" [fullscreenIcon]="currentOptions?.fullscreenIcon" [spinnerIcon]="currentOptions?.spinnerIcon" [swipe]="currentOptions?.previewSwipe" [fullscreen]="currentOptions?.previewFullscreen" [forceFullscreen]="currentOptions?.previewForceFullscreen" [closeOnClick]="currentOptions?.previewCloseOnClick" [closeOnEsc]="currentOptions?.previewCloseOnEsc" [keyboardNavigation]="currentOptions?.previewKeyboardNavigation" [animation]="currentOptions?.previewAnimation" [autoPlay]="currentOptions?.previewAutoPlay" [autoPlayInterval]="currentOptions?.previewAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.previewAutoPlayPauseOnHover" [infinityMove]="currentOptions?.previewInfinityMove" [zoom]="currentOptions?.previewZoom" [zoomStep]="currentOptions?.previewZoomStep" [zoomMax]="currentOptions?.previewZoomMax" [zoomMin]="currentOptions?.previewZoomMin" [zoomInIcon]="currentOptions?.zoomInIcon" [zoomOutIcon]="currentOptions?.zoomOutIcon" [actions]="currentOptions?.actions" (onClose)="onPreviewClose()" (onOpen)="onPreviewOpen()" (onActiveChange)="previewSelect($event)" [class.ngx-gallery-active]="previewEnabled"></ngx-gallery-preview>
+        <ngx-gallery-preview [images]="bigImages" [descriptions]="descriptions" [showDescription]="currentOptions?.previewDescription" [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon" [closeIcon]="currentOptions?.closeIcon" [fullscreenIcon]="currentOptions?.fullscreenIcon" [spinnerIcon]="currentOptions?.spinnerIcon" [swipe]="currentOptions?.previewSwipe" [fullscreen]="currentOptions?.previewFullscreen" [forceFullscreen]="currentOptions?.previewForceFullscreen" [closeOnClick]="currentOptions?.previewCloseOnClick" [closeOnEsc]="currentOptions?.previewCloseOnEsc" [keyboardNavigation]="currentOptions?.previewKeyboardNavigation" [autoPlay]="currentOptions?.previewAutoPlay" [autoPlayInterval]="currentOptions?.previewAutoPlayInterval" [autoPlayPauseOnHover]="currentOptions?.previewAutoPlayPauseOnHover" [infinityMove]="currentOptions?.previewInfinityMove" [zoom]="currentOptions?.previewZoom" [zoomStep]="currentOptions?.previewZoomStep" [zoomMax]="currentOptions?.previewZoomMax" [zoomMin]="currentOptions?.previewZoomMin" [zoomInIcon]="currentOptions?.zoomInIcon" [zoomOutIcon]="currentOptions?.zoomOutIcon" [actions]="currentOptions?.actions" (onClose)="onPreviewClose()" (onOpen)="onPreviewOpen()" (onActiveChange)="previewSelect($event)" [class.ngx-gallery-active]="previewEnabled"></ngx-gallery-preview>
     </div>
     `,
     styleUrls: ['./ngx-gallery.component.scss'],
     providers: [NgxGalleryHelperService]
 })
-export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
+export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     @Input() options: NgxGalleryOptions[];
     @Input() images: NgxGalleryImage[];
 
     @Output() imagesReady = new EventEmitter();
-    @Output() change = new EventEmitter<{ index: number; image: NgxGalleryImage; }>();
+    @Output()
+    change = new EventEmitter<{ index: number; image: NgxGalleryImage }>();
     @Output() previewOpen = new EventEmitter();
     @Output() previewClose = new EventEmitter();
-    @Output() previewChange = new EventEmitter<{ index: number; image: NgxGalleryImage; }>();
+    @Output()
+    previewChange = new EventEmitter<{
+        index: number;
+        image: NgxGalleryImage;
+    }>();
 
     smallImages: string[] | SafeResourceUrl[];
     mediumImages: NgxGalleryOrderedImage[];
@@ -56,7 +72,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     @ViewChild(NgxGalleryPreviewComponent) preview: NgxGalleryPreviewComponent;
     @ViewChild(NgxGalleryImageComponent) image: NgxGalleryImageComponent;
-    @ViewChild(NgxGalleryThumbnailsComponent) thubmnails: NgxGalleryThumbnailsComponent;
+    @ViewChild(NgxGalleryThumbnailsComponent)
+    thubmnails: NgxGalleryThumbnailsComponent;
 
     @HostBinding('style.width') width: string;
     @HostBinding('style.height') height: string;
@@ -65,7 +82,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     constructor(private myElement: ElementRef) {}
 
     ngOnInit() {
-        this.options = this.options.map((opt) => new NgxGalleryOptions(opt));
+        this.options = this.options.map(opt => new NgxGalleryOptions(opt));
         this.sortOptions();
         this.setBreakpoint();
         this.setOptions();
@@ -76,8 +93,11 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     ngDoCheck(): void {
-        if (this.images !== undefined && (this.images.length !== this.oldImagesLength)
-            || (this.images !== this.oldImages)) {
+        if (
+            (this.images !== undefined &&
+                this.images.length !== this.oldImagesLength) ||
+            this.images !== this.oldImages
+        ) {
             this.oldImagesLength = this.images.length;
             this.oldImages = this.images;
             this.setImages();
@@ -100,7 +120,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         this.checkFullWidth();
     }
 
-    @HostListener('window:resize') onResize() {
+    @HostListener('window:resize')
+    onResize() {
         this.setBreakpoint();
 
         if (this.prevBreakpoint !== this.breakpoint) {
@@ -108,7 +129,6 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         }
 
         if (this.currentOptions && this.currentOptions.fullWidth) {
-
             if (this.fullWidthTimeout) {
                 clearTimeout(this.fullWidthTimeout);
             }
@@ -120,21 +140,30 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     getImageHeight(): string {
-        return (this.currentOptions && this.currentOptions.thumbnails) ?
-            this.currentOptions.imagePercent + '%' : '100%';
+        return this.currentOptions && this.currentOptions.thumbnails
+            ? this.currentOptions.imagePercent + '%'
+            : '100%';
     }
 
     getThumbnailsHeight(): string {
         if (this.currentOptions && this.currentOptions.image) {
-            return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
-            + this.currentOptions.thumbnailsMargin + 'px)';
+            return (
+                'calc(' +
+                this.currentOptions.thumbnailsPercent +
+                '% - ' +
+                this.currentOptions.thumbnailsMargin +
+                'px)'
+            );
         } else {
             return '100%';
         }
     }
 
     getThumbnailsMarginTop(): string {
-        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom) {
+        if (
+            this.currentOptions &&
+            this.currentOptions.layout === NgxGalleryLayout.ThumbnailsBottom
+        ) {
             return this.currentOptions.thumbnailsMargin + 'px';
         } else {
             return '0px';
@@ -142,7 +171,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     getThumbnailsMarginBottom(): string {
-        if (this.currentOptions && this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop) {
+        if (
+            this.currentOptions &&
+            this.currentOptions.layout === NgxGalleryLayout.ThumbnailsTop
+        ) {
             return this.currentOptions.thumbnailsMargin + 'px';
         } else {
             return '0px';
@@ -178,8 +210,13 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     selectFromThumbnails(index: number) {
         this.select(index);
 
-        if (this.currentOptions && this.currentOptions.thumbnails && this.currentOptions.preview
-            && (!this.currentOptions.image || this.currentOptions.thumbnailsRemainingCount)) {
+        if (
+            this.currentOptions &&
+            this.currentOptions.thumbnails &&
+            this.currentOptions.preview &&
+            (!this.currentOptions.image ||
+                this.currentOptions.thumbnailsRemainingCount)
+        ) {
             this.openPreview(this.selectedIndex);
         }
     }
@@ -198,8 +235,10 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     canShowNext(): boolean {
         if (this.images && this.currentOptions) {
-            return (this.currentOptions.imageInfinityMove || this.selectedIndex < this.images.length - 1)
-                ? true : false;
+            return this.currentOptions.imageInfinityMove ||
+                this.selectedIndex < this.images.length - 1
+                ? true
+                : false;
         } else {
             return false;
         }
@@ -207,14 +246,17 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     canShowPrev(): boolean {
         if (this.images && this.currentOptions) {
-            return (this.currentOptions.imageInfinityMove || this.selectedIndex > 0) ? true : false;
+            return this.currentOptions.imageInfinityMove ||
+                this.selectedIndex > 0
+                ? true
+                : false;
         } else {
             return false;
         }
     }
 
     previewSelect(index: number) {
-        this.previewChange.emit({index, image: this.images[index]});
+        this.previewChange.emit({ index, image: this.images[index] });
     }
 
     private select(index: number) {
@@ -229,20 +271,28 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     private checkFullWidth(): void {
         if (this.currentOptions && this.currentOptions.fullWidth) {
             this.width = document.body.clientWidth + 'px';
-            this.left = (-(document.body.clientWidth -
-                this.myElement.nativeElement.parentNode.innerWidth) / 2) + 'px';
+            this.left =
+                -(
+                    document.body.clientWidth -
+                    this.myElement.nativeElement.parentNode.innerWidth
+                ) /
+                    2 +
+                'px';
         }
     }
 
     private setImages(): void {
-        this.smallImages = this.images.map((img) => <string>img.small);
-        this.mediumImages = this.images.map((img, i) => new NgxGalleryOrderedImage({
-            src: img.medium,
-            index: i
-        }));
-        this.bigImages = this.images.map((img) => <string>img.big);
-        this.descriptions = this.images.map((img) => <string>img.description);
-        this.links = this.images.map((img) => <string>img.url);
+        this.smallImages = this.images.map(img => <string>img.small);
+        this.mediumImages = this.images.map(
+            (img, i) =>
+                new NgxGalleryOrderedImage({
+                    src: img.medium,
+                    index: i
+                })
+        );
+        this.bigImages = this.images.map(img => <string>img.big);
+        this.descriptions = this.images.map(img => <string>img.description);
+        this.links = this.images.map(img => <string>img.url);
     }
 
     private setBreakpoint(): void {
@@ -250,8 +300,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         let breakpoints;
 
         if (typeof window !== 'undefined') {
-            breakpoints = this.options.filter((opt) => opt.breakpoint >= window.innerWidth)
-                .map((opt) => opt.breakpoint);
+            breakpoints = this.options
+                .filter(opt => opt.breakpoint >= window.innerWidth)
+                .map(opt => opt.breakpoint);
         }
 
         if (breakpoints && breakpoints.length) {
@@ -263,9 +314,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     private sortOptions(): void {
         this.options = [
-            ...this.options.filter((a) => a.breakpoint === undefined),
+            ...this.options.filter(a => a.breakpoint === undefined),
             ...this.options
-                .filter((a) => a.breakpoint !== undefined)
+                .filter(a => a.breakpoint !== undefined)
                 .sort((a, b) => b.breakpoint - a.breakpoint)
         ];
     }
@@ -274,14 +325,25 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         this.currentOptions = new NgxGalleryOptions({});
 
         this.options
-            .filter((opt) => opt.breakpoint === undefined || opt.breakpoint >= this.breakpoint)
-            .map((opt) => this.combineOptions(this.currentOptions, opt));
+            .filter(
+                opt =>
+                    opt.breakpoint === undefined ||
+                    opt.breakpoint >= this.breakpoint
+            )
+            .map(opt => this.combineOptions(this.currentOptions, opt));
 
         this.width = <string>this.currentOptions.width;
         this.height = <string>this.currentOptions.height;
     }
 
-    private combineOptions(first: NgxGalleryOptions, second: NgxGalleryOptions) {
-        Object.keys(second).map((val) => first[val] = second[val] !== undefined ? second[val] : first[val]);
+    private combineOptions(
+        first: NgxGalleryOptions,
+        second: NgxGalleryOptions
+    ) {
+        Object.keys(second).map(
+            val =>
+                (first[val] =
+                    second[val] !== undefined ? second[val] : first[val])
+        );
     }
 }

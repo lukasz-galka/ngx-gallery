@@ -24,6 +24,18 @@
     &.ngx-gallery-active {
         z-index: 1000;
     }
+
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+        z-index: 1;
+    }
 }
 
 .ngx-gallery-image-size-cover .ngx-gallery-image {
