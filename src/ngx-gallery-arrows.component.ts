@@ -1,22 +1,19 @@
-import { Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'ngx-gallery-arrows',
     template: `
         <div class="ngx-gallery-arrow-wrapper ngx-gallery-arrow-left">
-            <div class="ngx-gallery-icon ngx-gallery-arrow" aria-hidden="true" (click)="handlePrevClick()" [class.ngx-gallery-disabled]="prevDisabled">
-                <i class="ngx-gallery-icon-content {{arrowPrevIcon}}"></i>
-            </div>
+            <i class="ngx-gallery-icon ngx-gallery-arrow {{arrowPrevIcon}}" aria-hidden="true" (click)="handlePrevClick($event)" [class.ngx-gallery-disabled]="prevDisabled"></i>
         </div>
         <div class="ngx-gallery-arrow-wrapper ngx-gallery-arrow-right">
-            <div class="ngx-gallery-icon ngx-gallery-arrow" aria-hidden="true" (click)="handleNextClick()" [class.ngx-gallery-disabled]="nextDisabled">
-                <i class="ngx-gallery-icon-content {{arrowNextIcon}}"></i>
-            </div>
+            <i class="ngx-gallery-icon ngx-gallery-arrow {{arrowNextIcon}}" aria-hidden="true" (click)="handleNextClick($event)" [class.ngx-gallery-disabled]="nextDisabled"></i>
         </div>
     `,
     styleUrls: ['./ngx-gallery-arrows.component.scss']
 })
 export class NgxGalleryArrowsComponent {
+    @Input() preventDefault: boolean;
     @Input() prevDisabled: boolean;
     @Input() nextDisabled: boolean;
     @Input() arrowPrevIcon: string;
@@ -25,11 +22,17 @@ export class NgxGalleryArrowsComponent {
     @Output() onPrevClick = new EventEmitter();
     @Output() onNextClick = new EventEmitter();
 
-    handlePrevClick(): void {
+    handlePrevClick(event): void {
+        if (this.preventDefault) {
+            event.preventDefault();
+        }
         this.onPrevClick.emit();
     }
 
-    handleNextClick(): void {
+    handleNextClick(event): void {
+        if (this.preventDefault) {
+            event.preventDefault();
+        }
         this.onNextClick.emit();
     }
 }

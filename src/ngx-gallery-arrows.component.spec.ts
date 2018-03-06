@@ -6,7 +6,7 @@ describe('NgxGalleryArrowsComponent', () => {
     let fixture: ComponentFixture<NgxGalleryArrowsComponent>;
     let comp: NgxGalleryArrowsComponent;
     let el;
-    let prevArrow, nextArrow, prevArrowContent, nextArrowContent;
+    let prevArrow, nextArrow;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -23,9 +23,7 @@ describe('NgxGalleryArrowsComponent', () => {
         fixture.detectChanges();
         el = fixture.debugElement.nativeElement;
         prevArrow = el.querySelector('.ngx-gallery-arrow-left .ngx-gallery-arrow');
-        nextArrow = el.querySelector('.ngx-gallery-arrow-right .ngx-gallery-arrow');
-        prevArrowContent = prevArrow.querySelector('.ngx-gallery-icon-content');
-        nextArrowContent = nextArrow.querySelector('.ngx-gallery-icon-content');
+        nextArrow = el.querySelector('.ngx-gallery-arrow-right .ngx-gallery-arrow')
     });
 
     it('should emit event onPrevClick after click on prev arrow', (done) => {
@@ -55,9 +53,9 @@ describe('NgxGalleryArrowsComponent', () => {
         comp.arrowNextIcon = 'my-next-icon';
         fixture.detectChanges();
 
-        expect(prevArrowContent.getAttribute('class'))
-            .toEqual('ngx-gallery-icon-content my-prev-icon');
-        expect(nextArrowContent.getAttribute('class'))
-            .toEqual('ngx-gallery-icon-content my-next-icon');
+        expect(prevArrow.getAttribute('class'))
+            .toEqual('ngx-gallery-icon ngx-gallery-arrow my-prev-icon');
+        expect(nextArrow.getAttribute('class'))
+            .toEqual('ngx-gallery-icon ngx-gallery-arrow my-next-icon');
     });
 })
