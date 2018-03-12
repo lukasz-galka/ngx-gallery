@@ -1,3 +1,8 @@
+<a name="5.2.0"></a>
+# 5.2.0 (2017-03-12)
+
+* Add option `imageDescription` ([6db73d3](https://github.com/lukasz-galka/ngx-gallery/commit/6db73d3))
+
 <a name="5.1.0"></a>
 # 5.1.0 (2017-03-04)
 

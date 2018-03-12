@@ -76,6 +76,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `lazyLoading` | Type: `boolean` | Default value: `true` - enables/disables lazy loading for images
 
 - `image` | Type: `boolean` | Default value: `true` - enables or disables image
+- `imageDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
 - `imagePercent` | Type: `number` | Default value: `75` - percentage height
 - `imageArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
 - `imageArrowsAutoHide` | Type: `boolean` | Default value: `false` - enables or disables arrows auto hide
