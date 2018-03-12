@@ -25,6 +25,7 @@ export interface INgxGalleryOptions {
     imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
     imageActions?: NgxGalleryAction[];
+    imageDescription?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -88,6 +89,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageAutoPlayPauseOnHover?: boolean;
     imageInfinityMove?: boolean;
     imageActions?: NgxGalleryAction[];
+    imageDescription?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -161,6 +163,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
             obj.imageActions = obj.imageActions.map(action => new NgxGalleryAction(action));
         }
         this.imageActions = use(obj.imageActions, []);
+        this.imageDescription = use(obj.imageDescription, false);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);

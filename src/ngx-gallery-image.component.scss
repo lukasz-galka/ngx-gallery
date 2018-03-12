@@ -91,3 +91,15 @@
         }
     }
 }
+
+.ngx-gallery-image-text {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 10;
+}
