@@ -1,3 +1,8 @@
+<a name="5.3.0"></a>
+# 5.3.0 (2017-03-15)
+
+* Add option `previewRotate` ([525bc61](https://github.com/lukasz-galka/ngx-gallery/commit/525bc61))
+
 <a name="5.2.0"></a>
 # 5.2.0 (2017-03-12)
 
