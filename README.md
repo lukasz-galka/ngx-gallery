@@ -122,6 +122,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewZoomStep` | Type: `number` | Default value: `0.1` - step for zoom change
 - `previewZoomMax` | Type: `number` | Default value: `2` - max value for zoom
 - `previewZoomMin` | Type: `number` | Default value: `0.5` - min value for zoom
+- `previewRotate` | Type: `boolean` | Default value: `false` - enables or disables rotate buttons
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
@@ -130,6 +131,8 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `spinnerIcon` | Type: `string` | Default value: `'fa fa-spinner fa-pulse fa-3x fa-fw'` - icon for spinner
 - `zoomInIcon` | Type: `string` | Default value: `'fa fa-search-plus'` - icon for zoom in
 - `zoomOutIcon` | Type: `string` | Default value: `'fa fa-search-minus'` - icon for zoom out
+- `rotaeLeftIcon` | Type: `string` | Default value: `'fa fa-undo'` - icon for rotate left
+- `rotaeRightIcon` | Type: `string` | Default value: `'fa fa-repeat'` - icon for rotate right
 - `actions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of new custom actions that will be added to the left of the current close/zoom/fullscreen icons
 
 # NgxGalleryImage

@@ -58,6 +58,7 @@ export interface INgxGalleryOptions {
     previewZoomStep?: number;
     previewZoomMax?: number;
     previewZoomMin?: number;
+    previewRotate?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -65,6 +66,8 @@ export interface INgxGalleryOptions {
     spinnerIcon?: string;
     zoomInIcon?: string;
     zoomOutIcon?: string;
+    rotateLeftIcon?: string;
+    rotateRightIcon?: string;
     actions?: NgxGalleryAction[];
 }
 
@@ -122,6 +125,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewZoomStep?: number;
     previewZoomMax?: number;
     previewZoomMin?: number;
+    previewRotate?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -129,6 +133,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     spinnerIcon?: string;
     zoomInIcon?: string;
     zoomOutIcon?: string;
+    rotateLeftIcon?: string;
+    rotateRightIcon?: string;
     actions?: NgxGalleryAction[];
 
     constructor(obj: INgxGalleryOptions) {
@@ -201,6 +207,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewZoomStep = use(obj.previewZoomStep, 0.1);
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
+        this.previewRotate = use(obj.previewRotate, false);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');
@@ -209,6 +216,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.spinnerIcon = use(obj.spinnerIcon, 'fa fa-spinner fa-pulse fa-3x fa-fw');
         this.zoomInIcon = use(obj.zoomInIcon, 'fa fa-search-plus');
         this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
+        this.rotateLeftIcon = use(obj.rotateLeftIcon, 'fa fa-undo');
+        this.rotateRightIcon = use(obj.rotateRightIcon, 'fa fa-repeat');
 
         if (obj && obj.actions && obj.actions.length) {
             obj.actions = obj.actions.map(action => new NgxGalleryAction(action));

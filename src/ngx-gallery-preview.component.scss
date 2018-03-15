@@ -22,9 +22,10 @@
     max-width: 90%;
     max-height: 90%;
     user-select: none;
+    transition: transform .5s;
 
     &.animation {
-        transition: opacity 0.5s linear;
+        transition: opacity 0.5s linear, transform .5s;
     }
 
     &.ngx-gallery-active {

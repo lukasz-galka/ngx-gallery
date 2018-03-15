@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryAction } from './ngx-gallery-action.model';
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -13,6 +13,8 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
                 <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event)"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
+                <ngx-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></ngx-gallery-action>
+                <ngx-gallery-action *ngIf="rotate" [icon]="rotateRightIcon" (onClick)="rotateRight()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="fullscreen" [icon]="'ngx-gallery-fullscreen ' + fullscreenIcon" (onClick)="manageFullscreen()"></ngx-gallery-action>
                 <ngx-gallery-action [icon]="'ngx-gallery-close ' + closeIcon" (onClick)="close()"></ngx-gallery-action>
             </div>
@@ -22,7 +24,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         </div>
         <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
             <div class="ngx-gallery-preview-img-wrapper">
-                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="'scale(' + zoomValue + ')'" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
+                <img #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src ? src : '#'" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
             <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description"></div>
         </div>
@@ -39,6 +41,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     positionTop = 0;
     zoomValue = 1;
     loading = false;
+    rotateValue = 0;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -66,6 +69,9 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() zoomOutIcon: string;
     @Input() animation: boolean;
     @Input() actions: NgxGalleryAction[];
+    @Input() rotate: boolean;
+    @Input() rotateLeftIcon: string;
+    @Input() rotateRightIcon: string;
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();
@@ -248,6 +254,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
+    rotateLeft(): void {
+        this.rotateValue -= 90;
+    }
+
+    rotateRight(): void {
+        this.rotateValue += 90;
+    }
+
+    getTransform(): SafeStyle {
+        return this.sanitization.bypassSecurityTrustStyle('scale(' + this.zoomValue + ') rotate(' + this.rotateValue + 'deg)');
+    }
+
     canZoomIn(): boolean {
         return this.zoomValue < this.zoomMax ? true : false;
     }
@@ -354,6 +372,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
     private _show() {
         this.zoomValue = 1;
+        this.rotateValue = 0;
         this.resetPosition();
 
         this.src = this.getSafeUrl(<string>this.images[this.index]);
