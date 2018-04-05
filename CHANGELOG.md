@@ -1,3 +1,9 @@
+
+<a name="5.3.1"></a>
+# 5.3.1 (2017-04-05)
+
+* Prevent refreshing thumbnails on fullscreen ([e290ce2](https://github.com/lukasz-galka/ngx-gallery/commit/e290ce2))
+
 <a name="5.3.0"></a>
 # 5.3.0 (2017-03-15)
 
