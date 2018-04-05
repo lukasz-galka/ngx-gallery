@@ -83,10 +83,6 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         this.mouseenter = false;
     }
 
-    @HostListener('window:resize') onResize() {
-        this.setDefaultPosition();
-    }
-
     reset(index: number): void {
         this.selectedIndex = index;
         this.setDefaultPosition();

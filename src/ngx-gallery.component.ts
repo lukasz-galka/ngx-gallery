@@ -90,9 +90,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
                 this.image.reset(<number>this.currentOptions.startIndex);
             }
 
-            if (this.thubmnails) {
-                this.thubmnails.reset(<number>this.currentOptions.startIndex);
-            }
+            this.resetThumbnails();
         }
     }
 
@@ -105,6 +103,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
         if (this.prevBreakpoint !== this.breakpoint) {
             this.setOptions();
+            this.resetThumbnails();
         }
 
         if (this.currentOptions && this.currentOptions.fullWidth) {
@@ -215,6 +214,12 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
     previewSelect(index: number) {
         this.previewChange.emit({index, image: this.images[index]});
+    }
+
+    private resetThumbnails() {
+        if (this.thubmnails) {
+            this.thubmnails.reset(<number>this.currentOptions.startIndex);
+        }
     }
 
     private select(index: number) {
