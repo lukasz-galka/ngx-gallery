@@ -24,6 +24,8 @@ describe('NgxGalleryPreviewComponent', () => {
         comp = fixture.componentInstance;
         comp.images = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg'];
         comp.descriptions = ['1', '2', '3'];
+        comp.src = "#";
+        fixture.detectChanges();
         el = fixture.debugElement.nativeElement;
         image = el.querySelector('.ngx-gallery-preview-img');
     });
