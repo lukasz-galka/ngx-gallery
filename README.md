@@ -1,3 +1,5 @@
+Off until 11.06.2018
+
 [![npm version](https://img.shields.io/npm/v/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
 [![Downloads](https://img.shields.io/npm/dm/ngx-gallery.svg)](https://www.npmjs.com/package/ngx-gallery)
 [![DevDependencies](https://david-dm.org/lukasz-galka/ngx-gallery/dev-status.svg)](https://david-dm.org/lukasz-galka/ngx-gallery?type=dev)
