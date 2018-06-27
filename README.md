@@ -145,6 +145,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `big` | Type: `string | SafeResourceUrl` - url used in preview
 - `description` | Type: `string` - description used in preview
 - `url` | Type: `string` - url used in link
+- `label` | Type: `string` - label used for aria-label when thumbnail is a link
 
 # NgxGalleryAnimation
 - `Fade` (default)

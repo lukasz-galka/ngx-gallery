@@ -26,6 +26,7 @@ describe('NgxGalleryThumbnailsComponent', () => {
         comp.rows = 1;
         comp.margin = 10;
         comp.moveSize = 1;
+        comp.labels = [null,null,null];
         el = fixture.debugElement.nativeElement;
         thumbnails = el.querySelector('.ngx-gallery-thumbnails');
     });
