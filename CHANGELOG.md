@@ -1,3 +1,8 @@
+<a name="5.4.0"></a>
+# 5.4.0 (2017-06-27)
+
+* add support for arial-label on thumbnails ([ad2da1c](https://github.com/lukasz-galka/ngx-gallery/commit/ad2da1c))
+
 <a name="5.3.2"></a>
 # 5.3.2 (2017-04-11)
 
