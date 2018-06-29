@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryAction } from './ngx-gallery-action.model';
@@ -88,8 +88,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private initialTop = 0;
     private isMove = false;
 
-    constructor(private sanitization: DomSanitizer,
-        private elementRef: ElementRef, private helperService: NgxGalleryHelperService) {}
+    private keyDownListener: Function;
+
+    constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
+        private helperService: NgxGalleryHelperService, private renderer: Renderer) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['swipe']) {
@@ -98,7 +100,13 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         }
     }
 
-    @HostListener('window:keydown', ['$event']) onKeyDown(e) {
+    ngOnDestroy() {
+        if (this.keyDownListener) {
+            this.keyDownListener();
+        }
+    }
+
+    onKeyDown(e) {
         if (this.isOpen) {
             if (this.keyboardNavigation) {
                 if (this.isKeyboardPrev(e)) {
@@ -114,7 +122,6 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     open(index: number): void {
-
         this.onOpen.emit();
 
         this.index = index;
@@ -124,6 +131,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         if (this.forceFullscreen) {
             this.manageFullscreen();
         }
+
+        this.keyDownListener = this.renderer.listenGlobal("window", "keydown", (e) => this.onKeyDown(e));
     }
 
     close(): void {
@@ -132,6 +141,10 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.onClose.emit();
 
         this.stopAutoPlay();
+
+        if (this.keyDownListener) {
+            this.keyDownListener();
+        }
     }
 
     imageMouseEnter(): void {
