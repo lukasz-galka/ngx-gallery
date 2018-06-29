@@ -1,3 +1,8 @@
+<a name="5.4.1"></a>
+# 5.4.1 (2017-06-29)
+
+* add keydown listener only when preview is open ([9c712e5](https://github.com/lukasz-galka/ngx-gallery/commit/9c712e5)), closes [#169]
+
 <a name="5.4.0"></a>
 # 5.4.0 (2017-06-27)
 
