@@ -59,6 +59,7 @@ export interface INgxGalleryOptions {
     previewZoomMax?: number;
     previewZoomMin?: number;
     previewRotate?: boolean;
+    previewCustom?: (index: number) => void;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -126,6 +127,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewZoomMax?: number;
     previewZoomMin?: number;
     previewRotate?: boolean;
+    previewCustom?: (index: number) => void;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -208,6 +210,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
         this.previewRotate = use(obj.previewRotate, false);
+        this.previewCustom = use(obj.previewCustom, undefined);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');

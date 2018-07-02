@@ -150,8 +150,12 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     openPreview(index: number): void {
-        this.previewEnabled = true;
-        this.preview.open(index);
+        if (this.currentOptions.previewCustom) {
+            this.currentOptions.previewCustom(index);
+        } else {
+            this.previewEnabled = true;
+            this.preview.open(index);
+        }
     }
 
     onPreviewOpen(): void {
