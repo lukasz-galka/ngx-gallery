@@ -10,7 +10,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
-                <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event)"></ngx-gallery-action>
+                <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></ngx-gallery-action>
@@ -42,6 +42,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     zoomValue = 1;
     loading = false;
     rotateValue = 0;
+    index = 0;
 
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
@@ -79,7 +80,6 @@ export class NgxGalleryPreviewComponent implements OnChanges {
 
     @ViewChild('previewImage') previewImage: ElementRef;
 
-    private index = 0;
     private isOpen = false;
     private timer;
     private initialX = 0;

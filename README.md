@@ -169,7 +169,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `icon` | Type: `string` - icon for custom action
 - `disabled` | Type: `boolean` | Default value: `false` - if the icon should be disabled
 - `titleText` | Type: `string` | Default value: `''` - text to set the title attribute to
-- `onClick` | Type: `(event: Event) => void` - Output function to call when custom action icon is clicked
+- `onClick` | Type: `(event: Event, index: number) => void` - Output function to call when custom action icon is clicked
 
 # Events
 - `change` - triggered on image change
