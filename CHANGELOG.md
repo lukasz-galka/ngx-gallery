@@ -1,3 +1,8 @@
+<a name="5.5.1"></a>
+# 5.5.1 (2017-07-03)
+
+* pass image index in custom action handler ([4be6665](https://github.com/lukasz-galka/ngx-gallery/commit/4be6665)), closes [#125](https://github.com/lukasz-galka/ngx-gallery/issues/125) 
+
 <a name="5.5.0"></a>
 # 5.5.0 (2017-07-03)
 
