@@ -1,3 +1,8 @@
+<a name="5.5.0"></a>
+# 5.5.0 (2017-07-03)
+
+* add previewCustom option ([c7e93f0](https://github.com/lukasz-galka/ngx-gallery/commit/c7e93f0)), closes [#175](https://github.com/lukasz-galka/ngx-gallery/issues/175) 
+
 <a name="5.4.1"></a>
 # 5.4.1 (2017-06-29)
 
