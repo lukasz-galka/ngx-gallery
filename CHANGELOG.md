@@ -1,3 +1,8 @@
+<a name="5.6.0"></a>
+# 5.6.0 (2017-07-06)
+
+* add option to download image on preview ([2369cf0](https://github.com/lukasz-galka/ngx-gallery/commit/2369cf0)), closes [#163](https://github.com/lukasz-galka/ngx-gallery/issues/163) 
+
 <a name="5.5.1"></a>
 # 5.5.1 (2017-07-03)
 
