@@ -11,6 +11,9 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
                 <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
+                <a *ngIf="src" [href]="src" class="ngx-gallery-icon" aria-hidden="true" download>
+                    <i class="ngx-gallery-icon-content {{ downloadIcon }}"></i>
+                </a>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
                 <ngx-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></ngx-gallery-action>
@@ -73,6 +76,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() rotate: boolean;
     @Input() rotateLeftIcon: string;
     @Input() rotateRightIcon: string;
+    @Input() download: boolean;
+    @Input() downloadIcon: string;
 
     @Output() onOpen = new EventEmitter();
     @Output() onClose = new EventEmitter();

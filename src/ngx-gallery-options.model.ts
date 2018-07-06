@@ -59,6 +59,7 @@ export interface INgxGalleryOptions {
     previewZoomMax?: number;
     previewZoomMin?: number;
     previewRotate?: boolean;
+    previewDownload?: boolean;
     previewCustom?: (index: number) => void;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
@@ -69,6 +70,7 @@ export interface INgxGalleryOptions {
     zoomOutIcon?: string;
     rotateLeftIcon?: string;
     rotateRightIcon?: string;
+    downloadIcon?: string;
     actions?: NgxGalleryAction[];
 }
 
@@ -127,6 +129,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewZoomMax?: number;
     previewZoomMin?: number;
     previewRotate?: boolean;
+    previewDownload?: boolean;
     previewCustom?: (index: number) => void;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
@@ -137,6 +140,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     zoomOutIcon?: string;
     rotateLeftIcon?: string;
     rotateRightIcon?: string;
+    downloadIcon?: string;
     actions?: NgxGalleryAction[];
 
     constructor(obj: INgxGalleryOptions) {
@@ -210,6 +214,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
         this.previewRotate = use(obj.previewRotate, false);
+        this.previewDownload = use(obj.previewDownload, false);
         this.previewCustom = use(obj.previewCustom, undefined);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
@@ -221,6 +226,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
         this.rotateLeftIcon = use(obj.rotateLeftIcon, 'fa fa-undo');
         this.rotateRightIcon = use(obj.rotateRightIcon, 'fa fa-repeat');
+        this.downloadIcon = use(obj.downloadIcon, 'fa fa-arrow-circle-down');
 
         if (obj && obj.actions && obj.actions.length) {
             obj.actions = obj.actions.map(action => new NgxGalleryAction(action));
