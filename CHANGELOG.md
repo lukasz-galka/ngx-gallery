@@ -1,3 +1,8 @@
+<a name="5.6.1"></a>
+# 5.6.1 (2017-07-14)
+
+* fix thumbnailsRemainingCount when there is more than one row ([0a35d68](https://github.com/lukasz-galka/ngx-gallery/commit/0a35d68)), closes [#178](https://github.com/lukasz-galka/ngx-gallery/issues/178) 
+
 <a name="5.6.0"></a>
 # 5.6.0 (2017-07-06)
 
