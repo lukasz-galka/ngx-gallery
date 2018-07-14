@@ -14,7 +14,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
                 <div class="ngx-gallery-icons-wrapper">
                     <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, i)"></ngx-gallery-action>
                 </div>
-                <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == columns - 1)">
+                <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == (rows * columns) - 1)">
                     <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
                 </div>
             </a>
@@ -72,7 +72,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         }
 
         if (this.images) {
-            this.remainingCountValue = this.images.length - this.columns;
+            this.remainingCountValue = this.images.length - (this.rows * this.columns);
         }
     }
 
@@ -94,7 +94,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     getImages(): string[] | SafeResourceUrl[] {
         if (this.remainingCount) {
-            return this.images.slice(0, this.columns);
+            return this.images.slice(0, this.rows * this.columns);
         } else if (this.lazyLoading && this.order != NgxGalleryOrder.Row) {
             let stopIndex = this.index + this.columns + this.moveSize;
 

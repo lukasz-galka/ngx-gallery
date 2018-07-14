@@ -11,7 +11,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
                 <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
-                <a *ngIf="src" [href]="src" class="ngx-gallery-icon" aria-hidden="true" download>
+                <a *ngIf="download && src" [href]="src" class="ngx-gallery-icon" aria-hidden="true" download>
                     <i class="ngx-gallery-icon-content {{ downloadIcon }}"></i>
                 </a>
                 <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
