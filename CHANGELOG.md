@@ -1,3 +1,8 @@
+<a name="5.6.2"></a>
+# 5.6.2 (2017-09-05)
+
+* fix choppy transitions in Chrome ([9864149](https://github.com/lukasz-galka/ngx-gallery/commit/9864149))
+
 <a name="5.6.1"></a>
 # 5.6.1 (2017-07-14)
 
