@@ -1,3 +1,8 @@
+<a name="5.7.0"></a>
+# 5.7.0 (2018-10-08)
+
+* Add methods to move thumbnails ([a105149](https://github.com/lukasz-galka/ngx-gallery/commit/a105149)), closes [#197](https://github.com/lukasz-galka/ngx-gallery/issues/197) 
+
 <a name="5.6.2"></a>
 # 5.6.2 (2017-09-05)
 
