@@ -221,6 +221,22 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         this.previewChange.emit({index, image: this.images[index]});
     }
 
+    moveThumbnailsRight() {
+        this.thubmnails.moveRight();
+    }
+
+    moveThumbnailsLeft() {
+        this.thubmnails.moveLeft();
+    }
+
+    canMoveThumbnailsRight() {
+        this.thubmnails.canMoveRight();
+    }
+
+    canMoveThumbnailsLeft() {
+        this.thubmnails.canMoveLeft();
+    }
+
     private resetThumbnails() {
         if (this.thubmnails) {
             this.thubmnails.reset(<number>this.currentOptions.startIndex);

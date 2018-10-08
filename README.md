@@ -187,6 +187,10 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `canShowNext(): boolean` - returns true if there is next image
 - `canShowPrev(): boolean` - returns true if there is prev image
 - `openPreview(index: number): void` - opens preview at index
+- `moveThumbnailsLeft(): void` - moves thumbnails to left
+- `moveThumbnailsRight(): void` - moves thumbnails to right
+- `canMoveThumbnailsLeft(): boolean` - returns true if you can move thumbnails to left
+- `canMoveThumbnailsRight(): boolean` - returns true if you can move thumbnails to right
 
 # Usage
 ````ts
