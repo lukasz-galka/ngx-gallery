@@ -230,11 +230,11 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     canMoveThumbnailsRight() {
-        this.thubmnails.canMoveRight();
+        return this.thubmnails.canMoveRight();
     }
 
     canMoveThumbnailsLeft() {
-        this.thubmnails.canMoveLeft();
+        return this.thubmnails.canMoveLeft();
     }
 
     private resetThumbnails() {
