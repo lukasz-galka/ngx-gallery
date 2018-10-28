@@ -36,9 +36,9 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @Output() previewClose = new EventEmitter();
     @Output() previewChange = new EventEmitter<{ index: number; image: NgxGalleryImage; }>();
 
-    smallImages: string[] | SafeResourceUrl[];
-    mediumImages: NgxGalleryOrderedImage[];
-    bigImages: string[] | SafeResourceUrl[];
+    smallImages: string[] | SafeResourceUrl[] = [];
+    mediumImages: NgxGalleryOrderedImage[] = [];
+    bigImages: string[] | SafeResourceUrl[] = [];
     descriptions: string[];
     links: string[];
     labels: string[];
