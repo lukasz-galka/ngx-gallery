@@ -1,3 +1,8 @@
+<a name="5.7.1"></a>
+# 5.7.1 (2018-10-28)
+
+* Fix canMoveThumbnails methods ([0a6fb5d](https://github.com/lukasz-galka/ngx-gallery/commit/0a6fb5d)), closes [#200](https://github.com/lukasz-galka/ngx-gallery/issues/200) 
+
 <a name="5.7.0"></a>
 # 5.7.0 (2018-10-08)
 
