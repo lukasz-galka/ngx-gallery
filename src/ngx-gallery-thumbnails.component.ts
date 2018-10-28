@@ -10,7 +10,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
     template: `
     <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
         <div class="ngx-gallery-thumbnails" [style.transform]="'translateX(' + thumbnailsLeft + ')'" [style.marginLeft]="thumbnailsMarginLeft">
-            <a [href]="hasLinks() ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }" [attr.aria-label]="labels[i]">
+            <a [href]="hasLink(i) ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }" [attr.aria-label]="labels[i]">
                 <div class="ngx-gallery-icons-wrapper">
                     <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, i)"></ngx-gallery-action>
                 </div>
@@ -119,7 +119,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     handleClick(event: Event, index: number): void {
-        if (!this.hasLinks()) {
+        if (!this.hasLink(index)) {
             this.selectedIndex = index;
             this.onActiveChange.emit(index);
 
@@ -128,8 +128,8 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
         }
     }
 
-    hasLinks(): boolean {
-        if (this.links && this.links.length) return true;
+    hasLink(index: number): boolean {
+        if (this.links && this.links.length && this.links[index]) return true;
     }
 
     moveRight(): void {
