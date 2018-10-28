@@ -1,3 +1,8 @@
+<a name="5.7.4"></a>
+# 5.7.4 (2018-10-28)
+
+* Add validation for imagest ([a2c7379](https://github.com/lukasz-galka/ngx-gallery/commit/a2c7379)), closes [#179](https://github.com/lukasz-galka/ngx-gallery/issues/179) 
+
 <a name="5.7.3"></a>
 # 5.7.3 (2018-10-28)
 
