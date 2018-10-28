@@ -166,7 +166,11 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
         if (this.order === NgxGalleryOrder.Column) {
             calculatedIndex = Math.floor(index / this.rows);
-        } else {
+        }
+        else if (this.order == NgxGalleryOrder.Row && this.remainingCount) {
+            calculatedIndex = index % this.columns;
+        }
+        else {
             calculatedIndex = index % Math.ceil(this.images.length / this.rows);
         }
 
@@ -178,7 +182,11 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
         if (this.order === NgxGalleryOrder.Column) {
             calculatedIndex = index % this.rows;
-        } else {
+        }
+        else if (this.order == NgxGalleryOrder.Row && this.remainingCount) {
+            calculatedIndex = Math.floor(index / this.columns);
+        }
+        else {
             calculatedIndex = Math.floor(index / Math.ceil(this.images.length / this.rows));
         }
 
