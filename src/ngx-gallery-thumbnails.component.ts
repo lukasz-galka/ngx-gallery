@@ -93,6 +93,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     getImages(): string[] | SafeResourceUrl[] {
+        if (!this.images) {
+            return [];
+        }
+
         if (this.remainingCount) {
             return this.images.slice(0, this.rows * this.columns);
         } else if (this.lazyLoading && this.order != NgxGalleryOrder.Row) {
@@ -225,23 +229,25 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     validateIndex(): void {
-        let newIndex;
+        if (this.images) {
+            let newIndex;
 
-        if (this.order === NgxGalleryOrder.Column) {
-            newIndex = Math.floor(this.selectedIndex / this.rows);
-        } else {
-            newIndex = this.selectedIndex % Math.ceil(this.images.length / this.rows);
-        }
+            if (this.order === NgxGalleryOrder.Column) {
+                newIndex = Math.floor(this.selectedIndex / this.rows);
+            } else {
+                newIndex = this.selectedIndex % Math.ceil(this.images.length / this.rows);
+            }
 
-        if (this.remainingCount) {
-            newIndex = 0;
-        }
+            if (this.remainingCount) {
+                newIndex = 0;
+            }
 
-        if (newIndex < this.index || newIndex >= this.index + this.columns) {
-            const maxIndex = this.getMaxIndex() - this.columns;
-            this.index = newIndex > maxIndex ? maxIndex : newIndex;
+            if (newIndex < this.index || newIndex >= this.index + this.columns) {
+                const maxIndex = this.getMaxIndex() - this.columns;
+                this.index = newIndex > maxIndex ? maxIndex : newIndex;
 
-            this.setThumbnailsPosition();
+                this.setThumbnailsPosition();
+            }
         }
     }
 

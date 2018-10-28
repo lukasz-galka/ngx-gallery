@@ -92,6 +92,10 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
 
     getImages(): NgxGalleryOrderedImage[] {
+        if (!this.images) {
+            return [];
+        }
+
         if (this.lazyLoading) {
             let indexes = [this.selectedIndex];
             let prevIndex = this.selectedIndex - 1;
