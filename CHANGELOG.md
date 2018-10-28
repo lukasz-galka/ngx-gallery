@@ -1,3 +1,8 @@
+<a name="5.7.3"></a>
+# 5.7.3 (2018-10-28)
+
+* Fix rendering item with thumbnailsRemainingCount ([82dfc4d](https://github.com/lukasz-galka/ngx-gallery/commit/82dfc4d)), closes [#203](https://github.com/lukasz-galka/ngx-gallery/issues/203) 
+
 <a name="5.7.2"></a>
 # 5.7.2 (2018-10-28)
 
