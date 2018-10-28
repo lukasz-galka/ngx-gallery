@@ -1,7 +1,7 @@
 <a name="5.7.2"></a>
 # 5.7.2 (2018-10-28)
 
-* Fix canMoveThumbnails methods ([1e655ed](https://github.com/lukasz-galka/ngx-gallery/commit/1e655ed)), closes [#202](https://github.com/lukasz-galka/ngx-gallery/issues/202) 
+* Encode apostrophe in url ([1e655ed](https://github.com/lukasz-galka/ngx-gallery/commit/1e655ed)), closes [#202](https://github.com/lukasz-galka/ngx-gallery/issues/202) 
 
 <a name="5.7.1"></a>
 # 5.7.1 (2018-10-28)
