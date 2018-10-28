@@ -1,3 +1,8 @@
+<a name="5.7.5"></a>
+# 5.7.5 (2018-10-28)
+
+* Use thumbnails as links just for images with an url ([2966a4e](https://github.com/lukasz-galka/ngx-gallery/commit/2966a4e)), closes [#110](https://github.com/lukasz-galka/ngx-gallery/issues/110) 
+
 <a name="5.7.4"></a>
 # 5.7.4 (2018-10-28)
 
