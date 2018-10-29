@@ -4,6 +4,7 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-br
 
 import { NgxGalleryActionComponent } from './ngx-gallery-action.component';
 import { NgxGalleryArrowsComponent } from './ngx-gallery-arrows.component';
+import { NgxGalleryBulletsComponent } from './ngx-gallery-bullets.component';
 import { NgxGalleryImageComponent } from './ngx-gallery-image.component';
 import { NgxGalleryThumbnailsComponent } from './ngx-gallery-thumbnails.component';
 import { NgxGalleryPreviewComponent } from './ngx-gallery-preview.component';
@@ -15,6 +16,7 @@ export * from './ngx-gallery-image.component';
 export * from './ngx-gallery-thumbnails.component';
 export * from './ngx-gallery-preview.component';
 export * from './ngx-gallery-arrows.component';
+export * from './ngx-gallery-bullets.component';
 export * from './ngx-gallery-options.model';
 export * from './ngx-gallery-image.model';
 export * from './ngx-gallery-animation.model';
@@ -39,6 +41,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     declarations: [
         NgxGalleryActionComponent,
         NgxGalleryArrowsComponent,
+        NgxGalleryBulletsComponent,
         NgxGalleryImageComponent,
         NgxGalleryThumbnailsComponent,
         NgxGalleryPreviewComponent,
