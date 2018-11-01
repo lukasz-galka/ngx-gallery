@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener,  ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 import { NgxGalleryOrderedImage } from './ngx-gallery-ordered-image.model';
@@ -17,6 +17,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
                 <div class="ngx-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]" (click)="$event.stopPropagation()"></div>
             </div>
         </div>
+        <ngx-gallery-bullets *ngIf="bullets" [count]="images.length" [active]="selectedIndex" (onChange)="show($event)"></ngx-gallery-bullets>
         <ngx-gallery-arrows class="ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
     `,
     styleUrls: ['./ngx-gallery-image.component.scss']
@@ -40,6 +41,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     @Input() actions: NgxGalleryAction[];
     @Input() descriptions: string[];
     @Input() showDescription: boolean;
+    @Input() bullets: boolean;
 
     @Output() onClick = new EventEmitter();
     @Output() onActiveChange = new EventEmitter();
@@ -144,6 +146,12 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
             event.stopPropagation();
             event.preventDefault();
         }
+    }
+
+    show(index: number) {
+        this.selectedIndex = index;
+        this.onActiveChange.emit(this.selectedIndex);
+        this.setChangeTimeout();
     }
 
     showNext(): boolean {

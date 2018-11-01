@@ -1,0 +1,26 @@
+:host {
+    position: absolute;
+    z-index: 2000;
+    display: inline-flex;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    padding: 10px;
+}
+
+.ngx-gallery-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: white;
+
+    &:not(:first-child) {
+        margin-left: 5px;
+    }
+
+    &:hover,
+    &.ngx-gallery-active {
+        background: black;
+    }
+}

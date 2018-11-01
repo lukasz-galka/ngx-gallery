@@ -26,6 +26,7 @@ export interface INgxGalleryOptions {
     imageInfinityMove?: boolean;
     imageActions?: NgxGalleryAction[];
     imageDescription?: boolean;
+    imageBullets?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -61,6 +62,7 @@ export interface INgxGalleryOptions {
     previewRotate?: boolean;
     previewDownload?: boolean;
     previewCustom?: (index: number) => void;
+    previewBullets?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -96,6 +98,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     imageInfinityMove?: boolean;
     imageActions?: NgxGalleryAction[];
     imageDescription?: boolean;
+    imageBullets?: boolean;
     thumbnails?: boolean;
     thumbnailsColumns?: number;
     thumbnailsRows?: number;
@@ -131,6 +134,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     previewRotate?: boolean;
     previewDownload?: boolean;
     previewCustom?: (index: number) => void;
+    previewBullets?: boolean;
     arrowPrevIcon?: string;
     arrowNextIcon?: string;
     closeIcon?: string;
@@ -176,6 +180,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         }
         this.imageActions = use(obj.imageActions, []);
         this.imageDescription = use(obj.imageDescription, false);
+        this.imageBullets = use(obj.imageBullets, false);
 
         this.thumbnails = use(obj.thumbnails, true);
         this.thumbnailsColumns = use(obj.thumbnailsColumns, 4);
@@ -216,6 +221,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.previewRotate = use(obj.previewRotate, false);
         this.previewDownload = use(obj.previewDownload, false);
         this.previewCustom = use(obj.previewCustom, undefined);
+        this.previewBullets = use(obj.previewBullets, false);
 
         this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
         this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');
