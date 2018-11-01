@@ -1,3 +1,9 @@
+<a name="5.8.0"></a>
+# 5.8.0 (2018-11-01)
+
+* Fix links in description ([fe01502](https://github.com/lukasz-galka/ngx-gallery/commit/fe01502)), closes [#206](https://github.com/lukasz-galka/ngx-gallery/issues/206) 
+* Add option to use bullets on image and preview ([0044559](https://github.com/lukasz-galka/ngx-gallery/commit/0044559)), closes [#123](https://github.com/lukasz-galka/ngx-gallery/issues/123) 
+
 <a name="5.7.5"></a>
 # 5.7.5 (2018-10-28)
 

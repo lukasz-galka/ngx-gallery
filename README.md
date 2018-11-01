@@ -92,6 +92,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `imageAutoPlayPauseOnHover` | Type: `boolean` | Default value: `false` - enables or disables pouse auto play on hover
 - `imageInfinityMove` | Type: `boolean` | Default value: `false` - enables or disables infinity move by arrows
 - `imageActions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of custom actions
+- `imageBullets` | Type: `boolean` | Default value: `false` - enables or disables navigation bullets
 
 - `thumbnails` | Type: `boolean` | Default value: `true` - enables or disables thumbnails
 - `thumbnailsColumns` | Type: `number` | Default value: `4` - columns count
@@ -128,6 +129,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `previewZoomMin` | Type: `number` | Default value: `0.5` - min value for zoom
 - `previewRotate` | Type: `boolean` | Default value: `false` - enables or disables rotate buttons
 - `previewDownload` | Type: `boolean` | Default value: `false` - enables or disables downoad button
+- `previewBullets` | Type: `boolean` | Default value: `false` - enables or disables navigation bullets
 
 - `arrowPrevIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-left'` - icon for prev arrow
 - `arrowNextIcon` | Type: `string` | Default value: `'fa fa-arrow-circle-right'` - icon for next arrow
