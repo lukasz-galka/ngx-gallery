@@ -4,7 +4,7 @@ import { Renderer, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import {
     NgxGalleryComponent, NgxGalleryActionComponent, NgxGalleryImageComponent, NgxGalleryThumbnailsComponent,
-    NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService,
+    NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryHelperService,
     NgxGalleryOptions
 } from './';
 
@@ -16,7 +16,7 @@ describe('NgxGalleryComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [ NgxGalleryComponent, NgxGalleryActionComponent, NgxGalleryThumbnailsComponent,
-                NgxGalleryImageComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent ],
+                NgxGalleryImageComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent ],
             providers: [ NgxGalleryHelperService, Renderer ]
         })
             .overrideComponent(NgxGalleryComponent, {

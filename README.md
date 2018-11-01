@@ -168,6 +168,9 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 # NgxGalleryOrder
 - `Column` (default)
 - `Row`
+- `Page`
+
+Examples for 
 
 # NgxGalleryAction
 - `icon` | Type: `string` - icon for custom action

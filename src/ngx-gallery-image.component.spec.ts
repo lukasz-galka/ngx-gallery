@@ -2,7 +2,7 @@ import {} from 'jasmine';
 import { Renderer } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgxGalleryActionComponent, NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryHelperService,
+import { NgxGalleryActionComponent, NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryHelperService,
     NgxGalleryOrderedImage } from './';
 
 export class CustomHammerConfig extends HammerGestureConfig  {
@@ -19,7 +19,7 @@ describe('NgxGalleryArrowsComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-          declarations: [ NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryActionComponent ],
+          declarations: [ NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryActionComponent ],
           providers: [ NgxGalleryHelperService, Renderer,
             { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig } ]
         })
