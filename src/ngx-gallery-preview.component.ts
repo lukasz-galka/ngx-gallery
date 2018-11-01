@@ -29,7 +29,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
             <div class="ngx-gallery-preview-img-wrapper">
                 <img *ngIf="src" #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
             </div>
-            <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description"></div>
+            <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description" (click)="$event.stopPropagation()"></div>
         </div>
     `,
     styleUrls: ['./ngx-gallery-preview.component.scss']
