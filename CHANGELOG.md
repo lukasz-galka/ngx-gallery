@@ -1,3 +1,8 @@
+<a name="5.8.1"></a>
+# 5.8.1 (2018-11-01)
+
+* Add option NgxGalleryOrder.Page ([01bd7fb](https://github.com/lukasz-galka/ngx-gallery/commit/01bd7fb)), closes [#116](https://github.com/lukasz-galka/ngx-gallery/issues/116) 
+
 <a name="5.8.0"></a>
 # 5.8.0 (2018-11-01)
 
