@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryAction } from './ngx-gallery-action.model';
@@ -98,7 +98,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private keyDownListener: Function;
 
     constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
-        private helperService: NgxGalleryHelperService, private renderer: Renderer) {}
+        private helperService: NgxGalleryHelperService, private renderer: Renderer,
+        private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['swipe']) {
@@ -422,6 +423,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
                     this.startAutoPlay();
                 }
             }
+            this.changeDetectorRef.markForCheck();
         })
     }
 

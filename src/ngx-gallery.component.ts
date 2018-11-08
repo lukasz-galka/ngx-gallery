@@ -77,6 +77,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     ngDoCheck(): void {
+        this.setOptions();
         if (this.images !== undefined && (this.images.length !== this.oldImagesLength)
             || (this.images !== this.oldImages)) {
             this.oldImagesLength = this.images.length;
