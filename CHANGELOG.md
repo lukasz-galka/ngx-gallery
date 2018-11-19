@@ -1,3 +1,8 @@
+<a name="5.8.2"></a>
+# 5.8.2 (2018-11-19)
+
+* mark preview as changed with onpush change detection ([4fa180d](https://github.com/lukasz-galka/ngx-gallery/commit/4fa180d)), closes [#147](https://github.com/lukasz-galka/ngx-gallery/issues/147) 
+
 <a name="5.8.1"></a>
 # 5.8.1 (2018-11-01)
 
