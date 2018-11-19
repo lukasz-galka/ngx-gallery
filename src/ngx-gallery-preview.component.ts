@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryAction } from './ngx-gallery-action.model';
@@ -98,7 +98,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     private keyDownListener: Function;
 
     constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
-        private helperService: NgxGalleryHelperService, private renderer: Renderer) {}
+        private helperService: NgxGalleryHelperService, private renderer: Renderer,
+        private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['swipe']) {
@@ -403,15 +404,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         this.src = this.getSafeUrl(<string>this.images[this.index]);
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];
+        this.changeDetectorRef.markForCheck();
 
         setTimeout(() => {
             if (this.isLoaded(this.previewImage.nativeElement)) {
                 this.loading = false;
                 this.startAutoPlay();
+                this.changeDetectorRef.markForCheck();
             } else {
                 setTimeout(() => {
                     if (this.loading) {
                         this.showSpinner = true;
+                        this.changeDetectorRef.markForCheck();
                     }
                 })
 
@@ -420,6 +424,7 @@ export class NgxGalleryPreviewComponent implements OnChanges {
                     this.showSpinner = false;
                     this.previewImage.nativeElement.onload = null;
                     this.startAutoPlay();
+                    this.changeDetectorRef.markForCheck();
                 }
             }
         })
