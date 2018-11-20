@@ -106,6 +106,7 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 - `thumbnailsOrder` | Type: `number` | Default value: `NgxGalleryOrder.Column` - images order
 - `thumbnailsRemainingCount` | Type: `boolean` | Default value: `false` - if true arrows are disabled and last item has label with remaining count
 - `thumbnailsAsLinks` | Type: `boolean` | Default value: `false` - enables or disables links on thumbnails
+- `thumbnailsAutoHide` | Type: `boolean` | Default value: `false` - hides thumbnails if there is only one image
 - `thumbnailMargin` | Type: `number` | Default value: `10` - margin between images in thumbnails
 - `thumbnailSize` | Type: `string` | Default value: `NgxGalleryImageSize.Cover` - thumbnail size
 - `thumbnailActions` | Type: `NgxGalleryAction[]` | Default value: `[]` - Array of custom actions
