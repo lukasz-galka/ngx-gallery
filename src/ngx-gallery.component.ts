@@ -81,6 +81,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
             || (this.images !== this.oldImages)) {
             this.oldImagesLength = this.images.length;
             this.oldImages = this.images;
+            this.setOptions();
             this.setImages();
 
             if (this.images && this.images.length) {
@@ -89,6 +90,12 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
 
             if (this.image) {
                 this.image.reset(<number>this.currentOptions.startIndex);
+            }
+
+            if (this.currentOptions.thumbnailsAutoHide && this.currentOptions.thumbnails
+                && this.images.length <= 1) {
+                this.currentOptions.thumbnails = false;
+                this.currentOptions.imageArrows = false;
             }
 
             this.resetThumbnails();

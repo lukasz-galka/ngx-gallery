@@ -39,6 +39,7 @@ export interface INgxGalleryOptions {
     thumbnailsOrder?: NgxGalleryOrder;
     thumbnailsRemainingCount?: boolean;
     thumbnailsAsLinks?: boolean;
+    thumbnailsAutoHide?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     thumbnailActions?: NgxGalleryAction[];
@@ -111,6 +112,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailsOrder?: NgxGalleryOrder;
     thumbnailsRemainingCount?: boolean;
     thumbnailsAsLinks?: boolean;
+    thumbnailsAutoHide?: boolean;
     thumbnailMargin?: number;
     thumbnailSize?: string;
     thumbnailActions?: NgxGalleryAction[];
@@ -194,6 +196,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.thumbnailsOrder = use(obj.thumbnailsOrder, NgxGalleryOrder.Column);
         this.thumbnailsRemainingCount = use(obj.thumbnailsRemainingCount, false);
         this.thumbnailsAsLinks = use(obj.thumbnailsAsLinks, false);
+        this.thumbnailsAutoHide = use(obj.thumbnailsAutoHide, false);
         this.thumbnailMargin = use(obj.thumbnailMargin, 10);
         this.thumbnailSize = use(obj.thumbnailSize, NgxGalleryImageSize.Cover);
         if (obj && obj.thumbnailActions && obj.thumbnailActions.length) {
