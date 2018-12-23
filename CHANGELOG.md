@@ -1,3 +1,8 @@
+<a name="5.9.1"></a>
+# 5.9.1 (2018-12-23)
+
+* check if fullscreen mode is enabled before closing ([5a5ae5b](https://github.com/lukasz-galka/ngx-gallery/commit/5a5ae5b)), closes [#217](https://github.com/lukasz-galka/ngx-gallery/issues/217) 
+
 <a name="5.9.0"></a>
 # 5.9.0 (2018-11-20)
 
