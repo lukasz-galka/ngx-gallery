@@ -369,19 +369,29 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     }
 
     private closeFullscreen(): void {
+        if (this.isFullscreen()) {
+            const doc = <any>document;
 
-        const doc = <any>document;
-
-        if (doc.exitFullscreen) {
-            doc.exitFullscreen();
-        } else if (doc.msExitFullscreen) {
-            doc.msExitFullscreen();
-        } else if (doc.mozCancelFullScreen) {
-            doc.mozCancelFullScreen();
-        } else if (doc.webkitExitFullscreen) {
-            doc.webkitExitFullscreen();
+            if (doc.exitFullscreen) {
+                doc.exitFullscreen();
+            } else if (doc.msExitFullscreen) {
+                doc.msExitFullscreen();
+            } else if (doc.mozCancelFullScreen) {
+                doc.mozCancelFullScreen();
+            } else if (doc.webkitExitFullscreen) {
+                doc.webkitExitFullscreen();
+            }
         }
     }
+
+    private isFullscreen() {
+        const doc = <any>document;
+
+        return doc.fullscreenElement || doc.webkitFullscreenElement
+            || doc.mozFullScreenElement || doc.msFullscreenElement;
+    }
+
+
 
     private show(first = false) {
         this.loading = true;
