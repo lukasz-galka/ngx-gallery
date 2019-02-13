@@ -12,7 +12,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     };
   }
 
-describe('NgxGalleryArrowsComponent', () => {
+describe('NgxGalleryImageComponent', () => {
     let fixture: ComponentFixture<NgxGalleryImageComponent>;
     let comp: NgxGalleryImageComponent;
     let el, prevArrow, nextArrow;
