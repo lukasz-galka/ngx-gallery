@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryAction } from './ngx-gallery-action.model';
@@ -7,7 +7,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 @Component({
     selector: 'ngx-gallery-preview',
     template: `
-        <ngx-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+        <ngx-gallery-arrows *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
         <div class="ngx-gallery-preview-top">
             <div class="ngx-gallery-preview-icons">
                 <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
@@ -35,7 +35,7 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
     `,
     styleUrls: ['./ngx-gallery-preview.component.scss']
 })
-export class NgxGalleryPreviewComponent implements OnChanges {
+export class NgxGalleryPreviewComponent implements OnInit, OnChanges {
 
     src: SafeUrl;
     srcIndex: number;
@@ -51,6 +51,8 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     @Input() images: string[] | SafeResourceUrl[];
     @Input() descriptions: string[];
     @Input() showDescription: boolean;
+    @Input() arrows: boolean;
+    @Input() arrowsAutoHide: boolean;
     @Input() swipe: boolean;
     @Input() fullscreen: boolean;
     @Input() forceFullscreen: boolean;
@@ -101,6 +103,12 @@ export class NgxGalleryPreviewComponent implements OnChanges {
         private helperService: NgxGalleryHelperService, private renderer: Renderer,
         private changeDetectorRef: ChangeDetectorRef) {}
 
+    ngOnInit(): void {
+        if (this.arrows && this.arrowsAutoHide) {
+            this.arrows = false;
+        }
+    }
+
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['swipe']) {
             this.helperService.manageSwipe(this.swipe, this.elementRef,
@@ -111,6 +119,18 @@ export class NgxGalleryPreviewComponent implements OnChanges {
     ngOnDestroy() {
         if (this.keyDownListener) {
             this.keyDownListener();
+        }
+    }
+
+    @HostListener('mouseenter') onMouseEnter() {
+        if (this.arrowsAutoHide && !this.arrows) {
+            this.arrows = true;
+        }
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        if (this.arrowsAutoHide && this.arrows) {
+            this.arrows = false;
         }
     }
 

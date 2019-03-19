@@ -133,6 +133,34 @@ describe('NgxGalleryPreviewComponent', () => {
         comp.close();
     });
 
+    it('should hide arrows on the begining if arrowsAutoHide is true', () => {
+        comp.arrowsAutoHide = true;
+        comp.arrows = true;
+        fixture.detectChanges();
+
+        expect(comp.arrows).toBeFalsy();
+    });
+
+    it('should show arrows on mouseenter if arrowsAutoHide is true', () => {
+        comp.arrowsAutoHide = true;
+        fixture.detectChanges();
+
+        el.dispatchEvent(new Event('mouseenter'));
+
+        expect(comp.arrows).toBeTruthy();
+    });
+
+    it('should hide arrows on mouseleave if arrowsAutoHide is true', () => {
+        comp.arrowsAutoHide = true;
+        comp.arrows = true;
+        fixture.detectChanges();
+        comp.arrows = true;
+
+        el.dispatchEvent(new Event('mouseleave'));
+
+        expect(comp.arrows).toBeFalsy();
+    });
+
     it('should prevent showing images if images arent defined', () => {
         comp.images = undefined;
 

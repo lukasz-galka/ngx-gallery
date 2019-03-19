@@ -113,6 +113,8 @@ You can read more about this issue [here](https://github.com/angular/material2/i
 
 - `preview` | Type: `boolean` | Default value: `true` - enables or disables preview
 - `previewDescription` | Type: `boolean` | Default value: `true` - enables or disables description for images
+- `previewArrows` | Type: `boolean` | Default value: `true` - enables or disables arrows
+- `previewArrowsAutoHide` | boolean: `string` | Default value: `false` - enables or disables arrows auto hide
 - `previewSwipe` | Type: `boolean` | Default value: `false` - enables or disables swipe
 - `previewFullscreen` | Type: `boolean` | Default value: `false` - enables or disables fullscreen icon
 - `previewForceFullscreen` | Type: `boolean` | Default value: `false` - enables or disables opening preview in fullscreen mode
