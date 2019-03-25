@@ -175,6 +175,13 @@ describe('NgxGalleryPreviewComponent', () => {
         expect(comp.canShowPrev()).toBeFalsy();
     });
 
+    it('should prevent showing images if loading', () => {
+        comp.loading = true;
+
+        expect(comp.canShowNext()).toBeFalsy();
+        expect(comp.canShowPrev()).toBeFalsy();
+    });
+
     it('should stop auto play on moveenter if autoPlayPauseOnHover is true', (done) => {
         comp.autoPlay = true;
         comp.autoPlayInterval = 100;
