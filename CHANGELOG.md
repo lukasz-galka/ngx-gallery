@@ -1,3 +1,9 @@
+<a name="5.10.0"></a>
+# 5.10.0 (2019-04-30)
+
+* add option to manange arrows on preview ([bb8a200](https://github.com/lukasz-galka/ngx-gallery/commit/bb8a200))
+* fix onClick signature attribute ([f1c8edd](https://github.com/lukasz-galka/ngx-gallery/commit/f1c8edd))
+
 <a name="5.9.1"></a>
 # 5.9.1 (2018-12-23)
 
