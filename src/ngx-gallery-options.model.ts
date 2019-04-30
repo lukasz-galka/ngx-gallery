@@ -45,6 +45,8 @@ export interface INgxGalleryOptions {
     thumbnailActions?: NgxGalleryAction[];
     preview?: boolean;
     previewDescription?: boolean;
+    previewArrows?: boolean;
+    previewArrowsAutoHide?: boolean;
     previewSwipe?: boolean;
     previewFullscreen?: boolean;
     previewForceFullscreen?: boolean;
@@ -118,6 +120,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     thumbnailActions?: NgxGalleryAction[];
     preview?: boolean;
     previewDescription?: boolean;
+    previewArrows?: boolean;
+    previewArrowsAutoHide?: boolean;
     previewSwipe?: boolean;
     previewFullscreen?: boolean;
     previewForceFullscreen?: boolean;
@@ -206,6 +210,8 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
 
         this.preview = use(obj.preview, true);
         this.previewDescription = use(obj.previewDescription, true);
+        this.previewArrows = use(obj.previewArrows, true);
+        this.previewArrowsAutoHide = use(obj.previewArrowsAutoHide, false);
         this.previewSwipe = use(obj.previewSwipe, false);
         this.previewFullscreen = use(obj.previewFullscreen, false);
         this.previewForceFullscreen = use(obj.previewForceFullscreen, false);
