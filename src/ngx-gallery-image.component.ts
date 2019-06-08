@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, HostListener,  ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
@@ -10,11 +10,29 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
     selector: 'ngx-gallery-image',
     template: `
         <div class="ngx-gallery-image-wrapper ngx-gallery-animation-{{animation}} ngx-gallery-image-size-{{size}}">
-            <div class="ngx-gallery-image" *ngFor="let image of getImages(); let i = index;" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }" [style.background-image]="getSafeUrl(image.src)" (click)="handleClick($event, image.index)">
-                <div class="ngx-gallery-icons-wrapper">
-                    <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, image.index)"></ngx-gallery-action>
+            <div *ngFor="let image of getImages(); let i = index;">
+                <div *ngIf="image.type == 'image'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
+                    [style.background-image]="getSafeUrl(image.src)" (click)="handleClick($event, image.index)">
+                    <div class="ngx-gallery-icons-wrapper">
+                        <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
+                            [titleText]="action.titleText" (onClick)="action.onClick($event, image.index)"></ngx-gallery-action>
+                    </div>
+                    <div class="ngx-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]"
+                        (click)="$event.stopPropagation()"></div>
                 </div>
-                <div class="ngx-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]" (click)="$event.stopPropagation()"></div>
+                <div *ngIf="image.type == 'video'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
+                    (click)="handleClick($event, image.index)">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source [src]="image.src">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="ngx-gallery-icons-wrapper">
+                        <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
+                            [titleText]="action.titleText" (onClick)="action.onClick($event, image.index)"></ngx-gallery-action>
+                    </div>
+                    <div class="ngx-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]"
+                        (click)="$event.stopPropagation()"></div>
+                </div>
             </div>
         </div>
         <ngx-gallery-bullets *ngIf="bullets" [count]="images.length" [active]="selectedIndex" (onChange)="show($event)"></ngx-gallery-bullets>
@@ -190,7 +208,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
 
         if (this.animation === NgxGalleryAnimation.Slide
             || this.animation === NgxGalleryAnimation.Fade) {
-                timeout = 500;
+            timeout = 500;
         }
 
         setTimeout(() => {
@@ -217,5 +235,9 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
 
     getSafeUrl(image: string): SafeStyle {
         return this.sanitization.bypassSecurityTrustStyle(this.helperService.getBackgroundUrl(image));
+    }
+
+    getFileType(fileSource: string) {
+        return this.helperService.getFileType(fileSource);
     }
 }

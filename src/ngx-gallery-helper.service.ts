@@ -45,4 +45,24 @@ export class NgxGalleryHelperService {
     private removeSwipeHandlers(id: string): void {
         this.swipeHandlers.delete(id);
     }
+
+    getFileType (fileSource: string): string {
+        if (fileSource.startsWith('data:')) {
+          return fileSource.substr(5, Math.min(fileSource.indexOf(';'), fileSource.indexOf('/')) - 5);
+        }
+        let fileExtension = fileSource.split('.').pop().toLowerCase();
+        if (!fileExtension
+          || fileExtension == 'jpeg' || fileExtension == 'jpg'
+          || fileExtension == 'png' || fileExtension == 'bmp'
+          || fileExtension == 'gif') {
+          return 'image';
+        }
+        else if (fileSource.substr(0, 10) === 'data:video' ||
+          fileExtension == 'avi' || fileExtension == 'flv'
+          || fileExtension == 'wmv' || fileExtension == 'mov'
+          || fileExtension == 'mp4') {
+          return 'video';
+        }
+        return 'unknown';
+    }
 }

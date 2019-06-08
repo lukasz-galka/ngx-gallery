@@ -6,6 +6,7 @@ export interface INgxGalleryImage {
     big?: string | SafeResourceUrl;
     description?: string;
     url?: string;
+    type?: string;
     label?: string;
 }
 
@@ -15,6 +16,7 @@ export class NgxGalleryImage implements INgxGalleryImage {
     big?: string | SafeResourceUrl;
     description?: string;
     url?: string;
+    type?: string;
     label?: string;
 
     constructor(obj: INgxGalleryImage) {
@@ -23,6 +25,7 @@ export class NgxGalleryImage implements INgxGalleryImage {
         this.big = obj.big;
         this.description = obj.description;
         this.url = obj.url;
+        this.type = obj.type;
         this.label = obj.label;
     }
 }

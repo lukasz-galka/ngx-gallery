@@ -63,7 +63,7 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @HostBinding('style.height') height: string;
     @HostBinding('style.left') left: string;
 
-    constructor(private myElement: ElementRef) {}
+    constructor(private myElement: ElementRef, private helperService: NgxGalleryHelperService) {}
 
     ngOnInit() {
         this.options = this.options.map((opt) => new NgxGalleryOptions(opt));
@@ -268,9 +268,14 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     private setImages(): void {
+        const _this:NgxGalleryComponent = this;
+        this.images.forEach(function (img) {
+            img.type = _this.helperService.getFileType(<string>img.url || <string>img.big || <string>img.medium || <string>img.small || '');
+        });
         this.smallImages = this.images.map((img) => <string>img.small);
         this.mediumImages = this.images.map((img, i) => new NgxGalleryOrderedImage({
             src: img.medium,
+            type: img.type,
             index: i
         }));
         this.bigImages = this.images.map((img) => <string>img.big);
