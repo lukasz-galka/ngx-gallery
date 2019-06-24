@@ -57,8 +57,7 @@ export class NgxGalleryHelperService {
           || fileExtension == 'gif') {
           return 'image';
         }
-        else if (fileSource.substr(0, 10) === 'data:video' ||
-          fileExtension == 'avi' || fileExtension == 'flv'
+        else if (fileExtension == 'avi' || fileExtension == 'flv'
           || fileExtension == 'wmv' || fileExtension == 'mov'
           || fileExtension == 'mp4') {
           return 'video';

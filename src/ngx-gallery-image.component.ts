@@ -11,7 +11,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
     template: `
         <div class="ngx-gallery-image-wrapper ngx-gallery-animation-{{animation}} ngx-gallery-image-size-{{size}}">
             <div *ngFor="let image of getImages(); let i = index;">
-                <div *ngIf="image.type == 'image'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
+                <div *ngIf="image.type === 'image'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
                     [style.background-image]="getSafeUrl(image.src)" (click)="handleClick($event, image.index)">
                     <div class="ngx-gallery-icons-wrapper">
                         <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
@@ -20,7 +20,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
                     <div class="ngx-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]"
                         (click)="$event.stopPropagation()"></div>
                 </div>
-                <div *ngIf="image.type == 'video'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
+                <div *ngIf="image.type === 'video'" class="ngx-gallery-image" [ngClass]="{ 'ngx-gallery-active': selectedIndex == image.index, 'ngx-gallery-inactive-left': selectedIndex > image.index, 'ngx-gallery-inactive-right': selectedIndex < image.index, 'ngx-gallery-clickable': clickable }"
                     (click)="handleClick($event, image.index)">
                     <video controls style="width: 100%; height: 100%;">
                         <source [src]="image.src">
