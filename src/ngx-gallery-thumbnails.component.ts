@@ -8,19 +8,35 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
 @Component({
     selector: 'ngx-gallery-thumbnails',
     template: `
-    <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
-        <div class="ngx-gallery-thumbnails" [style.transform]="'translateX(' + thumbnailsLeft + ')'" [style.marginLeft]="thumbnailsMarginLeft">
-            <a [href]="hasLink(i) ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" *ngFor="let image of getImages(); let i = index;" [style.background-image]="getSafeUrl(image)" (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)" [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }" [attr.aria-label]="labels[i]">
-                <div class="ngx-gallery-icons-wrapper">
-                    <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, i)"></ngx-gallery-action>
+        <div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
+            <div class="ngx-gallery-thumbnails" [style.transform]="'translateX(' + thumbnailsLeft + ')'" [style.marginLeft]="thumbnailsMarginLeft">
+                <div *ngFor="let image of getImages(); let i = index;">
+                    <a [href]="hasLink(i) ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" [style.width]="getThumbnailWidth()"
+                        (click)="handleClick($event, i)" 
+                        [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)"
+                        [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }"
+                        [attr.aria-label]="labels[i]">
+                        <div *ngIf="getFileType(image) == 'image'" [style.background-image]="getSafeUrl(image)" class="ngx-gallery-thumbnail"
+                            [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }"
+                            style="width: 100%; height: 100%; position:absolute;"></div>
+                        <video *ngIf="getFileType(image) == 'video'" class="ngx-gallery-thumbnail" 
+                            [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }" 
+                            style="width: 100%; height: 100%; position:absolute;">
+                            <source [src]="image">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="ngx-gallery-icons-wrapper">
+                            <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
+                                [titleText]="action.titleText" (onClick)="action.onClick($event, i)"></ngx-gallery-action>
+                        </div>
+                        <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == (rows * columns) - 1)">
+                            <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="ngx-gallery-remaining-count-overlay" *ngIf="remainingCount && remainingCountValue && (i == (rows * columns) - 1)">
-                    <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
-                </div>
-            </a>
+            </div>
         </div>
-    </div>
-    <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+        <ngx-gallery-arrows *ngIf="canShowArrows()" (onPrevClick)="moveLeft()" (onNextClick)="moveRight()" [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
     `,
     styleUrls: ['./ngx-gallery-thumbnails.component.scss']
 })
@@ -264,6 +280,10 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
     getSafeUrl(image: string): SafeStyle {
         return this.sanitization.bypassSecurityTrustStyle(this.helperService.getBackgroundUrl(image));
+    }
+
+    getFileType (fileSource: string): string {
+        return this.helperService.getFileType(fileSource);
     }
 
     private getThumbnailPosition(index: number, count: number): SafeStyle {

@@ -6,32 +6,39 @@ import { NgxGalleryHelperService } from './ngx-gallery-helper.service';
 
 @Component({
     selector: 'ngx-gallery-preview',
-    template: `
-        <ngx-gallery-arrows *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
-        <div class="ngx-gallery-preview-top">
-            <div class="ngx-gallery-preview-icons">
-                <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
-                <a *ngIf="download && src" [href]="src" class="ngx-gallery-icon" aria-hidden="true" download>
-                    <i class="ngx-gallery-icon-content {{ downloadIcon }}"></i>
-                </a>
-                <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
-                <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
-                <ngx-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></ngx-gallery-action>
-                <ngx-gallery-action *ngIf="rotate" [icon]="rotateRightIcon" (onClick)="rotateRight()"></ngx-gallery-action>
-                <ngx-gallery-action *ngIf="fullscreen" [icon]="'ngx-gallery-fullscreen ' + fullscreenIcon" (onClick)="manageFullscreen()"></ngx-gallery-action>
-                <ngx-gallery-action [icon]="'ngx-gallery-close ' + closeIcon" (onClick)="close()"></ngx-gallery-action>
-            </div>
+    template: `    
+    <ngx-gallery-arrows *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+    <div class="ngx-gallery-preview-top">
+        <div class="ngx-gallery-preview-icons">
+            <ngx-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></ngx-gallery-action>
+            <a *ngIf="download && src" [href]="src" class="ngx-gallery-icon" aria-hidden="true" download>
+                <i class="ngx-gallery-icon-content {{ downloadIcon }}"></i>
+            </a>
+            <ngx-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></ngx-gallery-action>
+            <ngx-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></ngx-gallery-action>
+            <ngx-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></ngx-gallery-action>
+            <ngx-gallery-action *ngIf="rotate" [icon]="rotateRightIcon" (onClick)="rotateRight()"></ngx-gallery-action>
+            <ngx-gallery-action *ngIf="fullscreen" [icon]="'ngx-gallery-fullscreen ' + fullscreenIcon" (onClick)="manageFullscreen()"></ngx-gallery-action>
+            <ngx-gallery-action [icon]="'ngx-gallery-close ' + closeIcon" (onClick)="close()"></ngx-gallery-action>
         </div>
-        <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
-            <i class="ngx-gallery-icon ngx-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
+    </div>
+    <div class="ngx-spinner-wrapper ngx-gallery-center" [class.ngx-gallery-active]="showSpinner">
+        <i class="ngx-gallery-icon ngx-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
+    </div>
+    <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
+        <div class="ngx-gallery-preview-img-wrapper">
+            <img *ngIf="src && type == 'image'" #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>\
+            <video *ngIf="src && type == 'video'" #previewImage controls style="width: 100%; height: 100%;" \
+                class="ngx-gallery-preview-img ngx-gallery-center"\
+                (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" \
+                [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"> \
+                <source [src]="src">\
+                Your browser does not support the video tag.\
+            </video>
+            <ngx-gallery-bullets *ngIf="bullets" [count]="images.length" [active]="index" (onChange)="showAtIndex($event)"></ngx-gallery-bullets>
         </div>
-        <div class="ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)" (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
-            <div class="ngx-gallery-preview-img-wrapper">
-                <img *ngIf="src" #previewImage class="ngx-gallery-preview-img ngx-gallery-center" [src]="src" (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)" [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
-                <ngx-gallery-bullets *ngIf="bullets" [count]="images.length" [active]="index" (onChange)="showAtIndex($event)"></ngx-gallery-bullets>
-            </div>
-            <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description" (click)="$event.stopPropagation()"></div>
-        </div>
+        <div class="ngx-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description" (click)="$event.stopPropagation()"></div>
+    </div>
     `,
     styleUrls: ['./ngx-gallery-preview.component.scss']
 })
@@ -40,6 +47,7 @@ export class NgxGalleryPreviewComponent implements OnInit, OnChanges {
     src: SafeUrl;
     srcIndex: number;
     description: string;
+    type: string;
     showSpinner = false;
     positionLeft = 0;
     positionTop = 0;
@@ -276,6 +284,10 @@ export class NgxGalleryPreviewComponent implements OnInit, OnChanges {
             image : this.sanitization.bypassSecurityTrustUrl(image);
     }
 
+    getFileType (fileSource: string): string {
+        return this.helperService.getFileType(fileSource);
+    }
+
     zoomIn(): void {
         if (this.canZoomIn()) {
             this.zoomValue += this.zoomStep;
@@ -432,15 +444,18 @@ export class NgxGalleryPreviewComponent implements OnInit, OnChanges {
         this.resetPosition();
 
         this.src = this.getSafeUrl(<string>this.images[this.index]);
+        this.type = this.getFileType(<string>this.images[this.index]);
         this.srcIndex = this.index;
         this.description = this.descriptions[this.index];
         this.changeDetectorRef.markForCheck();
 
         setTimeout(() => {
-            if (this.isLoaded(this.previewImage.nativeElement)) {
+            if (this.isLoaded(this.previewImage.nativeElement) || this.type == 'video') {
                 this.loading = false;
                 this.startAutoPlay();
                 this.changeDetectorRef.markForCheck();
+            } else if (this.type == 'video') {
+                
             } else {
                 setTimeout(() => {
                     if (this.loading) {
