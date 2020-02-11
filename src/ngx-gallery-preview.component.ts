@@ -160,8 +160,8 @@ export class NgxGalleryPreviewComponent implements OnInit, OnChanges {
             this.manageFullscreen();
         }
 
-        this.keyDownListener = this.renderer.listenGlobal("window", "keydown", (e) => this.onKeyDown(e));
-    }
+        this.keyDownListener = this.renderer.listen("window", "keydown", (e) => this.onKeyDown(e));
+    }   
 
     close(): void {
         this.isOpen = false;
