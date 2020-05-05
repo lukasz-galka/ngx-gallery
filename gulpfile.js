@@ -6,7 +6,8 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   del = require('del'),
   runSequence = require('run-sequence'),
-  inlineResources = require('./tools/gulp/inline-resources');
+  inlineResources = require('./tools/gulp/inline-resources'),
+  ngFsUtils = require('@angular/compiler-cli/src/ngtsc/file_system');
 
 const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, 'src');
@@ -49,18 +50,30 @@ gulp.task('inline-resources', function () {
  * 4. Run the Angular compiler, ngc, on the /.tmp folder. This will output all
  *    compiled modules to the /build folder.
  */
-gulp.task('ngc', function () {
-  return ngc({
-    project: `${tmpFolder}/tsconfig.es5.json`
-  })
-    .then((exitCode) => {
+gulp.task('ngc', function() {
+  ngFsUtils.setFileSystem(new ngFsUtils.NodeJSFileSystem());
+  ngc([ '--project', `${tmpFolder}/tsconfig.es5.json` ]);
+  return Promise.resolve().then((exitCode) => {
+    if (exitCode === 1) {
+      // This error is caught in the 'compile' task by the runSequence method callback
+      // so that when ngc fails to compile, the whole compile process stops running
+      throw new Error('ngc compilation failed');
+    }
+  });
+});
+
+/*gulp.task('ngc', function () {
+  return ngc([
+    '--project', `${tmpFolder}/tsconfig.es5.json`
+  ])
+  .then((exitCode) => {
       if (exitCode === 1) {
         // This error is caught in the 'compile' task by the runSequence method callback
         // so that when ngc fails to compile, the whole compile process stops running
         throw new Error('ngc compilation failed');
       }
     });
-});
+});*/
 
 /**
  * 5. Run rollup inside the /build folder to generate our Flat ES module and place the

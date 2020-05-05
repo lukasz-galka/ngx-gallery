@@ -41,12 +41,12 @@
   },
   "homepage": "https://lukasz-galka.github.io/ngx-gallery-demo",
   "devDependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/common": "8.2.12",
+    "@angular/compiler": "8.2.12",
+    "@angular/compiler-cli": "8.2.12",
+    "@angular/core": "8.2.12",
+    "@angular/platform-browser": "8.2.12",
+    "@angular/platform-browser-dynamic": "8.2.12",
     "@compodoc/compodoc": "^1.0.0-beta.10",
     "@types/jasmine": "2.6.2",
     "@types/node": "~8.0.32",
@@ -80,10 +80,13 @@
     "systemjs": "^0.20.12",
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
-    "typescript": "~2.6.0",
+    "typescript": "3.5.3",
     "zone.js": "^0.8.4"
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "tsickle": "^0.38.1"
   }
 }

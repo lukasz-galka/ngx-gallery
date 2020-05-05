@@ -1,6 +1,6 @@
 import {} from 'jasmine';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Renderer, SimpleChange } from '@angular/core';
+import { Renderer2, SimpleChange } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NgxGalleryActionComponent, NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryHelperService } from './';
 
@@ -12,7 +12,7 @@ describe('NgxGalleryPreviewComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [ NgxGalleryPreviewComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryActionComponent ],
-          providers: [ NgxGalleryHelperService, Renderer ]
+          providers: [ NgxGalleryHelperService, Renderer2 ]
         })
         .overrideComponent(NgxGalleryPreviewComponent, {
             set: {
