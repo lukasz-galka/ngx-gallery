@@ -62,19 +62,6 @@ gulp.task('ngc', function() {
   });
 });
 
-/*gulp.task('ngc', function () {
-  return ngc([
-    '--project', `${tmpFolder}/tsconfig.es5.json`
-  ])
-  .then((exitCode) => {
-      if (exitCode === 1) {
-        // This error is caught in the 'compile' task by the runSequence method callback
-        // so that when ngc fails to compile, the whole compile process stops running
-        throw new Error('ngc compilation failed');
-      }
-    });
-});*/
-
 /**
  * 5. Run rollup inside the /build folder to generate our Flat ES module and place the
  *    generated file into the /dist folder
