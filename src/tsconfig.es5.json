@@ -22,7 +22,8 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "ngx-gallery.js",
-    "flatModuleId": "ngx-gallery"
+    "flatModuleId": "ngx-gallery",
+    "enableIvy": false
   },
   "files": [
     "./index.ts"

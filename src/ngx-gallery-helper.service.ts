@@ -1,11 +1,11 @@
-import { Injectable, ElementRef, Renderer } from '@angular/core';
+import { Injectable, ElementRef, Renderer2 } from '@angular/core';
 
 @Injectable()
 export class NgxGalleryHelperService {
 
     private swipeHandlers: Map<string, Function[]> = new Map<string, Function[]>();
 
-    constructor(private renderer: Renderer) {}
+    constructor(private renderer: Renderer2) {}
 
     manageSwipe(status: boolean, element: ElementRef, id: string, nextHandler: Function, prevHandler: Function): void {
 

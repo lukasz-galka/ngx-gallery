@@ -1,5 +1,5 @@
 import {} from 'jasmine';
-import { Renderer } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgxGalleryActionComponent, NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryHelperService,
@@ -20,7 +20,7 @@ describe('NgxGalleryImageComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
           declarations: [ NgxGalleryImageComponent, NgxGalleryArrowsComponent, NgxGalleryBulletsComponent, NgxGalleryActionComponent ],
-          providers: [ NgxGalleryHelperService, Renderer,
+          providers: [ NgxGalleryHelperService, Renderer2,
             { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig } ]
         })
         .overrideComponent(NgxGalleryImageComponent, {
